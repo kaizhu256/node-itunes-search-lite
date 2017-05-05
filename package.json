@@ -1,0 +1,35 @@
+{
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "description": "this zero-dependency package will provide and demo the frontend itunes-search-api",
+    "devDependencies": {
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "utility2": "2017.5.5"
+    },
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/kaizhu256/node-itunes-search-lite",
+    "keywords": [],
+    "license": "MIT",
+    "main": "lib.itunes_search.js",
+    "name": "itunes-search-lite",
+    "nameAlias": "itunes_search",
+    "nameOriginal": "itunes-search-lite",
+    "os": [
+        "darwin",
+        "linux"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kaizhu256/node-itunes-search-lite.git"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "npm install \"kaizhu256/node-utility2#alpha\" && utility2 shDeployHeroku",
+        "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+        "start": "PORT=${PORT:-8080} utility2 start test.js",
+        "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
+    },
+    "version": "2017.5.5"
+}

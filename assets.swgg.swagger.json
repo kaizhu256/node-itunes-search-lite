@@ -1,0 +1,235 @@
+{
+    "basePath": "/",
+    "info": {
+        "description": "documentation for the itunes api @ https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/",
+        "title": "itunes api",
+        "version": "0.0.1"
+    },
+    "host": "itunes.apple.com",
+    "paths": {
+        "/search": {
+            "get": {
+                "operationId": "itunesSearch",
+                "parameters": [
+                    {
+                        "default": "jack+johnson",
+                        "description": "The URL-encoded text string you want to search for. For example: jack+johnson.",
+                        "in": "query",
+                        "name": "term",
+                        "require": true,
+                        "type": "string"
+                    },
+                    {
+                        "default": "US",
+                        "description": "The two-letter country code for the store you want to search. The search uses the default store front for the specified country. For example: US. The default is US.",
+                        "in": "query",
+                        "name": "country",
+                        "require": true,
+                        "type": "string"
+                    },
+                    {
+                        "default": "all",
+                        "description": "The media type you want to search for. For example: movie. The default is all.",
+                        "enum": [
+                            "movie",
+                            "podcast",
+                            "music",
+                            "musicVideo",
+                            "audiobook",
+                            "shortFilm",
+                            "tvShow",
+                            "software",
+                            "ebook",
+                            "all"
+                        ],
+                        "in": "query",
+                        "name": "media",
+                        "type": "string"
+                    },
+                    {
+                        "description": "The type of results you want returned, relative to the specified media type. For example: movieArtist for a movie media type search. The default is the track entity associated with the specified media type.",
+                        "enum": [
+                            "movieArtist",
+                            "movie",
+                            "podcastAuthor",
+                            "podcast",
+                            "musicArtist",
+                            "musicTrack",
+                            "album",
+                            "musicVideo",
+                            "mix",
+                            "song",
+                            "musicArtist",
+                            "musicVideo",
+                            "audiobookAuthor",
+                            "audiobook",
+                            "shortFilmArtist",
+                            "shortFilm",
+                            "tvEpisode",
+                            "tvSeason",
+                            "software",
+                            "iPadSoftware",
+                            "macSoftware",
+                            "ebook",
+                            "movie",
+                            "album",
+                            "allArtist",
+                            "podcast",
+                            "musicVideo",
+                            "mix",
+                            "audiobook",
+                            "tvSeason",
+                            "allTrack"
+                        ],
+                        "in": "query",
+                        "name": "entity",
+                        "type": "string"
+                    },
+                    {
+                        "description": "The attribute you want to search for in the stores, relative to the specified media type. For example, if you want to search for an artist by name specify entity=allArtist&attribute=allArtistTerm. In this example, if you search for term=maroon, iTunes returns “Maroon 5” in the search results, instead of all artists who have ever recorded a song with the word “maroon” in the title. The default is all attributes associated with the specified media type.",
+                        "enum": [
+                            "actorTerm",
+                            "genreIndex",
+                            "artistTerm",
+                            "shortFilmTerm",
+                            "producerTerm",
+                            "ratingTerm",
+                            "directorTerm",
+                            "releaseYearTerm",
+                            "featureFilmTerm",
+                            "movieArtistTerm",
+                            "movieTerm",
+                            "ratingIndex",
+                            "descriptionTerm",
+                            "titleTerm",
+                            "languageTerm",
+                            "authorTerm",
+                            "genreIndex",
+                            "artistTerm",
+                            "ratingIndex",
+                            "keywordsTerm",
+                            "descriptionTerm",
+                            "mixTerm",
+                            "genreIndex",
+                            "artistTerm",
+                            "composerTerm",
+                            "albumTerm",
+                            "ratingIndex",
+                            "songTerm",
+                            "genreIndex",
+                            "artistTerm",
+                            "albumTerm",
+                            "ratingIndex",
+                            "songTerm",
+                            "titleTerm",
+                            "authorTerm",
+                            "genreIndex",
+                            "ratingIndex",
+                            "genreIndex",
+                            "artistTerm",
+                            "shortFilmTerm",
+                            "ratingIndex",
+                            "descriptionTerm",
+                            "softwareDeveloper",
+                            "genreIndex",
+                            "tvEpisodeTerm",
+                            "showTerm",
+                            "tvSeasonTerm",
+                            "ratingIndex",
+                            "descriptionTerm",
+                            "actorTerm",
+                            "languageTerm",
+                            "allArtistTerm",
+                            "tvEpisodeTerm",
+                            "shortFilmTerm",
+                            "directorTerm",
+                            "releaseYearTerm",
+                            "titleTerm",
+                            "featureFilmTerm",
+                            "ratingIndex",
+                            "keywordsTerm",
+                            "descriptionTerm",
+                            "authorTerm",
+                            "genreIndex",
+                            "mixTerm",
+                            "allTrackTerm",
+                            "artistTerm",
+                            "composerTerm",
+                            "tvSeasonTerm",
+                            "producerTerm",
+                            "ratingTerm",
+                            "songTerm",
+                            "movieArtistTerm",
+                            "showTerm",
+                            "movieTerm",
+                            "albumTerm"
+                        ],
+                        "in": "query",
+                        "name": "attribute",
+                        "type": "string"
+                    },
+                    {
+                        "default": "",
+                        "description": "The name of the Javascript callback function you want to use when returning search results to your website. For example: wsSearchCB.",
+                        "in": "query",
+                        "name": "callback",
+                        "type": "string"
+                    },
+                    {
+                        "description": "The number of search results you want the iTunes Store to return. For example: 25.The default is 50.",
+                        "in": "query",
+                        "name": "limit",
+                        "type": "integer"
+                    },
+                    {
+                        "default": "en_us",
+                        "description": "The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. For example: en_us.The default is en_us (English).",
+                        "enum": [
+                            "en_us",
+                            "ja_jp"
+                        ],
+                        "in": "query",
+                        "name": "lang",
+                        "type": "string"
+                    },
+                    {
+                        "default": 2,
+                        "description": "The search result key version you want to receive back from your search.The default is 2.",
+                        "enum": [
+                            1,
+                            2
+                        ],
+                        "in": "query",
+                        "name": "version",
+                        "type": "integer"
+                    },
+                    {
+                        "default": "Yes",
+                        "description": "A flag indicating whether or not you want to include explicit content in your search results.The default is Yes.",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "in": "query",
+                        "name": "explicit",
+                        "type": "string"
+                    }
+                ],
+                "summary": "itunes search api",
+                "tags": [
+                    "itunes"
+                ]
+            }
+        }
+    },
+    "schemes": [
+        "https"
+    ],
+    "swagger": "2.0",
+    "tags": [
+        {
+            "name": "itunes"
+        }
+    ],
+    "x-modeForwardProxyUrl": "https://h1-proxy1.herokuapp.com"
+}
