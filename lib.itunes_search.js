@@ -661,7 +661,7 @@
                 element.classList.remove('cardSelected');
             });
             local.cardSelected.classList.add('cardSelected');
-            local.cardExpanded = document.querySelector('.cardExpanded');
+            local.cardExpanded = local.cardExpanded || document.querySelector('.cardExpanded');
             local.cardExpanded.innerHTML = local.templateRender(
 /* jslint-ignore-begin */
 '\

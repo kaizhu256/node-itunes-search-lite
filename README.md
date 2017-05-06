@@ -33,12 +33,9 @@ this zero-dependency package will provide and demo the frontend itunes-search-ap
 #### todo
 - none
 
-#### changelog for v2017.5.5
-- npm publish 2017.5.5
-- first publish
-- When you click on the item, it should transform and show (a) the long description and (b) a Buy Button at the bottom in any shape or form.
-- When you select a new item card, the previously selected one will be unselected.
-- Website requires at least one animation (“Example, the grid populates one by one with a bubble popup animation)
+#### changelog for v2017.5.6
+- npm publish 2017.5.6
+- fix card expansion bug
 - none
 
 #### this package requires
@@ -135,7 +132,7 @@ shExampleSh
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.5.5"
+    "version": "2017.5.6"
 }
 ```
 
