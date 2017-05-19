@@ -237,18 +237,16 @@
             local.ajaxProgressDiv1StyleBackground = local.ajaxProgressDiv1StyleBackground ||
                 ajaxProgressDiv1.style.background;
             // show ajaxProgress
-            if (ajaxProgressDiv1.style.background === 'transparent') {
-                ajaxProgressDiv1.style.background = local.ajaxProgressDiv1StyleBackground;
-            }
+            ajaxProgressDiv1.style.background = local.ajaxProgressDiv1StyleBackground;
             // increment ajaxProgress
             if (local.ajaxProgressCounter > 0) {
                 // this algorithm will indefinitely increment the ajaxProgressBar
                 // with successively smaller increments without ever reaching 100%
                 local.ajaxProgressState += 1;
                 ajaxProgressDiv1.style.width = Math.max(
-                    100 - 75 * Math.exp(-0.125 * local.ajaxProgressState) + '%',
-                    ajaxProgressDiv1.style.width
-                );
+                    100 - 75 * Math.exp(-0.125 * local.ajaxProgressState),
+                    Number(ajaxProgressDiv1.style.width.slice(0, -1)) || 0
+                ) + '%';
             } else {
                 // finish ajaxProgress
                 ajaxProgressDiv1.style.width = '100%';
@@ -269,7 +267,7 @@
                         ajaxProgressDiv1.style.width = '0%';
                     }()));
                 }, 500);
-            }, local.ajaxProgressCounter
+            }, local.ajaxProgressCounter > 0
                 ? 30000
                 : 1500);
         };
