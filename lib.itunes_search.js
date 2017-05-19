@@ -232,6 +232,8 @@
             if (!ajaxProgressDiv1) {
                 return;
             }
+            // init transition
+            ajaxProgressDiv1.style.transition = 'background 500ms, width 1500ms';
             // init ajaxProgressDiv1StyleBackground
             local.ajaxProgressDiv1StyleBackground = local.ajaxProgressDiv1StyleBackground ||
                 ajaxProgressDiv1.style.background;
@@ -246,8 +248,10 @@
                 // this algorithm will indefinitely increment the ajaxProgressBar
                 // with successively smaller increments without ever reaching 100%
                 local.ajaxProgressState += 1;
-                ajaxProgressDiv1.style.width =
-                    100 - 75 * Math.exp(-0.125 * local.ajaxProgressState) + '%';
+                ajaxProgressDiv1.style.width = Math.max(
+                    100 - 75 * Math.exp(-0.125 * local.ajaxProgressState) + '%',
+                    ajaxProgressDiv1.style.width
+                );
                 return;
             }
             // finish ajaxProgress
@@ -259,7 +263,8 @@
                 setTimeout(function () {
                     local.ajaxProgressCounter = 0;
                     local.ajaxProgressState = 0;
-                    ajaxProgressDiv1.style.width = '25%';
+                    ajaxProgressDiv1.style.transition = '';
+                    ajaxProgressDiv1.style.width = '0%';
                 }, 500);
             }, 1500);
         };
