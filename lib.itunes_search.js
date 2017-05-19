@@ -268,7 +268,7 @@
                     }()));
                 }, 500);
             }, local.ajaxProgressCounter > 0
-                ? 30000
+                ? local.timeoutDefault
                 : 1500);
         };
 
