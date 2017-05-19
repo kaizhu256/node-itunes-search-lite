@@ -47,6 +47,7 @@
         } else {
             module.exports = local;
             module.exports.__dirname = __dirname;
+            module.exports.__require = require;
             module.exports.module = module;
         }
     }());
@@ -661,7 +662,6 @@
                 element.classList.remove('cardSelected');
             });
             local.cardSelected.classList.add('cardSelected');
-            local.cardExpanded = local.cardExpanded || document.querySelector('.cardExpanded');
             local.cardExpanded.innerHTML = local.templateRender(
 /* jslint-ignore-begin */
 '\
@@ -696,9 +696,10 @@
                 local.uiAnimateScrollTo(local.cardSelected);
             }
             local.cardExpanded.offsetTopPrevious = local.cardExpanded.offsetTop;
-            local.cardExpandedArrow = document.querySelector('.cardExpandedArrow');
-            local.cardExpandedArrow.style.top = (local.cardExpanded.offsetTop - 10) + 'px';
-            local.cardExpandedArrow.style.left = (local.cardSelected.offsetLeft +
+            document.querySelector('.cardExpandedArrow').style.top =
+                (local.cardExpanded.offsetTop - 10) + 'px';
+            document.querySelector('.cardExpandedArrow').style.left =
+                (local.cardSelected.offsetLeft +
                 0.5 * local.cardSelected.offsetWidth - 10) + 'px';
             return options;
         };
@@ -734,7 +735,7 @@
                     break;
                 case 2:
                     local.data = JSON.parse(data.responseText);
-                    document.querySelector('.grid').innerHTML = local.uiRender(local.data);
+                    local.uiEventListenerDict['.onEventUiRender']();
                     break;
                 default:
                     throw error;
@@ -746,16 +747,10 @@
 
         local.uiEventListenerDict['.onEventUiRender'] = function () {
         /*
-         * this function will sort the cards
+         * this function will render the ui
          */
-            document.querySelector('.grid').innerHTML = local.uiRender(local.data);
-        };
-
-        local.uiRender = function (options) {
-        /*
-         * this function will render the ui with the given options
-         */
-            var key;
+            var key, options;
+            options = local.data;
             if (!(options && options.results && options.results.length)) {
                 return '<div style="margin: 1rem;">No results</div>';
             }
@@ -774,8 +769,11 @@
                 element.releaseYear = element.releaseDate
                     ? element.releaseDate.slice(0, 4)
                     : 'N/A';
-                element.trackPriceFormatted = element.trackPrice && element.currency
-                    ? element.trackPrice + ' ' + element.currency
+                element.trackPrice2 = Number(element.trackPrice) >= 0
+                    ? Number(element.trackPrice)
+                    : Number(element.collectionPrice);
+                element.trackPriceFormatted = element.trackPrice2 && element.currency
+                    ? element.trackPrice2 + ' ' + element.currency
                     : 'N/A';
             });
             // sort
@@ -783,10 +781,6 @@
             options.results.sort(function (aa, bb) {
                 aa = aa[key];
                 bb = bb[key];
-                if (key === 'trackPrice') {
-                    aa = Number(aa);
-                    bb = Number(bb);
-                }
                 if (key === 'releaseDate') {
                     return aa >= bb
                         ? -1
@@ -799,7 +793,8 @@
             options.results.forEach(function (element, ii) {
                 element.ii = ii;
             });
-            return local.templateRender(
+            document.querySelector('.cardExpandedArrow').style.top = '';
+            document.querySelector('.grid').innerHTML = local.templateRender(
 /* jslint-ignore-begin */
 '\
 {{#each results}}\n\
@@ -831,6 +826,7 @@
             '#podcast': '#podcast'
         };
         local.timeoutDefault = 30000;
+        local.cardExpanded = document.querySelector('.cardExpanded');
         // init event-handling
         local.uiEventInit(document.body);
         // init state

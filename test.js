@@ -100,8 +100,8 @@
                 [
                     // customize cdn-download
                     (/cdn download[\S\s]*?\n\n\n\n/),
-                    // customize quickstart-example.sh
-                    (/\n- commit history may be rewritten\n[\S\s]*\n# package.json\n/)
+                    // customize assets
+                    (/local.assetsDict = [^`]*?\n {8}\[/)
                 ].forEach(function (rgx) {
                     options.dataFrom.replace(rgx, function (match0) {
                         options.dataTo = options.dataTo.replace(rgx, match0);
