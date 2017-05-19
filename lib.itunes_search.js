@@ -47,7 +47,6 @@
         } else {
             module.exports = local;
             module.exports.__dirname = __dirname;
-            module.exports.__require = require;
             module.exports.module = module;
         }
     }());
@@ -233,7 +232,7 @@
                 return;
             }
             // init transition
-            ajaxProgressDiv1.style.transition = 'background 500ms, width 1500ms';
+            ajaxProgressDiv1.style.transition = 'width 1500ms';
             // init ajaxProgressDiv1StyleBackground
             local.ajaxProgressDiv1StyleBackground = local.ajaxProgressDiv1StyleBackground ||
                 ajaxProgressDiv1.style.background;
@@ -241,8 +240,6 @@
             if (ajaxProgressDiv1.style.background === 'transparent') {
                 ajaxProgressDiv1.style.background = local.ajaxProgressDiv1StyleBackground;
             }
-            // cleanup timerTimeout
-            clearTimeout(local.timerTimeoutAjaxProgressHide);
             // increment ajaxProgress
             if (local.ajaxProgressCounter > 0) {
                 // this algorithm will indefinitely increment the ajaxProgressBar
@@ -252,21 +249,29 @@
                     100 - 75 * Math.exp(-0.125 * local.ajaxProgressState) + '%',
                     ajaxProgressDiv1.style.width
                 );
-                return;
+            } else {
+                // finish ajaxProgress
+                ajaxProgressDiv1.style.width = '100%';
             }
-            // finish ajaxProgress
-            ajaxProgressDiv1.style.width = '100%';
+            // cleanup timerTimeout
+            clearTimeout(local.timerTimeoutAjaxProgressHide);
             // hide ajaxProgress
             local.timerTimeoutAjaxProgressHide = setTimeout(function () {
+                ajaxProgressDiv1.style.transition = 'background 500ms';
                 ajaxProgressDiv1.style.background = 'transparent';
+                local.ajaxProgressCounter = 0;
+                local.ajaxProgressState = 0;
                 // reset ajaxProgress
                 setTimeout(function () {
-                    local.ajaxProgressCounter = 0;
-                    local.ajaxProgressState = 0;
-                    ajaxProgressDiv1.style.transition = '';
-                    ajaxProgressDiv1.style.width = '0%';
+                    // coverage-hack
+                    local.nop(!local.ajaxProgressState && (function () {
+                        ajaxProgressDiv1.style.transition = '';
+                        ajaxProgressDiv1.style.width = '0%';
+                    }()));
                 }, 500);
-            }, 1500);
+            }, local.ajaxProgressCounter
+                ? 30000
+                : 1500);
         };
 
         local.assert = function (passed, message) {
@@ -757,7 +762,9 @@
             var key, options;
             options = local.data;
             if (!(options && options.results && options.results.length)) {
-                return '<div style="margin: 1rem;">No results</div>';
+                document.querySelector('.grid').innerHTML =
+                    '<div style="margin: 1rem;">No results</div>';
+                return;
             }
             localStorage.searchSort = document.querySelector('.searchSortSelect').selectedIndex;
             // normalize
