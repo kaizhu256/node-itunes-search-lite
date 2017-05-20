@@ -40,11 +40,9 @@ this zero-dependency package will provide and demo the frontend itunes-search-ap
 - fix bug - Mentioned above but opening an item description and scrolling will make the entire page jump up and down a lot.
 - none
 
-#### changelog for v2017.5.7
-- npm publish 2017.5.7
-- fix bug - If you sort by lowest price on music/music videos it shows the first ones with a value of -1, but going to iTunes on this shows it as "Album Only". I'm thinking this use case just wasn't handled, but it should have been obvious.
-- fix bug - View on mobile has major design flaws where the text continues on top of the next item.
-- fix bug - The arrow from the expanded card isn't removed when switching between views. Go to one of the tabs and click on one of the items, then switch to a different tab and look closely and you'll see the purple arrow on top of the text. Image attached.
+#### changelog for v2017.5.8
+- npm publish 2017.5.8
+- fix regression - handle 'no result' search-case
 - none
 
 #### this package requires
@@ -366,7 +364,7 @@ instruction
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.5.7"
+    "version": "2017.5.8"
 }
 ```
 
