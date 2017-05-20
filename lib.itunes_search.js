@@ -599,23 +599,41 @@
             }, 1000);
         };
 
-        local.uiAnimateSlideDown = function (element) {
+        local.uiAnimateSlideDown = function (element, callback) {
         /*
          * this function will slideDown the dom-element
          */
-            if (element.style.display !== 'none') {
-                return;
-            }
-            element.style.maxHeight = 0;
-            element.classList.add('uiAnimateSlide');
+            element.style.borderBottom = '';
+            element.style.borderTop = '';
+            element.style.display = '';
+            element.style.marginBottom = '';
+            element.style.marginTop = '';
+            element.style.maxHeight = '100rem';
+            element.style.paddingBottom = '';
+            element.style.paddingTop = '';
+            setTimeout(function () {
+                // coverage-hack
+                local.nop(callback && callback());
+            }, 1000);
+        };
+
+        local.uiAnimateSlideUp = function (element, callback) {
+        /*
+         * this function will slideUp the dom-element
+         */
+            element.style.borderBottom = '0';
+            element.style.borderTop = '0';
+            element.style.marginBottom = '0';
+            element.style.marginTop = '0';
+            element.style.maxHeight = '0';
+            element.style.paddingBottom = '0';
+            element.style.paddingTop = '0';
             element.style.display = '';
             setTimeout(function () {
-                element.style.maxHeight = 2 * local.global.innerHeight + 'px';
-            }, 20);
-            setTimeout(function () {
-                element.style.maxHeight = '';
-                element.classList.remove('uiAnimateSlide');
-            }, 500);
+                element.style.display = 'none';
+                // coverage-hack
+                local.nop(callback && callback());
+            }, 1000);
         };
 
         local.uiEventDelegate = function (event) {
@@ -699,8 +717,9 @@
             });
             if (local.cardExpanded.offsetTopPrevious !==
                     local.cardExpanded.offsetTop) {
-                local.cardExpanded.style.display = 'none';
-                local.uiAnimateSlideDown(local.cardExpanded);
+                local.uiAnimateSlideUp(local.cardExpanded, function () {
+                    local.uiAnimateSlideDown(local.cardExpanded);
+                });
                 local.uiAnimateScrollTo(local.cardSelected);
             }
             local.cardExpanded.offsetTopPrevious = local.cardExpanded.offsetTop;

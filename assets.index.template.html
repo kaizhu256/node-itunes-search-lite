@@ -57,7 +57,6 @@ body {
 .cardExpanded {
     background: #337;
     margin: 10px 1rem 1rem 1rem;
-    min-height: 16rem;
     padding: 1rem;
     width: 100%;
 }
@@ -135,7 +134,7 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2
 }
 .uiAnimateSlide {
     overflow-y: hidden;
-    transition: max-height 500ms;
+    transition: border-bottom 1000ms, border-top 1000ms, margin-bottom 1000ms, margin-top 1000ms, max-height 1000ms, min-height 1000ms, padding-bottom 1000ms, padding-top 1000ms;
 }
 </style>
 </head>
@@ -160,7 +159,7 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2
     </form>
 </div>
 <div class="eventDelegateClick grid onEventUiCardExpand"></div>
-<div class="cardExpanded" style="display: none;"></div>
+<div class="cardExpanded uiAnimateSlide" style="display: none;"></div>
 <div class="cardExpandedArrow"></div>
 <script src="assets.{{env.npm_package_nameAlias}}.js"></script>
 </body>
