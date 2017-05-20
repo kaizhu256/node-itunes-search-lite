@@ -55,9 +55,9 @@ body {
     white-space: nowrap;
 }
 .cardExpanded {
-    background: #337;
-    margin: 10px 1rem 1rem 1rem;
-    padding: 1rem;
+    border: 0;
+    margin: 0;
+    padding: 0;
     width: 100%;
 }
 .cardExpanded a {
@@ -79,8 +79,13 @@ body {
     border-bottom: 10px solid #337;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    position: absolute;
-    top: -100px;
+    width: 10px;
+}
+.cardExpandedContent {
+    background: #337;
+    margin: 0 1rem 1rem 1rem;
+    padding: 1rem;
+    width: 100%;
 }
 .grid {
     display: flex;
@@ -159,8 +164,10 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2
     </form>
 </div>
 <div class="eventDelegateClick grid onEventUiCardExpand"></div>
-<div class="cardExpanded uiAnimateSlide" style="display: none;"></div>
-<div class="cardExpandedArrow"></div>
+<div class="cardExpanded uiAnimateSlide" style="display: none;">
+    <div class="cardExpandedArrow"></div>
+    <div class="cardExpandedContent"></div>
+</div>
 <script src="assets.{{env.npm_package_nameAlias}}.js"></script>
 </body>
 </html>

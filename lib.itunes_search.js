@@ -608,7 +608,7 @@
             element.style.display = '';
             element.style.marginBottom = '';
             element.style.marginTop = '';
-            element.style.maxHeight = '100rem';
+            element.style.maxHeight = 1.5 * local.global.innerHeight + 'px';
             element.style.paddingBottom = '';
             element.style.paddingTop = '';
             setTimeout(function () {
@@ -688,7 +688,8 @@
                 element.classList.remove('cardSelected');
             });
             local.cardSelected.classList.add('cardSelected');
-            local.cardExpanded.innerHTML = local.templateRender(
+            local.cardExpanded.querySelector('.cardExpandedContent').innerHTML =
+                local.templateRender(
 /* jslint-ignore-begin */
 '\
 <table>\n\
@@ -704,8 +705,8 @@
 </table>\n\
 ',
 /* jslint-ignore-end */
-                local.data.results[local.cardSelected.dataset.ii]
-            );
+                    local.data.results[local.cardSelected.dataset.ii]
+                );
             Array.from(document.querySelectorAll('.card')).some(function (element, ii, list) {
                 if (element.offsetTop > local.cardSelected.offsetTop) {
                     local.cardSelected.parentElement.insertBefore(local.cardExpanded, element);
@@ -723,11 +724,9 @@
                 local.uiAnimateScrollTo(local.cardSelected);
             }
             local.cardExpanded.offsetTopPrevious = local.cardExpanded.offsetTop;
-            document.querySelector('.cardExpandedArrow').style.top =
-                (local.cardExpanded.offsetTop - 10) + 'px';
-            document.querySelector('.cardExpandedArrow').style.left =
+            local.cardExpanded.querySelector('.cardExpandedArrow').style.marginLeft =
                 (local.cardSelected.offsetLeft +
-                0.5 * local.cardSelected.offsetWidth - 10) + 'px';
+                0.5 * local.cardSelected.offsetWidth - 15) + 'px';
             return options;
         };
 
@@ -822,7 +821,7 @@
             options.results.forEach(function (element, ii) {
                 element.ii = ii;
             });
-            document.querySelector('.cardExpandedArrow').style.top = '';
+            local.cardExpanded.querySelector('.cardExpandedArrow').style.top = '';
             document.querySelector('.grid').innerHTML = local.templateRender(
 /* jslint-ignore-begin */
 '\
