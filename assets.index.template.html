@@ -55,10 +55,9 @@ body {
     white-space: nowrap;
 }
 .cardExpanded {
-    background: #337;
-    margin: 10px 1rem 1rem 1rem;
-    min-height: 16rem;
-    padding: 1rem;
+    border: 0;
+    margin: 0;
+    padding: 0;
     width: 100%;
 }
 .cardExpanded a {
@@ -80,8 +79,13 @@ body {
     border-bottom: 10px solid #337;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    position: absolute;
-    top: -100px;
+    width: 10px;
+}
+.cardExpandedContent {
+    background: #337;
+    margin: 0 1rem 1rem 0;
+    padding: 1rem;
+    width: 100%;
 }
 .grid {
     display: flex;
@@ -135,7 +139,17 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2
 }
 .uiAnimateSlide {
     overflow-y: hidden;
-    transition: max-height 500ms;
+    transition: border-bottom 500ms, border-top 500ms, margin-bottom 500ms, margin-top 500ms, max-height 500ms, min-height 500ms, padding-bottom 500ms, padding-top 500ms;
+}
+@keyframes uiAnimateZoomIn {
+    from { opacity: 0; transform: scale3d(.5, .5, .5); }
+    50% { opacity: 1; }
+}
+.uiAnimateZoomIn {
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+    animation-name: uiAnimateZoomIn;
+
 }
 </style>
 </head>
@@ -160,8 +174,14 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2
     </form>
 </div>
 <div class="eventDelegateClick grid onEventUiCardExpand"></div>
-<div class="cardExpanded" style="display: none;"></div>
-<div class="cardExpandedArrow"></div>
+<div class="cardExpanded uiAnimateSlide" style="display: none;">
+    <div class="cardExpandedArrow"></div>
+    <div class="cardExpandedContent"></div>
+</div>
+<div class="cardExpanded uiAnimateSlide" style="display: none;">
+    <div class="cardExpandedArrow"></div>
+    <div class="cardExpandedContent"></div>
+</div>
 <script src="assets.{{env.npm_package_nameAlias}}.js"></script>
 </body>
 </html>

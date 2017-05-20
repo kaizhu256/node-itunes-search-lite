@@ -586,35 +586,64 @@
         /*
          * this function will scrollTo the element
          */
-            var ii, timerInterval;
-            ii = 0;
-            timerInterval = setInterval(function () {
-                ii += 0.025;
-                local.global.scrollTo(0, document.body.scrollTop +
-                    Math.min(ii, 1) * (element.offsetTop - document.body.scrollTop) +
-                    -5);
-            }, 25);
-            setTimeout(function () {
+            var dy, fps, scrollTopOld, stop, timerInterval, timeout, tmp;
+            fps = 50;
+            timeout = 1000;
+            stop = function () {
                 clearInterval(timerInterval);
-            }, 1000);
+            };
+            timerInterval = setInterval(function () {
+                dy = 2000 * (element.offsetTop - document.body.scrollTop) / (fps * timeout);
+                tmp = (document.body.scrollTop - scrollTopOld) || dy;
+                // stop if very little to scroll
+                if (Math.abs(dy * fps * timeout / 2000) <= 20 ||
+                        // stop if user interrupts scrolling
+                        Math.sign(tmp) !== Math.sign(dy) ||
+                        Math.abs(tmp) > 2 * Math.abs(dy)) {
+                    stop();
+                    return;
+                }
+                scrollTopOld = document.body.scrollTop;
+                document.body.scrollTop += dy;
+            }, 1000 / fps);
+            setTimeout(stop, timeout);
         };
 
-        local.uiAnimateSlideDown = function (element) {
+        local.uiAnimateSlideDown = function (element, callback) {
         /*
          * this function will slideDown the dom-element
          */
-            if (element.style.display !== 'none') {
-                return;
-            }
-            element.style.maxHeight = 0;
-            element.classList.add('uiAnimateSlide');
+            element.style.maxHeight = '0';
+            setTimeout(function () {
+                element.style.borderBottom = '';
+                element.style.borderTop = '';
+                element.style.display = '';
+                element.style.marginBottom = '';
+                element.style.marginTop = '';
+                element.style.maxHeight = 1.5 * local.global.innerHeight + 'px';
+                element.style.paddingBottom = '';
+                element.style.paddingTop = '';
+                setTimeout(function () {
+                    element.style.maxHeight = '65535px';
+                    callback();
+                }, 500);
+            }, 50);
+        };
+
+        local.uiAnimateSlideUp = function (element, callback) {
+        /*
+         * this function will slideUp the dom-element
+         */
+            element.style.borderBottom = '0';
+            element.style.borderTop = '0';
+            element.style.marginBottom = '0';
+            element.style.marginTop = '0';
+            element.style.maxHeight = '0';
+            element.style.paddingBottom = '0';
+            element.style.paddingTop = '0';
             element.style.display = '';
             setTimeout(function () {
-                element.style.maxHeight = 2 * local.global.innerHeight + 'px';
-            }, 20);
-            setTimeout(function () {
-                element.style.maxHeight = '';
-                element.classList.remove('uiAnimateSlide');
+                callback();
             }, 500);
         };
 
@@ -670,7 +699,9 @@
                 element.classList.remove('cardSelected');
             });
             local.cardSelected.classList.add('cardSelected');
-            local.cardExpanded.innerHTML = local.templateRender(
+            local.cardExpandedList[1].querySelector(
+                '.cardExpandedContent'
+            ).innerHTML = local.templateRender(
 /* jslint-ignore-begin */
 '\
 <table>\n\
@@ -688,27 +719,38 @@
 /* jslint-ignore-end */
                 local.data.results[local.cardSelected.dataset.ii]
             );
-            Array.from(document.querySelectorAll('.card')).some(function (element, ii, list) {
-                if (element.offsetTop > local.cardSelected.offsetTop) {
-                    local.cardSelected.parentElement.insertBefore(local.cardExpanded, element);
+            Array.from(
+                document.querySelectorAll('.grid > *')
+            ).some(function (element, ii, list) {
+                if (element.offsetTop <= local.cardSelected.offsetTop && ii + 1 < list.length) {
+                    return;
+                }
+                if (element === local.cardExpandedList[0]) {
+                    local.cardExpandedList[0]
+                        .querySelector('.cardExpandedContent')
+                        .innerHTML = local.cardExpandedList[1]
+                            .querySelector('.cardExpandedContent')
+                            .innerHTML;
                     return true;
                 }
+                local.cardExpandedList.reverse();
+                local.uiAnimateSlideUp(local.cardExpandedList[1], function () {
+                    local.cardExpandedList[1].parentNode
+                        .removeChild(local.cardExpandedList[1]);
+                });
                 if (ii + 1 === list.length) {
-                    element.parentElement.appendChild(local.cardExpanded);
+                    element.parentElement.appendChild(local.cardExpandedList[0]);
+                } else {
+                    local.cardSelected.parentElement
+                        .insertBefore(local.cardExpandedList[0], element);
                 }
-            });
-            if (local.cardExpanded.offsetTopPrevious !==
-                    local.cardExpanded.offsetTop) {
-                local.cardExpanded.style.display = 'none';
-                local.uiAnimateSlideDown(local.cardExpanded);
                 local.uiAnimateScrollTo(local.cardSelected);
-            }
-            local.cardExpanded.offsetTopPrevious = local.cardExpanded.offsetTop;
-            document.querySelector('.cardExpandedArrow').style.top =
-                (local.cardExpanded.offsetTop - 10) + 'px';
-            document.querySelector('.cardExpandedArrow').style.left =
+                return true;
+            });
+            local.cardExpandedList[0].querySelector('.cardExpandedArrow').style.marginLeft =
                 (local.cardSelected.offsetLeft +
-                0.5 * local.cardSelected.offsetWidth - 10) + 'px';
+                0.5 * local.cardSelected.offsetWidth - 15) + 'px';
+            local.uiAnimateSlideDown(local.cardExpandedList[0], local.nop);
             return options;
         };
 
@@ -733,7 +775,9 @@
                     }
                     localStorage.searchTerm =
                         document.querySelector('.searchTermInput').value || '';
-                    local.ajax({ headers: {
+                    // abort previous fetch request
+                    local.ajax1.abort();
+                    local.ajax1 = local.ajax({ headers: {
                         'forward-proxy-url': 'https://itunes.apple.com/search?' +
                             'term=' +
                             (localStorage.searchTerm.replace((/\s+/g), '+') || 'the') +
@@ -803,12 +847,12 @@
             options.results.forEach(function (element, ii) {
                 element.ii = ii;
             });
-            document.querySelector('.cardExpandedArrow').style.top = '';
+            local.cardExpandedList[0].querySelector('.cardExpandedArrow').style.top = '';
             document.querySelector('.grid').innerHTML = local.templateRender(
 /* jslint-ignore-begin */
 '\
 {{#each results}}\n\
-    <div class="card" data-ii="{{ii}}">\n\
+    <div class="card uiAnimateZoomIn" data-ii="{{ii}}" style="display: none;">\n\
         <img src="{{artworkUrl100 htmlSafe}}">\n\
         <div class="price">{{trackPriceFormatted htmlSafe}}</div>\n\
         <div class="title">{{trackName htmlSafe}}</div>\n\
@@ -820,6 +864,13 @@
 /* jslint-ignore-end */
                 options
             );
+            Array.from(
+                document.querySelectorAll('.card')
+            ).forEach(function (element, ii) {
+                setTimeout(function () {
+                    element.style.display = '';
+                }, ii * 50);
+            });
         };
     }());
     switch (local.modeJs) {
@@ -829,6 +880,13 @@
     // run browser js-env code - init-after
     case 'browser':
         local.global.local = local;
+        local.ajax1 = { abort: local.nop };
+        local.cardExpandedList = Array.from(
+            document.querySelectorAll('.cardExpanded')
+        ).map(function (element) {
+            local.uiAnimateSlideUp(element, local.nop);
+            return element;
+        });
         local.searchMediaDict = {
             '#movie': '#movie',
             '#music': '#music',
@@ -836,7 +894,6 @@
             '#podcast': '#podcast'
         };
         local.timeoutDefault = 30000;
-        local.cardExpanded = document.querySelector('.cardExpanded');
         // init event-handling
         local.uiEventInit(document.body);
         // init state

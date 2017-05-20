@@ -36,13 +36,13 @@ this zero-dependency package will provide and demo the frontend itunes-search-ap
 [![swaggerdoc](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html)
 
 #### todo
-- fix bug - Refreshing the page takes an awful long time to load everything.
-- fix bug - Mentioned above but opening an item description and scrolling will make the entire page jump up and down a lot.
 - none
 
-#### changelog for v2017.5.8
-- npm publish 2017.5.8
-- fix regression - handle 'no result' search-case
+#### changelog for v2017.5.9
+- npm publish 2017.5.9
+- add feature - grid populates one by one with a bubble popup animation
+- fixed bug - Refreshing the page takes an awful long time to load everything.
+- fix bug - Mentioned above but opening an item description and scrolling will make the entire page jump up and down a lot.
 - none
 
 #### this package requires
@@ -364,7 +364,7 @@ instruction
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.5.8"
+    "version": "2017.5.9"
 }
 ```
 
