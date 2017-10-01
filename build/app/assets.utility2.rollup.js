@@ -14300,7 +14300,6 @@ textarea[readonly] {\n\
 </style>\n\
 </head>\n\
 <body>\n\
-<!-- utility2-comment\n\
 <div id="ajaxProgressDiv1" style="background: #d00; height: 2px; left: 0; margin: 0; padding: 0; position: fixed; top: 0; transition: background 500ms, width 1500ms; width: 0%;"></div>\n\
 <script>\n\
 /*jslint\n\
@@ -14315,22 +14314,38 @@ textarea[readonly] {\n\
 */\n\
 (function () {\n\
     "use strict";\n\
-    var ajaxProgressDiv1, ajaxProgressState, timerIntervalAjaxProgressUpdate;\n\
+    var ajaxProgressDiv1,\n\
+        ajaxProgressState,\n\
+        ajaxProgressUpdate,\n\
+        timerIntervalAjaxProgressUpdate;\n\
     ajaxProgressDiv1 = document.querySelector("#ajaxProgressDiv1");\n\
+    setTimeout(function () {\n\
+        ajaxProgressDiv1.style.width = "25%";\n\
+    });\n\
     ajaxProgressState = 0;\n\
+    ajaxProgressUpdate = (window.local &&\n\
+        window.local.ajaxProgressUpdate) || function () {\n\
+        ajaxProgressDiv1.style.width = "100%";\n\
+        setTimeout(function () {\n\
+            ajaxProgressDiv1.style.background = "transparent";\n\
+            setTimeout(function () {\n\
+                ajaxProgressDiv1.style.width = "0%";\n\
+            }, 500);\n\
+        }, 1500);\n\
+    };\n\
     timerIntervalAjaxProgressUpdate = setInterval(function () {\n\
         ajaxProgressState += 1;\n\
         ajaxProgressDiv1.style.width = Math.max(\n\
-            100 - 100 * Math.exp(-0.0625 * ajaxProgressState),\n\
+            100 - 75 * Math.exp(-0.125 * ajaxProgressState),\n\
             Number(ajaxProgressDiv1.style.width.slice(0, -1)) || 0\n\
         ) + "%";\n\
     }, 1000);\n\
     window.addEventListener("load", function () {\n\
         clearInterval(timerIntervalAjaxProgressUpdate);\n\
+        ajaxProgressUpdate();\n\
     });\n\
 }());\n\
 </script>\n\
-utility2-comment -->\n\
 <h1>\n\
 <!-- utility2-comment\n\
     <a\n\
