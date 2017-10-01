@@ -686,27 +686,29 @@
                 switch (options.modeNext) {
                 case 1:
                     if (options.currentTarget.classList.contains('searchMediaA')) {
-                        localStorage.searchMedia =
+                        localStorage.utility2_itunes_search_searchMedia =
                             local.searchMediaDict[options.currentTarget.hash] || '#movie';
                         Array.from(document.querySelectorAll('.searchMediaA'))
                             .forEach(function (element) {
-                                if (element.hash === localStorage.searchMedia) {
+                                if (element.hash ===
+                                        localStorage.utility2_itunes_search_searchMedia) {
                                     element.classList.add('searchMediaASelected');
                                 } else {
                                     element.classList.remove('searchMediaASelected');
                                 }
                             });
                     }
-                    localStorage.searchTerm =
+                    localStorage.utility2_itunes_search_searchTerm =
                         document.querySelector('.searchTermInput').value || '';
                     // abort previous fetch request
                     local.ajax1.abort();
                     local.ajax1 = local.ajax({ headers: {
                         'forward-proxy-url': 'https://itunes.apple.com/search?' +
-                            'term=' +
-                            (localStorage.searchTerm.replace((/\s+/g), '+') || 'the') +
-                            '&media=' + localStorage.searchMedia.slice(1) +
-                            '&limit=24'
+                            'limit=24' +
+                            '&media=' +
+                                localStorage.utility2_itunes_search_searchMedia.slice(1) +
+                            '&term=' + (localStorage.utility2_itunes_search_searchTerm
+                                .replace((/\s+/g), '+') || 'the')
                     }, url: 'https://h1-proxy1.herokuapp.com/' }, options.onNext);
                     break;
                 case 2:
@@ -732,7 +734,8 @@
                     '<div style="margin: 1rem;">No results</div>';
                 return;
             }
-            localStorage.searchSort = document.querySelector('.searchSortSelect').selectedIndex;
+            localStorage.utility2_itunes_search_searchSort =
+                document.querySelector('.searchSortSelect').selectedIndex;
             // normalize
             options.results.forEach(function (element) {
                 local.objectSetDefault(element, {
@@ -822,19 +825,22 @@
         local.uiEventInit(document.body);
         // init state
         local.tryCatchOnError(function () {
-            localStorage.test = Object.keys(local);
-            delete localStorage.test;
+            localStorage.utility2_itunes_search_test = JSON.stringify(Object.keys(local));
+            delete localStorage.utility2_itunes_search_test;
         }, function () {
             localStorage.clear();
         });
-        localStorage.searchMedia = local.searchMediaDict[localStorage.searchMedia] || '#movie';
+        localStorage.utility2_itunes_search_searchMedia =
+            local.searchMediaDict[localStorage.utility2_itunes_search_searchMedia] || '#movie';
         document.querySelector('.searchSortSelect').selectedIndex = Math.min(
-            localStorage.searchSort || 0,
+            localStorage.utility2_itunes_search_searchSort || 0,
             document.querySelector('.searchSortSelect').length
         );
-        document.querySelector('.searchTermInput').value = localStorage.searchTerm || '';
+        document.querySelector('.searchTermInput').value =
+            localStorage.utility2_itunes_search_searchTerm || '';
         // reload-ui
-        document.querySelector('[href="' + localStorage.searchMedia + '"]').click();
+        document.querySelector('[href="' + localStorage.utility2_itunes_search_searchMedia +
+            '"]').click();
         break;
     }
 }());

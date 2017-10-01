@@ -1087,8 +1087,8 @@ local.timeoutDefault = 30000;
 local.<span class="apidocCodeKeywordSpan">uiEventInit</span>(document.body);
 // init state
 local.tryCatchOnError(function () {
-    localStorage.test = Object.keys(local);
-    delete localStorage.test;
+    localStorage.utility2_itunes_search_test = JSON.stringify(Object.keys(local));
+    delete localStorage.utility2_itunes_search_test;
 }, function () {
     localStorage.clear();
 });

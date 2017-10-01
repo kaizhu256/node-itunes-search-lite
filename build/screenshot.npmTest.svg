@@ -1,8 +1,8 @@
-<svg height="2670" width="720" xmlns="http://www.w3.org/2000/svg">
-<rect height="2670" fill="#555" width="720"></rect>
+<svg height="2510" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="2510" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26"></tspan>
-<tspan x="10" y="42">[MODE_BUILD=npmTest] - 2017-10-01T17:19:22.852Z - npm-testing /home/travis/build/kaizhu256/node-\</tspan>
+<tspan x="10" y="42">[MODE_BUILD=npmTest] - 2017-10-01T18:22:49.267Z - npm-testing /home/travis/build/kaizhu256/node-\</tspan>
 <tspan x="10" y="58">itunes-search-lite</tspan>
 <tspan x="10" y="74"></tspan>
 <tspan x="10" y="90"></tspan>
@@ -13,7 +13,7 @@
 <tspan x="10" y="170">build/test-report.json</tspan>
 <tspan x="10" y="186">override assets assets.index.template.html</tspan>
 <tspan x="10" y="202">override assets assets.swgg.swagger.json</tspan>
-<tspan x="10" y="218">&gt; server listening on http-port 43592</tspan>
+<tspan x="10" y="218">&gt; server listening on http-port 62215</tspan>
 <tspan x="10" y="234">apidocCreate - readExample /home/travis/build/kaizhu256/node-itunes-search-lite/package.json</tspan>
 <tspan x="10" y="250">apidocCreate - readExample /home/travis/build/kaizhu256/node-itunes-search-lite/assets.index.tem\</tspan>
 <tspan x="10" y="266">plate.html</tspan>
@@ -40,131 +40,121 @@
 <tspan x="10" y="602">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
 <tspan x="10" y="618"></tspan>
 <tspan x="10" y="634">browserTest - created electron entry-page /home/travis/build/kaizhu256/node-itunes-search-lite/t\</tspan>
-<tspan x="10" y="650">mp/electron.15ed8f31aa80.ea2a9208760e.html</tspan>
+<tspan x="10" y="650">mp/electron.15ed92d2f520.34b18156bd3bc.html</tspan>
 <tspan x="10" y="666"></tspan>
 <tspan x="10" y="682">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
-<tspan x="10" y="698">[5257:1001/171924.371997:WARNING:audio_manager.cc(317)] Multiple instances of AudioManager detec\</tspan>
-<tspan x="10" y="714">ted</tspan>
-<tspan x="10" y="730">[5257:1001/171924.372117:WARNING:audio_manager.cc(278)] Multiple instances of AudioManager detec\</tspan>
+<tspan x="10" y="698">&gt; [5164:1001/182250.783310:WARNING:audio_manager.cc(317)] Multiple instances of AudioManager det\</tspan>
+<tspan x="10" y="714">ected</tspan>
+<tspan x="10" y="730">[5164:1001/182250.783404:WARNING:audio_manager.cc(278)] Multiple instances of AudioManager detec\</tspan>
 <tspan x="10" y="746">ted</tspan>
-<tspan x="10" y="762">[5257:1001/171924.452372:ERROR:bus.cc(427)] Failed to connect to the bus: //bin/dbus-launch term\</tspan>
-<tspan x="10" y="778">inated abnormally without any error message</tspan>
-<tspan x="10" y="794">&gt; server listening on http-port 38785</tspan>
-<tspan x="10" y="810">[5287:1001/171924.522016:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple t\</tspan>
-<tspan x="10" y="826">hreads in process gpu-process. </tspan>
-<tspan x="10" y="842">[5257:1001/171924.530108:ERROR:browser_gpu_channel_host_factory.cc(125)] Failed to create channe\</tspan>
-<tspan x="10" y="858">l.</tspan>
-<tspan x="10" y="874">[5257:1001/171924.530358:ERROR:browser_gpu_channel_host_factory.cc(125)] Failed to create channe\</tspan>
-<tspan x="10" y="890">l.</tspan>
-<tspan x="10" y="906">[5257:1001/171924.530467:ERROR:browser_gpu_channel_host_factory.cc(125)] Failed to create channe\</tspan>
-<tspan x="10" y="922">l.</tspan>
-<tspan x="10" y="938">[5257:1001/171924.530680:ERROR:browser_gpu_channel_host_factory.cc(125)] Failed to create channe\</tspan>
-<tspan x="10" y="954">l.</tspan>
-<tspan x="10" y="970">[5257:1001/171924.530848:ERROR:browser_gpu_channel_host_factory.cc(125)] Failed to create channe\</tspan>
-<tspan x="10" y="986">l.</tspan>
-<tspan x="10" y="1002"></tspan>
-<tspan x="10" y="1018">browserTest - opened http://127.0.0.1:43592/index.default.html?modeTest=1</tspan>
-<tspan x="10" y="1034"></tspan>
-<tspan x="10" y="1050">[5257:1001/171925.050670:INFO:CONSOLE(73)] "Uncaught TypeError: Cannot read property 'length' of\</tspan>
-<tspan x="10" y="1066"> null", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed8f3\</tspan>
-<tspan x="10" y="1082">1aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1098">[5257:1001/171925.085576:INFO:CONSOLE(73)] "[browser test-case 1 of 8 passed] - testCase_buildAp\</tspan>
-<tspan x="10" y="1114">idoc_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.\</tspan>
-<tspan x="10" y="1130">15ed8f31aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1146">[5257:1001/171925.097227:INFO:CONSOLE(73)] "[browser test-case 2 of 8 passed] - testCase_buildAp\</tspan>
-<tspan x="10" y="1162">p_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15e\</tspan>
-<tspan x="10" y="1178">d8f31aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1194">[5257:1001/171925.098515:INFO:CONSOLE(73)] "[browser test-case 3 of 8 passed] - testCase_buildCu\</tspan>
-<tspan x="10" y="1210">stomOrg_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electr\</tspan>
-<tspan x="10" y="1226">on.15ed8f31aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1242">[5257:1001/171925.099928:INFO:CONSOLE(73)] "[browser test-case 4 of 8 passed] - testCase_buildLi\</tspan>
-<tspan x="10" y="1258">b_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15e\</tspan>
-<tspan x="10" y="1274">d8f31aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1290">[5257:1001/171925.101754:INFO:CONSOLE(73)] "[browser test-case 5 of 8 passed] - testCase_buildRe\</tspan>
-<tspan x="10" y="1306">adme_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.\</tspan>
-<tspan x="10" y="1322">15ed8f31aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1338">[5257:1001/171925.103681:INFO:CONSOLE(73)] "[browser test-case 6 of 8 passed] - testCase_buildTe\</tspan>
-<tspan x="10" y="1354">st_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15\</tspan>
-<tspan x="10" y="1370">ed8f31aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1386">[5257:1001/171925.105160:INFO:CONSOLE(73)] "[browser test-case 7 of 8 passed] - testCase_nop_def\</tspan>
-<tspan x="10" y="1402">ault", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed8f31\</tspan>
-<tspan x="10" y="1418">aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1434">[5257:1001/171925.106687:INFO:CONSOLE(73)] "[browser test-case 8 of 8 passed] - testCase_webpage\</tspan>
-<tspan x="10" y="1450">_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed\</tspan>
-<tspan x="10" y="1466">8f31aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1482">[5257:1001/171925.626264:INFO:CONSOLE(73)] "Uncaught TypeError: callback is not a function", sou\</tspan>
-<tspan x="10" y="1498">rce: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed8f31aa80.ea2a9\</tspan>
-<tspan x="10" y="1514">208760e.html (73)</tspan>
-<tspan x="10" y="1530">[5257:1001/171926.112421:INFO:CONSOLE(73)] "----------|-----------|-----------|-----------|-----\</tspan>
-<tspan x="10" y="1546">------|</tspan>
-<tspan x="10" y="1562">File      |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
-<tspan x="10" y="1578">----------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="1594">----------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="1610">All files |       100 |       100 |       100 |       100 |</tspan>
-<tspan x="10" y="1626">----------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="1642">", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed8f31aa80\</tspan>
-<tspan x="10" y="1658">.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1674">[5257:1001/171926.119613:INFO:CONSOLE(73)] "created coverage file /tmp/build/coverage.html/index\</tspan>
-<tspan x="10" y="1690">.html", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed8f3\</tspan>
-<tspan x="10" y="1706">1aa80.ea2a9208760e.html (73)</tspan>
-<tspan x="10" y="1722">[node test-case 7 of 8 passed] - testCase_buildApp_default</tspan>
+<tspan x="10" y="762">server listening on http-port 45990</tspan>
+<tspan x="10" y="778">[5196:1001/182250.828019:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple t\</tspan>
+<tspan x="10" y="794">hreads in process gpu-process. </tspan>
+<tspan x="10" y="810">[5164:1001/182250.868672:ERROR:bus.cc(427)] Failed to connect to the bus: //bin/dbus-launch term\</tspan>
+<tspan x="10" y="826">inated abnormally without any error message</tspan>
+<tspan x="10" y="842"></tspan>
+<tspan x="10" y="858">browserTest - opened http://127.0.0.1:62215/index.default.html?modeTest=1</tspan>
+<tspan x="10" y="874"></tspan>
+<tspan x="10" y="890">[5164:1001/182251.472955:INFO:CONSOLE(73)] "Uncaught TypeError: Cannot read property 'length' of\</tspan>
+<tspan x="10" y="906"> null", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed92d\</tspan>
+<tspan x="10" y="922">2f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="938">[5164:1001/182251.500788:INFO:CONSOLE(73)] "[browser test-case 1 of 8 passed] - testCase_buildAp\</tspan>
+<tspan x="10" y="954">idoc_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.\</tspan>
+<tspan x="10" y="970">15ed92d2f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="986">[5164:1001/182251.518118:INFO:CONSOLE(73)] "[browser test-case 2 of 8 passed] - testCase_buildAp\</tspan>
+<tspan x="10" y="1002">p_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15e\</tspan>
+<tspan x="10" y="1018">d92d2f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="1034">[5164:1001/182251.518160:INFO:CONSOLE(73)] "[browser test-case 3 of 8 passed] - testCase_buildCu\</tspan>
+<tspan x="10" y="1050">stomOrg_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electr\</tspan>
+<tspan x="10" y="1066">on.15ed92d2f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="1082">[5164:1001/182251.520078:INFO:CONSOLE(73)] "[browser test-case 4 of 8 passed] - testCase_buildLi\</tspan>
+<tspan x="10" y="1098">b_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15e\</tspan>
+<tspan x="10" y="1114">d92d2f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="1130">[5164:1001/182251.520115:INFO:CONSOLE(73)] "[browser test-case 5 of 8 passed] - testCase_buildRe\</tspan>
+<tspan x="10" y="1146">adme_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.\</tspan>
+<tspan x="10" y="1162">15ed92d2f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="1178">[5164:1001/182251.521940:INFO:CONSOLE(73)] "[browser test-case 6 of 8 passed] - testCase_buildTe\</tspan>
+<tspan x="10" y="1194">st_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15\</tspan>
+<tspan x="10" y="1210">ed92d2f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="1226">[5164:1001/182251.521984:INFO:CONSOLE(73)] "[browser test-case 7 of 8 passed] - testCase_nop_def\</tspan>
+<tspan x="10" y="1242">ault", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed92d2\</tspan>
+<tspan x="10" y="1258">f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="1274">[5164:1001/182251.522957:INFO:CONSOLE(73)] "[browser test-case 8 of 8 passed] - testCase_webpage\</tspan>
+<tspan x="10" y="1290">_default", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed\</tspan>
+<tspan x="10" y="1306">92d2f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="1322">[5164:1001/182252.039468:INFO:CONSOLE(73)] "Uncaught TypeError: callback is not a function", sou\</tspan>
+<tspan x="10" y="1338">rce: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed92d2f520.34b18\</tspan>
+<tspan x="10" y="1354">156bd3bc.html (73)</tspan>
+<tspan x="10" y="1370">[5164:1001/182252.528018:INFO:CONSOLE(73)] "----------|-----------|-----------|-----------|-----\</tspan>
+<tspan x="10" y="1386">------|</tspan>
+<tspan x="10" y="1402">File      |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
+<tspan x="10" y="1418">----------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1434">----------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1450">All files |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1466">----------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1482">", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed92d2f520\</tspan>
+<tspan x="10" y="1498">.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="1514">[5164:1001/182252.535598:INFO:CONSOLE(73)] "created coverage file /tmp/build/coverage.html/index\</tspan>
+<tspan x="10" y="1530">.html", source: file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/electron.15ed92d\</tspan>
+<tspan x="10" y="1546">2f520.34b18156bd3bc.html (73)</tspan>
+<tspan x="10" y="1562">[node test-case 7 of 8 passed] - testCase_buildApp_default</tspan>
+<tspan x="10" y="1578"></tspan>
+<tspan x="10" y="1594">browserTest - created screenshot file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/b\</tspan>
+<tspan x="10" y="1610">uild/screenshot.npmTest.browser.%2F.png</tspan>
+<tspan x="10" y="1626"></tspan>
+<tspan x="10" y="1642">browserTest - created screenshot file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/b\</tspan>
+<tspan x="10" y="1658">uild/screenshot.npmTest.browser.%2F.html</tspan>
+<tspan x="10" y="1674"></tspan>
+<tspan x="10" y="1690">browserTest - merged coverage from file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp\</tspan>
+<tspan x="10" y="1706">/coverage.npmTest.browser.%2Findex.default.html.json</tspan>
+<tspan x="10" y="1722"></tspan>
 <tspan x="10" y="1738"></tspan>
-<tspan x="10" y="1754">browserTest - created screenshot file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/b\</tspan>
-<tspan x="10" y="1770">uild/screenshot.npmTest.browser.%2F.png</tspan>
+<tspan x="10" y="1754">browserTest - merged test-report from file /home/travis/build/kaizhu256/node-itunes-search-lite/\</tspan>
+<tspan x="10" y="1770">tmp/test-report.npmTest.browser.%2Findex.default.html.json</tspan>
 <tspan x="10" y="1786"></tspan>
-<tspan x="10" y="1802">browserTest - created screenshot file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/b\</tspan>
-<tspan x="10" y="1818">uild/screenshot.npmTest.browser.%2F.html</tspan>
-<tspan x="10" y="1834"></tspan>
-<tspan x="10" y="1850">browserTest - merged coverage from file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp\</tspan>
-<tspan x="10" y="1866">/coverage.npmTest.browser.%2Findex.default.html.json</tspan>
-<tspan x="10" y="1882"></tspan>
-<tspan x="10" y="1898"></tspan>
-<tspan x="10" y="1914">browserTest - merged test-report from file /home/travis/build/kaizhu256/node-itunes-search-lite/\</tspan>
-<tspan x="10" y="1930">tmp/test-report.npmTest.browser.%2Findex.default.html.json</tspan>
-<tspan x="10" y="1946"></tspan>
-<tspan x="10" y="1962">[node test-case 8 of 8 passed] - testCase_webpage_default</tspan>
-<tspan x="10" y="1978">----------------------------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="1994">File                        |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
-<tspan x="10" y="2010">----------------------------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="2026">   node-itunes-search-lite/ |     75.59 |     79.94 |     72.94 |     75.59 |</tspan>
-<tspan x="10" y="2042">      example.js            |       100 |       100 |       100 |       100 |</tspan>
-<tspan x="10" y="2058">      lib.itunes_search.js  |     69.13 |     72.15 |     66.18 |     69.13 |</tspan>
-<tspan x="10" y="2074">      test.js               |       100 |       100 |       100 |       100 |</tspan>
-<tspan x="10" y="2090">----------------------------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="2106">All files                   |     75.59 |     79.94 |     72.94 |     75.59 |</tspan>
-<tspan x="10" y="2122">----------------------------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="2138"></tspan>
-<tspan x="10" y="2154">created coverage file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/build/coverage.ht\</tspan>
-<tspan x="10" y="2170">ml/index.html</tspan>
-<tspan x="10" y="2186"></tspan>
-<tspan x="10" y="2202">npmTest - merged test-report from file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/\</tspan>
-<tspan x="10" y="2218">build/test-report.json</tspan>
-<tspan x="10" y="2234"></tspan>
-<tspan x="10" y="2250">-------------------------------------------------------</tspan>
-<tspan x="10" y="2266">| test-report - npmTest - browser - /index.default.html - Mozilla/5.0 (X11; Linux x86_64) AppleW\</tspan>
-<tspan x="10" y="2282">ebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.11 Safari/537.36 - 2017-10-01T\</tspan>
-<tspan x="10" y="2298">17:19:25.019Z</tspan>
-<tspan x="10" y="2314">|      31 ms            0 failed        8 passed      |</tspan>
-<tspan x="10" y="2330">-------------------------------------------------------</tspan>
-<tspan x="10" y="2346">| test-report - npmTest - node - linux v6.11.3 - 2017-10-01T17:19:23.109Z</tspan>
-<tspan x="10" y="2362">|   16333 ms            0 failed        8 passed      |</tspan>
-<tspan x="10" y="2378">-------------------------------------------------------</tspan>
-<tspan x="10" y="2394">| test-report - npmTestPublished - browser - /index.default.html - Mozilla/5.0 (X11; Linux x86_6\</tspan>
-<tspan x="10" y="2410">4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.11 Safari/537.36 - 20\</tspan>
-<tspan x="10" y="2426">17-10-01T17:18:16.620Z</tspan>
-<tspan x="10" y="2442">|      30 ms            0 failed        8 passed      |</tspan>
-<tspan x="10" y="2458">-------------------------------------------------------</tspan>
-<tspan x="10" y="2474">| test-report - npmTestPublished - node - linux v6.11.3 - 2017-10-01T17:18:14.262Z</tspan>
-<tspan x="10" y="2490">|   16752 ms            0 failed        8 passed      |</tspan>
-<tspan x="10" y="2506">-------------------------------------------------------</tspan>
-<tspan x="10" y="2522"></tspan>
-<tspan x="10" y="2538">created test-report file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/build/test-rep\</tspan>
-<tspan x="10" y="2554">ort.html</tspan>
-<tspan x="10" y="2570"></tspan>
-<tspan x="10" y="2586"></tspan>
-<tspan x="10" y="2602">npmTest - 0 failed tests</tspan>
-<tspan x="10" y="2618"></tspan>
-<tspan x="10" y="2634"></tspan>
-<tspan x="10" y="2650">[MODE_BUILD=npmTest] - 2017-10-01T17:19:41.278Z - EXIT_CODE - 0</tspan>
+<tspan x="10" y="1802">[node test-case 8 of 8 passed] - testCase_webpage_default</tspan>
+<tspan x="10" y="1818">----------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1834">File                        |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
+<tspan x="10" y="1850">----------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1866">   node-itunes-search-lite/ |     75.59 |     79.94 |     72.94 |     75.59 |</tspan>
+<tspan x="10" y="1882">      example.js            |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1898">      lib.itunes_search.js  |     69.13 |     72.15 |     66.18 |     69.13 |</tspan>
+<tspan x="10" y="1914">      test.js               |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1930">----------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1946">All files                   |     75.59 |     79.94 |     72.94 |     75.59 |</tspan>
+<tspan x="10" y="1962">----------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1978"></tspan>
+<tspan x="10" y="1994">created coverage file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/build/coverage.ht\</tspan>
+<tspan x="10" y="2010">ml/index.html</tspan>
+<tspan x="10" y="2026"></tspan>
+<tspan x="10" y="2042">npmTest - merged test-report from file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/\</tspan>
+<tspan x="10" y="2058">build/test-report.json</tspan>
+<tspan x="10" y="2074"></tspan>
+<tspan x="10" y="2090">-------------------------------------------------------</tspan>
+<tspan x="10" y="2106">| test-report - npmTest - browser - /index.default.html - Mozilla/5.0 (X11; Linux x86_64) AppleW\</tspan>
+<tspan x="10" y="2122">ebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.11 Safari/537.36 - 2017-10-01T\</tspan>
+<tspan x="10" y="2138">18:22:51.437Z</tspan>
+<tspan x="10" y="2154">|      30 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="2170">-------------------------------------------------------</tspan>
+<tspan x="10" y="2186">| test-report - npmTest - node - linux v6.11.3 - 2017-10-01T18:22:49.499Z</tspan>
+<tspan x="10" y="2202">|   16428 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="2218">-------------------------------------------------------</tspan>
+<tspan x="10" y="2234">| test-report - npmTestPublished - browser - /index.default.html - Mozilla/5.0 (X11; Linux x86_6\</tspan>
+<tspan x="10" y="2250">4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.11 Safari/537.36 - 20\</tspan>
+<tspan x="10" y="2266">17-10-01T18:21:42.291Z</tspan>
+<tspan x="10" y="2282">|      32 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="2298">-------------------------------------------------------</tspan>
+<tspan x="10" y="2314">| test-report - npmTestPublished - node - linux v6.11.3 - 2017-10-01T18:21:39.335Z</tspan>
+<tspan x="10" y="2330">|   17254 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="2346">-------------------------------------------------------</tspan>
+<tspan x="10" y="2362"></tspan>
+<tspan x="10" y="2378">created test-report file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/build/test-rep\</tspan>
+<tspan x="10" y="2394">ort.html</tspan>
+<tspan x="10" y="2410"></tspan>
+<tspan x="10" y="2426"></tspan>
+<tspan x="10" y="2442">npmTest - 0 failed tests</tspan>
+<tspan x="10" y="2458"></tspan>
+<tspan x="10" y="2474"></tspan>
+<tspan x="10" y="2490">[MODE_BUILD=npmTest] - 2017-10-01T18:23:07.700Z - EXIT_CODE - 0</tspan>
 </text>
 </svg>
