@@ -8,7 +8,9 @@ branches:
     - beta
     - cron
     - docker.base
+    - docker.electron
     - docker.latest
+    - docker.tmp
     - master
     - publish
     - task

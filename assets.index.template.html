@@ -154,7 +154,35 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2
 </style>
 </head>
 <body>
-<div id="ajaxProgressDiv1" style="background: #77f; height: 5px; left: 0; margin: 0; padding: 0; position: fixed; top: 0; width: 25%; z-index: 100;"></div>
+<div id="ajaxProgressDiv1" style="background: #77f; height: 5px; left: 0; margin: 0; padding: 0; position: fixed; top: 0; transition: background 500ms, width 1500ms; width: 0%;"></div>
+<script>
+/*jslint
+    bitwise: true,
+    browser: true,
+    maxerr: 8,
+    maxlen: 96,
+    node: true,
+    nomen: true,
+    regexp: true,
+    stupid: true
+*/
+(function () {
+    "use strict";
+    var ajaxProgressDiv1, ajaxProgressState, timerIntervalAjaxProgressUpdate;
+    ajaxProgressDiv1 = document.querySelector("#ajaxProgressDiv1");
+    ajaxProgressState = 0;
+    timerIntervalAjaxProgressUpdate = setInterval(function () {
+        ajaxProgressState += 1;
+        ajaxProgressDiv1.style.width = Math.max(
+            100 - 100 * Math.exp(-0.0625 * ajaxProgressState),
+            Number(ajaxProgressDiv1.style.width.slice(0, -1)) || 0
+        ) + "%";
+    }, 1000);
+    window.addEventListener("load", function () {
+        clearInterval(timerIntervalAjaxProgressUpdate);
+    });
+}());
+</script>
 <div class="navBar">
     <a class="eventDelegateClick onEventUiReload searchMediaA" href="#movie">Movies</a>
     <a class="eventDelegateClick onEventUiReload searchMediaA" href="#podcast">Podcasts</a>
@@ -182,6 +210,6 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2
     <div class="cardExpandedArrow"></div>
     <div class="cardExpandedContent"></div>
 </div>
-<script src="assets.{{env.npm_package_nameAlias}}.js"></script>
+<script src="assets.{{env.npm_package_nameLib}}.js"></script>
 </body>
 </html>

@@ -1,13 +1,43 @@
 # itunes-search-lite
-this zero-dependency package will provide and demo the frontend itunes-search-api
+this zero-dependency package will provide an api for itunes-search, with a working demo
 
-[![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-itunes-search-lite.svg)](https://travis-ci.org/kaizhu256/node-itunes-search-lite) [![coverage](https://kaizhu256.github.io/node-itunes-search-lite/build/coverage.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build/coverage.html/index.html)
+# live demo
+- [https://h1-itunes-search-beta.herokuapp.com](https://h1-itunes-search-beta.herokuapp.com)
+
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app)
+
+
+
+[![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-itunes-search-lite.svg)](https://travis-ci.org/kaizhu256/node-itunes-search-lite) [![coverage](https://kaizhu256.github.io/node-itunes-search-lite/build/coverage.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build/coverage.html/index.html) [![snyk.io vulnerabilities](https://snyk.io/test/github/kaizhu256/node-itunes-search-lite/badge.svg)](https://snyk.io/test/github/kaizhu256/node-itunes-search-lite)
 
 [![NPM](https://nodei.co/npm/itunes-search-lite.png?downloads=true)](https://www.npmjs.com/package/itunes-search-lite)
 
-[![npmPackageListing](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.npmPackageListing.svg)](https://github.com/kaizhu256/node-itunes-search-lite)
+[![build commit status](https://kaizhu256.github.io/node-itunes-search-lite/build/build.badge.svg)](https://travis-ci.org/kaizhu256/node-itunes-search-lite)
 
-![npmPackageDependencyTree](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.npmPackageDependencyTree.svg)
+| git-branch : | [master](https://github.com/kaizhu256/node-itunes-search-lite/tree/master) | [beta](https://github.com/kaizhu256/node-itunes-search-lite/tree/beta) | [alpha](https://github.com/kaizhu256/node-itunes-search-lite/tree/alpha)|
+|--:|:--|:--|:--|
+| test-server-github : | [![github.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app) | [![github.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/app)|
+| test-server-heroku : | [![heroku.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/heroku-logo.75x25.png)](https://h1-itunes-search-master.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/heroku-logo.75x25.png)](https://h1-itunes-search-beta.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/heroku-logo.75x25.png)](https://h1-itunes-search-alpha.herokuapp.com)|
+| test-report : | [![test-report](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/test-report.html)|
+| coverage : | [![coverage](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/coverage.html/index.html)|
+| build-artifacts : | [![build-artifacts](https://kaizhu256.github.io/node-itunes-search-lite/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-itunes-search-lite/tree/gh-pages/build..master..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-itunes-search-lite/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-itunes-search-lite/tree/gh-pages/build..beta..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-itunes-search-lite/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-itunes-search-lite/tree/gh-pages/build..alpha..travis-ci.org)|
+
+[![npmPackageListing](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.npmPackageListing.svg)](https://github.com/kaizhu256/node-itunes-search-lite)
+
+![npmPackageDependencyTree](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.npmPackageDependencyTree.svg)
+
+
+
+# table of contents
+1. [cdn download](#cdn-download)
+1. [documentation](#documentation)
+1. [quickstart standalone app](#quickstart-standalone-app)
+1. [quickstart example.js](#quickstart-examplejs)
+1. [extra screenshots](#extra-screenshots)
+1. [package.json](#packagejson)
+1. [changelog of last 50 commits](#changelog-of-last-50-commits)
+1. [internal build script](#internal-build-script)
+1. [misc](#misc)
 
 
 
@@ -17,32 +47,28 @@ this zero-dependency package will provide and demo the frontend itunes-search-ap
 
 
 
-# live demo
-- [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/index.html](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/index.html)
-
-[![github.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Findex.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/index.html)
-
-
-
 # documentation
+#### cli help
+![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.npmPackageCliHelp.svg)
+
 #### apidoc
 - [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/apidoc.html](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/apidoc.html)
 
-[![apidoc](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/apidoc.html)
 
 #### swaggerdoc
 - [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html)
 
-[![swaggerdoc](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html)
+[![swaggerdoc](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html)
 
 #### todo
+- improve test-coverage
 - none
 
-#### changelog for v2017.5.9
-- npm publish 2017.5.9
-- add feature - grid populates one by one with a bubble popup animation
-- fixed bug - Refreshing the page takes an awful long time to load everything.
-- fix bug - Mentioned above but opening an item description and scrolling will make the entire page jump up and down a lot.
+#### changelog for v2017.9.30
+- npm publish 2017.9.30
+- update shared functions
+- revamp README.md
 - none
 
 #### this package requires
@@ -50,48 +76,47 @@ this zero-dependency package will provide and demo the frontend itunes-search-ap
 
 
 
-# build status [![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-itunes-search-lite.svg)](https://travis-ci.org/kaizhu256/node-itunes-search-lite)
-[![build commit status](https://kaizhu256.github.io/node-itunes-search-lite/build/build.badge.svg)](https://travis-ci.org/kaizhu256/node-itunes-search-lite)
+# quickstart standalone app
+#### to run this example, follow the instruction in the script below
+- [assets.app.js](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.app.js)
+```shell
+# example.sh
 
-| git-branch : | [master](https://github.com/kaizhu256/node-itunes-search-lite/tree/master) | [beta](https://github.com/kaizhu256/node-itunes-search-lite/tree/beta) | [alpha](https://github.com/kaizhu256/node-itunes-search-lite/tree/alpha)|
-|--:|:--|:--|:--|
-| test-server-github : | [![github.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/app/index.html) | [![github.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/index.html) | [![github.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/GitHub-Mark-32px.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/app/index.html)|
-| test-server-heroku : | [![heroku.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/heroku-logo.75x25.png)](https://h1-itunes-search-master.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/heroku-logo.75x25.png)](https://h1-itunes-search-beta.herokuapp.com) | [![heroku.com test-server](https://kaizhu256.github.io/node-itunes-search-lite/heroku-logo.75x25.png)](https://h1-itunes-search-alpha.herokuapp.com)|
-| test-report : | [![test-report](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/test-report.html) | [![test-report](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/test-report.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/test-report.html)|
-| coverage : | [![coverage](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..master..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/coverage.html/index.html) | [![coverage](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/coverage.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build..alpha..travis-ci.org/coverage.html/index.html)|
-| build-artifacts : | [![build-artifacts](https://kaizhu256.github.io/node-itunes-search-lite/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-itunes-search-lite/tree/gh-pages/build..master..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-itunes-search-lite/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-itunes-search-lite/tree/gh-pages/build..beta..travis-ci.org) | [![build-artifacts](https://kaizhu256.github.io/node-itunes-search-lite/glyphicons_144_folder_open.png)](https://github.com/kaizhu256/node-itunes-search-lite/tree/gh-pages/build..alpha..travis-ci.org)|
+# this shell script will download and run a web demo of itunes-search-lite as a standalone app
 
-#### master branch
-- stable branch
-- HEAD should be tagged, npm-published package
+# 1. download standalone app
+curl -O https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.app.js
+# 2. run standalone app
+node ./assets.app.js
+# 3. open a browser to http://127.0.0.1:8081 and play with the web demo
+# 4. edit file assets.app.js to suit your needs
+```
 
-#### beta branch
-- semi-stable branch
-- HEAD should be latest, npm-published package
+#### output from browser
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/app/assets.example.html)
 
-#### alpha branch
-- unstable branch
-- HEAD is arbitrary
-- commit history may be rewritten
+#### output from shell
+![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleSh.svg)
 
 
 
-# quickstart web example
-[![screen-capture](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/app/assets.example.html)
+# quickstart example.js
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/app/assets.example.html)
 
 #### to run this example, follow the instruction in the script below
-- [example.js](https://kaizhu256.github.io/node-itunes-search-lite/build/example.js)
+- [example.js](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/example.js)
 ```javascript
 /*
 example.js
 
-quickstart example
+this script will run a web demo of itunes-search-lite
 
 instruction
     1. save this script as example.js
     2. run the shell command:
         $ npm install itunes-search-lite && PORT=8081 node example.js
-    3. play with the browser-demo on http://127.0.0.1:8081
+    3. open a browser to http://127.0.0.1:8081 and play with the web demo
+    4. edit this script to suit your needs
 */
 
 
@@ -146,8 +171,7 @@ instruction
 
 
 
-    // init-after
-    // run browser js-env code - init-after
+    // run browser js-env code - init-test
     /* istanbul ignore next */
     case 'browser':
         local.testRunBrowser = function (event) {
@@ -173,15 +197,15 @@ instruction
             switch (event && event.currentTarget && event.currentTarget.id) {
             case 'testRunButton1':
                 // show tests
-                if (document.querySelector('#testReportDiv1').style.display === 'none') {
-                    document.querySelector('#testReportDiv1').style.display = 'block';
+                if (document.querySelector('#testReportDiv1').style.maxHeight === '0px') {
+                    local.uiAnimateSlideDown(document.querySelector('#testReportDiv1'));
                     document.querySelector('#testRunButton1').textContent =
                         'hide internal test';
                     local.modeTest = true;
                     local.testRunDefault(local);
                 // hide tests
                 } else {
-                    document.querySelector('#testReportDiv1').style.display = 'none';
+                    local.uiAnimateSlideUp(document.querySelector('#testReportDiv1'));
                     document.querySelector('#testRunButton1').textContent = 'run internal test';
                 }
                 break;
@@ -235,15 +259,17 @@ instruction
 
 
 
-    // run node js-env code - init-after
+    // run node js-env code - init-test
     /* istanbul ignore next */
     case 'node':
         // init exports
         module.exports = local;
-        // require modules
-        local.fs = require('fs');
-        local.http = require('http');
-        local.url = require('url');
+        // require builtins
+        Object.keys(process.binding('natives')).forEach(function (key) {
+            if (!local[key] && !(/\/|^_|^sys$/).test(key)) {
+                local[key] = require(key);
+            }
+        });
         // init assets
         local.assetsDict = local.assetsDict || {};
         [
@@ -252,10 +278,11 @@ instruction
             'assets.swgg.swagger.json',
             'assets.swgg.swagger.server.json'
         ].forEach(function (file) {
-            local.assetsDict['/' + file] = local.assetsDict['/' + file] || '';
-            if (local.fs.existsSync(local.__dirname + '/' + file)) {
-                local.assetsDict['/' + file] = local.fs.readFileSync(
-                    local.__dirname + '/' + file,
+            file = '/' + file;
+            local.assetsDict[file] = local.assetsDict[file] || '';
+            if (local.fs.existsSync(local.__dirname + file)) {
+                local.assetsDict[file] = local.fs.readFileSync(
+                    local.__dirname + file,
                     'utf8'
                 );
             }
@@ -271,7 +298,7 @@ instruction
                     return 'the greatest app in the world!';
                 case 'npm_package_name':
                     return 'itunes-search-lite';
-                case 'npm_package_nameAlias':
+                case 'npm_package_nameLib':
                     return 'itunes_search';
                 case 'npm_package_version':
                     return '0.0.1';
@@ -279,8 +306,8 @@ instruction
                     return match0;
                 }
             });
-        // run the cli
-        if (local.global.utility2_rollup || module !== require.main) {
+        // init cli
+        if (module !== require.main || local.global.utility2_rollup) {
             break;
         }
         local.assetsDict['/assets.example.js'] =
@@ -322,10 +349,49 @@ instruction
 ```
 
 #### output from browser
-[![screen-capture](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/app/assets.example.html)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/app/assets.example.html)
 
 #### output from shell
-![screen-capture](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.testExampleJs.svg)
+![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleJs.svg)
+
+
+
+# extra screenshots
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithubTest.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithubTest.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithubTest.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithubTest.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHeroku.browser.%252Fassets.swgg.html.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHeroku.browser.%252F.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHeroku.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHeroku.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHeroku.browser.%252F.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHerokuTest.browser.%252F.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHerokuTest.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHerokuTest.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployHerokuTest.browser.%252F.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.npmTest.browser.%252F.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.npmTest.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.npmTest.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.npmTest.browser.%252F.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleJs.browser.%252F.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleJs.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleJs.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleJs.browser.%252F.png)
+
+1. [https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleSh.browser.%252F.png](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleSh.browser.%252F.png)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleSh.browser.%252F.png)](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.testExampleSh.browser.%252F.png)
 
 
 
@@ -333,7 +399,7 @@ instruction
 ```json
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "this zero-dependency package will provide and demo the frontend itunes-search-api",
+    "description": "this zero-dependency package will provide an api for itunes-search, with a working demo",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "utility2": "kaizhu256/node-utility2#alpha"
@@ -346,7 +412,7 @@ instruction
     "license": "MIT",
     "main": "lib.itunes_search.js",
     "name": "itunes-search-lite",
-    "nameAlias": "itunes_search",
+    "nameLib": "itunes_search",
     "nameOriginal": "itunes-search-lite",
     "os": [
         "darwin",
@@ -359,23 +425,23 @@ instruction
     "scripts": {
         "build-ci": "utility2 shReadmeTest build_ci.sh",
         "env": "env",
-        "heroku-postbuild": "npm install \"kaizhu256/node-utility2#alpha\" && utility2 shDeployHeroku",
+        "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
         "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.5.9"
+    "version": "2017.9.30"
 }
 ```
 
 
 
 # changelog of last 50 commits
-[![screen-capture](https://kaizhu256.github.io/node-itunes-search-lite/build/screen-capture.gitLog.svg)](https://github.com/kaizhu256/node-itunes-search-lite/commits)
+[![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.gitLog.svg)](https://github.com/kaizhu256/node-itunes-search-lite/commits)
 
 
 
-# internal build-script
+# internal build script
 - build_ci.sh
 ```shell
 # build_ci.sh
@@ -385,13 +451,12 @@ instruction
 shBuildCiAfter() {(set -e
     shDeployGithub
     shDeployHeroku
-    shReadmeBuildLinkVerify
+    shReadmeTest example.sh
 )}
 
 shBuildCiBefore() {(set -e
-    shReadmeTest example.js
-    shReadmeTest example.sh
     shNpmTestPublished
+    shReadmeTest example.js
 )}
 
 # run shBuildCi
