@@ -14803,12 +14803,12 @@ the greatest app in the world!\n\
 #### cli help\n\
 ![screenshot](https://kaizhu256.github.io/node-jslint-lite/build/screenshot.npmPackageCliHelp.svg)\n\
 \n\
-#### apidoc\n\
+#### api doc\n\
 - [https://kaizhu256.github.io/node-jslint-lite/build..beta..travis-ci.org/apidoc.html](https://kaizhu256.github.io/node-jslint-lite/build..beta..travis-ci.org/apidoc.html)\n\
 \n\
 [![apidoc](https://kaizhu256.github.io/node-jslint-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-jslint-lite/build..beta..travis-ci.org/apidoc.html)\n\
 \n\
-#### swaggerdoc\n\
+#### swagger doc\n\
 - [https://kaizhu256.github.io/node-jslint-lite/build..beta..travis-ci.org/app/assets.swgg.html](https://kaizhu256.github.io/node-jslint-lite/build..beta..travis-ci.org/app/assets.swgg.html)\n\
 \n\
 [![swaggerdoc](https://kaizhu256.github.io/node-jslint-lite/build/screenshot.deployGithub.browser.%252Fnode-jslint-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-jslint-lite/build..beta..travis-ci.org/app/assets.swgg.html)\n\
@@ -17528,7 +17528,7 @@ return Utf8ArrayToStr(bff);
             if (!local.assetsDict['/assets.swgg.swagger.json'] ||
                     (/\bswggUiContainer\b/).exec(local.assetsDict['/index.html'])) {
                 options.dataTo = options.dataTo.replace(
-                    (/\n#### swaggerdoc\n[\S\s]*?\n#### /),
+                    (/\n#### swagger doc\n[\S\s]*?\n#### /),
                     '\n#### '
                 );
             }
