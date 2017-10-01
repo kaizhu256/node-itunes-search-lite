@@ -3,7 +3,7 @@
     "info": {
         "description": "this zero-dependency package will provide an api for itunes-search, with a working demo",
         "title": "itunes-search-lite",
-        "version": "2017.9.30"
+        "version": "2017.9.31"
     },
     "host": "itunes.apple.com",
     "paths": {

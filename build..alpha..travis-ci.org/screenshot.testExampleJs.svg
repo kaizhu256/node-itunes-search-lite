@@ -2,12 +2,12 @@
 <rect height="254" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26"></tspan>
-<tspan x="10" y="42">&gt; itunes-search-lite@2017.9.30 postinstall /tmp/app/node_modules/itunes-search-lite</tspan>
+<tspan x="10" y="42">&gt; itunes-search-lite@2017.9.31 postinstall /tmp/app/node_modules/itunes-search-lite</tspan>
 <tspan x="10" y="58">&gt; [ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall</tspan>
 <tspan x="10" y="74"></tspan>
 <tspan x="10" y="90">/tmp/app</tspan>
-<tspan x="10" y="106">└── itunes-search-lite@2017.9.30  (git://github.com/kaizhu256/node-itunes-search-lite.git#12dedf\</tspan>
-<tspan x="10" y="122">d2e50051cb3f554f0a2841d8079ebf6caa)</tspan>
+<tspan x="10" y="106">└── itunes-search-lite@2017.9.31  (git://github.com/kaizhu256/node-itunes-search-lite.git#3fa37e\</tspan>
+<tspan x="10" y="122">d6bc81d021dd9f3af1a74367506588d519)</tspan>
 <tspan x="10" y="138"></tspan>
 <tspan x="10" y="154">npm WARN enoent ENOENT: no such file or directory, open '/tmp/app/package.json'</tspan>
 <tspan x="10" y="170">npm WARN app No description</tspan>
