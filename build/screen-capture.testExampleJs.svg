@@ -1,0 +1,19 @@
+<svg height="254" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="254" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26"></tspan>
+<tspan x="10" y="42">&gt; itunes-search-lite@2017.5.9 postinstall /tmp/app/node_modules/itunes-search-lite</tspan>
+<tspan x="10" y="58">&gt; [ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall</tspan>
+<tspan x="10" y="74"></tspan>
+<tspan x="10" y="90">/tmp/app</tspan>
+<tspan x="10" y="106">└── itunes-search-lite@2017.5.9  (git://github.com/kaizhu256/node-itunes-search-lite.git#da1d5a0\</tspan>
+<tspan x="10" y="122">a887256066d3b027f2098ad3e118e65d3)</tspan>
+<tspan x="10" y="138"></tspan>
+<tspan x="10" y="154">npm WARN enoent ENOENT: no such file or directory, open '/tmp/app/package.json'</tspan>
+<tspan x="10" y="170">npm WARN app No description</tspan>
+<tspan x="10" y="186">npm WARN app No repository field.</tspan>
+<tspan x="10" y="202">npm WARN app No README data</tspan>
+<tspan x="10" y="218">npm WARN app No license field.</tspan>
+<tspan x="10" y="234">server starting on port 8081</tspan>
+</text>
+</svg>

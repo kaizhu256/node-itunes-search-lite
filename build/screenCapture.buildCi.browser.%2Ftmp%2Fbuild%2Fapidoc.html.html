@@ -1,0 +1,1389 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/kaizhu256/node-itunes-search-lite">itunes-search-lite (v2017.5.6)</a>
+</h1>
+<h4>this zero-dependency package will provide and demo the frontend itunes-search-api</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.itunes-search-lite">module itunes-search-lite</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.ajax">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>ajax
+            <span class="apidocSignatureSpan">(options, onError)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.ajaxProgressUpdate">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>ajaxProgressUpdate
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.assert">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>assert
+            <span class="apidocSignatureSpan">(passed, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.bufferToNodeBuffer">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>bufferToNodeBuffer
+            <span class="apidocSignatureSpan">(bff)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.errorMessagePrepend">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>errorMessagePrepend
+            <span class="apidocSignatureSpan">(error, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.nop">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>nop
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.objectSetDefault">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>objectSetDefault
+            <span class="apidocSignatureSpan">(arg, defaults, depth)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.objectSetOverride">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>objectSetOverride
+            <span class="apidocSignatureSpan">(arg, overrides, depth, env)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.onErrorWithStack">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>onErrorWithStack
+            <span class="apidocSignatureSpan">(onError)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.onNext">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>onNext
+            <span class="apidocSignatureSpan">(options, onError)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.onTimeout">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>onTimeout
+            <span class="apidocSignatureSpan">(onError, timeout, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.streamListCleanup">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>streamListCleanup
+            <span class="apidocSignatureSpan">(streamList)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.templateRender">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>templateRender
+            <span class="apidocSignatureSpan">(template, dict)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.tryCatchOnError">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>tryCatchOnError
+            <span class="apidocSignatureSpan">(fnc, onError)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.uiAnimateScrollTo">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiAnimateScrollTo
+            <span class="apidocSignatureSpan">(element)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.uiAnimateSlideDown">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiAnimateSlideDown
+            <span class="apidocSignatureSpan">(element)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.uiEventDelegate">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiEventDelegate
+            <span class="apidocSignatureSpan">(event)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.uiEventInit">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiEventInit
+            <span class="apidocSignatureSpan">(element)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.uiRender">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiRender
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">itunes-search-lite.</span>itunes_search</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">itunes-search-lite.</span>local</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">itunes-search-lite.</span>module</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">itunes-search-lite.</span>testRunBeforeDone</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">itunes-search-lite.</span>testRunBeforeTimer</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">itunes-search-lite.</span>uiEventListenerDict</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">itunes-search-lite.</span>__dirname</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.itunes-search-lite.uiEventListenerDict">module itunes-search-lite.uiEventListenerDict</a><ol>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.itunes-search-lite" id="apidoc.module.itunes-search-lite">module itunes-search-lite</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.ajax" id="apidoc.element.itunes-search-lite.ajax">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>ajax
+        <span class="apidocSignatureSpan">(options, onError)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ajax = function (options, onError) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will send an ajax-request with error-handling and timeout
+ */
+</span>    var timerTimeout, tmp, xhr;
+    onError = local.onErrorWithStack(onError);
+    // init modeServerLocal
+    if (local.env &amp;&amp;
+            !local.env.npm_config_mode_backend &amp;&amp;
+            (local._serverLocalUrlTest &amp;&amp; local._serverLocalUrlTest(options.url))) {
+        xhr = new local._http.XMLHttpRequest();
+    }
+    // init xhr
+    xhr = xhr || (local.modeJs === 'browser'
+        ? new local.global.XMLHttpRequest()
+        : new local._http.XMLHttpRequest());
+    // debug xhr
+    local._debugXhr = xhr;
+    // init options
+    local.objectSetOverride(xhr, options);
+    // init headers
+    xhr.headers = {};
+    Object.keys(options.headers || {}).forEach(function (key) {
+        xhr.headers[key.toLowerCase()] = options.headers[key];
+    });
+    // init method
+    xhr.method = xhr.method || 'GET';
+    // init modeForwardProxyUrl
+    xhr.modeForwardProxyUrl = xhr.modeForwardProxyUrl || local.modeForwardProxyUrl;
+    // init timeout
+    xhr.timeout = xhr.timeout || local.timeoutDefault;
+    // init timerTimeout
+    timerTimeout = local.onTimeout(function (error) {
+        xhr.error = xhr.error || error;
+        xhr.abort();
+        // cleanup requestStream and responseStream
+        local.streamListCleanup([xhr.requestStream, xhr.responseStream]);
+    }, xhr.timeout, 'ajax ' + xhr.method + ' ' + xhr.url);
+    // init event handling
+    xhr.onEvent = function (event) {
+        // init statusCode
+        xhr.statusCode = xhr.status;
+        switch (event.type) {
+        case 'abort':
+        case 'error':
+        case 'load':
+            // do not run more than once
+            if (xhr.isDone) {
+                return;
+            }
+            xhr.isDone = true;
+            // cleanup timerTimeout
+            clearTimeout(timerTimeout);
+            // cleanup requestStream and responseStream
+            setTimeout(function () {
+                local.streamListCleanup([xhr.requestStream, xhr.responseStream]);
+            });
+            // decrement ajaxProgressCounter
+            local.ajaxProgressCounter -= 1;
+            // handle abort or error event
+            if (!xhr.error &amp;&amp;
+                    (event.type === 'abort' ||
+                    event.type === 'error' ||
+                    xhr.statusCode &gt;= 400)) {
+                xhr.error = new Error(event.type);
+            }
+            // handle completed xhr request
+            if (xhr.readyState === 4) {
+                // debug xhr
+                if (xhr.modeDebug) {
+                    console.error(new Date().toISOString(
+                    ) + ' ajax-response ' + JSON.stringify({
+                        statusCode: xhr.statusCode,
+                        method: xhr.method,
+                        url: xhr.url,
+                        responseText: local.tryCatchOnError(function () {
+                            return xhr.responseText.slice(0, 256);
+                        }, local.nop)
+                    }));
+                }
+                // handle string data
+                if (xhr.error) {
+                    // debug statusCode
+                    xhr.error.statusCode = xhr.statusCode;
+                    // debug statusCode / method / url
+                    tmp = local.modeJs + ' - ' + xhr.statusCode + ' ' + xhr.method +
+                        ' ' + xhr.url + '\n';
+                    // try to debug responseText
+                    local.tryCatchOnError(function () {
+                        tmp += '    ' + JSON.stringify(xhr.responseText.slice(0, 256) +
+                            '...') + '\n';
+                    }, local.nop);
+                    local.errorMessagePrepend(xhr.error, tmp);
+                }
+            }
+            onError(xhr.error, xhr);
+            break;
+        }
+        local.ajaxProgressUpdate();
+    };
+    // increment ajaxProgressCounter
+    local.ajaxProgressCounter += 1;
+    xhr.addEventListener('abort', xhr.onEvent);
+    xhr.addEventListener('error', xhr.onEvent);
+    xhr.addEventListener('load', xhr.on ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            } else {
+                element.classList.remove('searchMediaASelected');
+            }
+        });
+}
+localStorage.searchTerm =
+    document.querySelector('.searchTermInput').value || '';
+local.<span class="apidocCodeKeywordSpan">ajax</span>({ headers: {
+    'forward-proxy-url': 'https://itunes.apple.com/search?' +
+        'term=' +
+        (localStorage.searchTerm.replace((/\s+/g), '+') || 'the') +
+        '&amp;media=' + localStorage.searchMedia.slice(1) +
+        '&amp;limit=24'
+}, url: 'https://h1-proxy1.herokuapp.com/' }, options.onNext);
+break;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.ajaxProgressUpdate" id="apidoc.element.itunes-search-lite.ajaxProgressUpdate">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>ajaxProgressUpdate
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ajaxProgressUpdate = function () {
+<span class="apidocCodeCommentSpan">/*
+ * this function will update ajaxProgress
+ */
+</span>    var ajaxProgressDiv1;
+    ajaxProgressDiv1 = local.modeJs === 'browser' &amp;&amp;
+        document.querySelector('#ajaxProgressDiv1');
+    if (!ajaxProgressDiv1) {
+        return;
+    }
+    // init ajaxProgressDiv1StyleBackground
+    local.ajaxProgressDiv1StyleBackground = local.ajaxProgressDiv1StyleBackground ||
+        ajaxProgressDiv1.style.background;
+    // show ajaxProgress
+    if (ajaxProgressDiv1.style.background === 'transparent') {
+        ajaxProgressDiv1.style.background = local.ajaxProgressDiv1StyleBackground;
+    }
+    // cleanup timerTimeout
+    clearTimeout(local.timerTimeoutAjaxProgressHide);
+    // increment ajaxProgress
+    if (local.ajaxProgressCounter &gt; 0) {
+        // this algorithm will indefinitely increment the ajaxProgressBar
+        // with successively smaller increments without ever reaching 100%
+        local.ajaxProgressState += 1;
+        ajaxProgressDiv1.style.width =
+            100 - 75 * Math.exp(-0.125 * local.ajaxProgressState) + '%';
+        return;
+    }
+    // finish ajaxProgress
+    ajaxProgressDiv1.style.width = '100%';
+    // hide ajaxProgress
+    local.timerTimeoutAjaxProgressHide = setTimeout(function () {
+        ajaxProgressDiv1.style.background = 'transparent';
+        // reset ajaxProgress
+        setTimeout(function () {
+            local.ajaxProgressCounter = 0;
+            local.ajaxProgressState = 0;
+            ajaxProgressDiv1.style.width = '25%';
+        }, 500);
+    }, 1500);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+                }, local.nop);
+                local.errorMessagePrepend(xhr.error, tmp);
+            }
+        }
+        onError(xhr.error, xhr);
+        break;
+    }
+    local.<span class="apidocCodeKeywordSpan">ajaxProgressUpdate</span>();
+};
+// increment ajaxProgressCounter
+local.ajaxProgressCounter += 1;
+xhr.addEventListener('abort', xhr.onEvent);
+xhr.addEventListener('error', xhr.onEvent);
+xhr.addEventListener('load', xhr.onEvent);
+xhr.addEventListener('loadstart', local.ajaxProgressUpdate);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.assert" id="apidoc.element.itunes-search-lite.assert">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>assert
+        <span class="apidocSignatureSpan">(passed, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">assert = function (passed, message) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will throw the error message if passed is falsey
+ */
+</span>    var error;
+    if (passed) {
+        return;
+    }
+    error = message &amp;&amp; message.message
+        // if message is an error-object, then leave it as is
+        ? message
+        : new Error(typeof message === 'string'
+            // if message is a string, then leave it as is
+            ? message
+            // else JSON.stringify message
+            : JSON.stringify(message));
+    throw error;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+local.tryCatchOnError = function (fnc, onError) {
+/*
+ * this function will try to run the fnc in a try-catch block,
+ * else call onError with the errorCaught
+ */
+    // validate onError
+    local.<span class="apidocCodeKeywordSpan">assert</span>(typeof onError === 'function', typeof onError);
+    try {
+        // reset errorCaught
+        local._debugTryCatchErrorCaught = null;
+        return fnc();
+    } catch (errorCaught) {
+        // debug errorCaught
+        local._debugTryCatchErrorCaught = errorCaught;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.bufferToNodeBuffer" id="apidoc.element.itunes-search-lite.bufferToNodeBuffer">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>bufferToNodeBuffer
+        <span class="apidocSignatureSpan">(bff)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">bufferToNodeBuffer = function (bff) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will convert the Uint8Array instance to a node Buffer instance
+ */
+</span>    if (local.modeJs === 'node' &amp;&amp;
+            bff instanceof local.global.Uint8Array &amp;&amp; (!Buffer.isBuffer(bff))) {
+        Object.setPrototypeOf(bff, Buffer.prototype);
+    }
+    return bff;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        xhr.data.read(function (error, data) {
+            if (error) {
+                xhr.error = xhr.error || error;
+                xhr.onEvent({ type: 'error' });
+                return;
+            }
+            // send data
+            xhr.send(local.<span class="apidocCodeKeywordSpan">bufferToNodeBuffer</span>(data));
+        });
+    } else {
+        // send data
+        xhr.send(local.bufferToNodeBuffer(xhr.data));
+    }
+    return xhr;
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.errorMessagePrepend" id="apidoc.element.itunes-search-lite.errorMessagePrepend">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>errorMessagePrepend
+        <span class="apidocSignatureSpan">(error, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">errorMessagePrepend = function (error, message) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will prepend the message to error.message and error.stack
+ */
+</span>    error.message = message + error.message;
+    error.stack = message + error.stack;
+    return error;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+                tmp = local.modeJs + ' - ' + xhr.statusCode + ' ' + xhr.method +
+                    ' ' + xhr.url + '\n';
+                // try to debug responseText
+                local.tryCatchOnError(function () {
+                    tmp += '    ' + JSON.stringify(xhr.responseText.slice(0, 256) +
+                        '...') + '\n';
+                }, local.nop);
+                local.<span class="apidocCodeKeywordSpan">errorMessagePrepend</span>(xhr.error, tmp);
+            }
+        }
+        onError(xhr.error, xhr);
+        break;
+    }
+    local.ajaxProgressUpdate();
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.nop" id="apidoc.element.itunes-search-lite.nop">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>nop
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">nop = function () {
+<span class="apidocCodeCommentSpan">/*
+ * this function will do nothing
+ */
+</span>    return;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    /*
+     * this function will test browsers's null-case handling-behavior-behavior
+     */
+        onError(null, options);
+    };
+
+    // run tests
+    local.<span class="apidocCodeKeywordSpan">nop</span>(local.modeTest &amp;&amp;
+        document.querySelector('#testRunButton1') &amp;&amp;
+        document.querySelector('#testRunButton1').click());
+    break;
+
+
+
+// run node js-env code - init-after
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.objectSetDefault" id="apidoc.element.itunes-search-lite.objectSetDefault">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>objectSetDefault
+        <span class="apidocSignatureSpan">(arg, defaults, depth)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">objectSetDefault = function (arg, defaults, depth) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will recursively set defaults for undefined-items in the arg
+ */
+</span>    arg = arg || {};
+    defaults = defaults || {};
+    Object.keys(defaults).forEach(function (key) {
+        var arg2, defaults2;
+        arg2 = arg[key];
+        // handle misbehaving getter
+        try {
+            defaults2 = defaults[key];
+        } catch (ignore) {
+        }
+        if (defaults2 === undefined) {
+            return;
+        }
+        // init arg[key] to default value defaults[key]
+        if (!arg2) {
+            arg[key] = defaults2;
+            return;
+        }
+        // if arg2 and defaults2 are both non-null and non-array objects,
+        // then recurse with arg2 and defaults2
+        if (depth &gt; 1 &amp;&amp;
+                // arg2 is a non-null and non-array object
+                arg2 &amp;&amp;
+                typeof arg2 === 'object' &amp;&amp;
+                !Array.isArray(arg2) &amp;&amp;
+                // defaults2 is a non-null and non-array object
+                defaults2 &amp;&amp;
+                typeof defaults2 === 'object' &amp;&amp;
+                !Array.isArray(defaults2)) {
+            // recurse
+            local.objectSetDefault(arg2, defaults2, depth - 1);
+        }
+    });
+    return arg;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+                typeof arg2 === 'object' &amp;&amp;
+                !Array.isArray(arg2) &amp;&amp;
+                // defaults2 is a non-null and non-array object
+                defaults2 &amp;&amp;
+                typeof defaults2 === 'object' &amp;&amp;
+                !Array.isArray(defaults2)) {
+            // recurse
+            local.<span class="apidocCodeKeywordSpan">objectSetDefault</span>(arg2, defaults2, depth - 1);
+        }
+    });
+    return arg;
+};
+
+local.objectSetOverride = function (arg, overrides, depth, env) {
+/*
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.objectSetOverride" id="apidoc.element.itunes-search-lite.objectSetOverride">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>objectSetOverride
+        <span class="apidocSignatureSpan">(arg, overrides, depth, env)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">objectSetOverride = function (arg, overrides, depth, env) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will recursively set overrides for items in the arg
+ */
+</span>    arg = arg || {};
+    env = env || (typeof process === 'object' &amp;&amp; process.env) || {};
+    overrides = overrides || {};
+    Object.keys(overrides).forEach(function (key) {
+        var arg2, overrides2;
+        arg2 = arg[key];
+        overrides2 = overrides[key];
+        if (overrides2 === undefined) {
+            return;
+        }
+        // if both arg2 and overrides2 are non-null and non-array objects,
+        // then recurse with arg2 and overrides2
+        if (depth &gt; 1 &amp;&amp;
+                // arg2 is a non-null and non-array object
+                (arg2 &amp;&amp;
+                typeof arg2 === 'object' &amp;&amp;
+                !Array.isArray(arg2)) &amp;&amp;
+                // overrides2 is a non-null and non-array object
+                (overrides2 &amp;&amp;
+                typeof overrides2 === 'object' &amp;&amp;
+                !Array.isArray(overrides2))) {
+            local.objectSetOverride(arg2, overrides2, depth - 1, env);
+            return;
+        }
+        // else set arg[key] with overrides[key]
+        arg[key] = arg === env
+            // if arg is env, then overrides falsey value with empty string
+            ? overrides2 || ''
+            : overrides2;
+    });
+    return arg;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// init xhr
+xhr = xhr || (local.modeJs === 'browser'
+    ? new local.global.XMLHttpRequest()
+    : new local._http.XMLHttpRequest());
+// debug xhr
+local._debugXhr = xhr;
+// init options
+local.<span class="apidocCodeKeywordSpan">objectSetOverride</span>(xhr, options);
+// init headers
+xhr.headers = {};
+Object.keys(options.headers || {}).forEach(function (key) {
+    xhr.headers[key.toLowerCase()] = options.headers[key];
+});
+// init method
+xhr.method = xhr.method || 'GET';
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.onErrorWithStack" id="apidoc.element.itunes-search-lite.onErrorWithStack">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>onErrorWithStack
+        <span class="apidocSignatureSpan">(onError)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">onErrorWithStack = function (onError) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will create a new callback that will call onError,
+ * and append the current stack to any error
+ */
+</span>    var stack;
+    stack = new Error().stack.replace((/(.*?)\n.*?$/m), '$1');
+    return function (error, data, meta) {
+        if (error &amp;&amp;
+                error !== local.errorDefault &amp;&amp;
+                String(error.stack).indexOf(stack.split('\n')[2]) &lt; 0) {
+            // append the current stack to error.stack
+            error.stack += '\n' + stack;
+        }
+        onError(error, data, meta);
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+local.ajax = function (options, onError) {
+/*
+ * this function will send an ajax-request with error-handling and timeout
+ */
+    var timerTimeout, tmp, xhr;
+    onError = local.<span class="apidocCodeKeywordSpan">onErrorWithStack</span>(onError);
+    // init modeServerLocal
+    if (local.env &amp;&amp;
+            !local.env.npm_config_mode_backend &amp;&amp;
+            (local._serverLocalUrlTest &amp;&amp; local._serverLocalUrlTest(options.url))) {
+        xhr = new local._http.XMLHttpRequest();
+    }
+    // init xhr
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.onNext" id="apidoc.element.itunes-search-lite.onNext">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>onNext
+        <span class="apidocSignatureSpan">(options, onError)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">onNext = function (options, onError) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will wrap onError inside the recursive function options.onNext,
+ * and append the current stack to any error
+ */
+</span>    options.onNext = local.onErrorWithStack(function (error, data, meta) {
+        try {
+            options.modeNext = error &amp;&amp; !options.modeErrorIgnore
+                ? Infinity
+                : options.modeNext + 1;
+            onError(error, data, meta);
+        } catch (errorCaught) {
+            // throw errorCaught to break infinite recursion-loop
+            if (options.errorCaught) {
+                throw options.errorCaught;
+            }
+            options.errorCaught = errorCaught;
+            options.onNext(errorCaught, data, meta);
+        }
+    });
+    return options;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            onError(error, data, meta);
+        } catch (errorCaught) {
+            // throw errorCaught to break infinite recursion-loop
+            if (options.errorCaught) {
+                throw options.errorCaught;
+            }
+            options.errorCaught = errorCaught;
+            options.<span class="apidocCodeKeywordSpan">onNext</span>(errorCaught, data, meta);
+        }
+    });
+    return options;
+};
+
+local.onTimeout = function (onError, timeout, message) {
+/*
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.onTimeout" id="apidoc.element.itunes-search-lite.onTimeout">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>onTimeout
+        <span class="apidocSignatureSpan">(onError, timeout, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">onTimeout = function (onError, timeout, message) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will create a timeout-error-handler,
+ * that will append the current stack to any error encountered
+ */
+</span>    onError = local.onErrorWithStack(onError);
+    // create timeout timer
+    return setTimeout(function () {
+        onError(new Error('onTimeout - timeout-error - ' +
+            timeout + ' ms - ' + (typeof message === 'function'
+            ? message()
+            : message)));
+    // coerce to finite integer
+    }, timeout | 0);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// init method
+xhr.method = xhr.method || 'GET';
+// init modeForwardProxyUrl
+xhr.modeForwardProxyUrl = xhr.modeForwardProxyUrl || local.modeForwardProxyUrl;
+// init timeout
+xhr.timeout = xhr.timeout || local.timeoutDefault;
+// init timerTimeout
+timerTimeout = local.<span class="apidocCodeKeywordSpan">onTimeout</span>(function (error) {
+    xhr.error = xhr.error || error;
+    xhr.abort();
+    // cleanup requestStream and responseStream
+    local.streamListCleanup([xhr.requestStream, xhr.responseStream]);
+}, xhr.timeout, 'ajax ' + xhr.method + ' ' + xhr.url);
+// init event handling
+xhr.onEvent = function (event) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.streamListCleanup" id="apidoc.element.itunes-search-lite.streamListCleanup">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>streamListCleanup
+        <span class="apidocSignatureSpan">(streamList)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">streamListCleanup = function (streamList) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will end or destroy the streams in streamList
+ */
+</span>    streamList.forEach(function (stream) {
+        // try to end the stream
+        local.tryCatchOnError(function () {
+            stream.end();
+        }, function () {
+            // if error, then try to destroy the stream
+            local.tryCatchOnError(function () {
+                stream.destroy();
+            }, local.nop);
+        });
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// init timeout
+xhr.timeout = xhr.timeout || local.timeoutDefault;
+// init timerTimeout
+timerTimeout = local.onTimeout(function (error) {
+    xhr.error = xhr.error || error;
+    xhr.abort();
+    // cleanup requestStream and responseStream
+    local.<span class="apidocCodeKeywordSpan">streamListCleanup</span>([xhr.requestStream, xhr.responseStream]);
+}, xhr.timeout, 'ajax ' + xhr.method + ' ' + xhr.url);
+// init event handling
+xhr.onEvent = function (event) {
+    // init statusCode
+    xhr.statusCode = xhr.status;
+    switch (event.type) {
+    case 'abort':
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.templateRender" id="apidoc.element.itunes-search-lite.templateRender">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>templateRender
+        <span class="apidocSignatureSpan">(template, dict)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">templateRender = function (template, dict) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will render the template with the given dict
+ */
+</span>    var argList, getValue, match, renderPartial, rgx, value;
+    dict = dict || {};
+    getValue = function (key) {
+        argList = key.split(' ');
+        value = dict;
+        // iteratively lookup nested values in the dict
+        argList[0].split('.').forEach(function (key) {
+            value = value &amp;&amp; value[key];
+        });
+        return value;
+    };
+    renderPartial = function (match0, helper, key, partial) {
+        switch (helper) {
+        case 'each':
+            value = getValue(key);
+            return Array.isArray(value)
+                ? value.map(function (dict) {
+                    // recurse with partial
+                    return local.templateRender(partial, dict);
+                }).join('')
+                : '';
+        case 'if':
+            partial = partial.split('{{#unless ' + key + '}}');
+            partial = getValue(key)
+                ? partial[0]
+                // handle 'unless' case
+                : partial.slice(1).join('{{#unless ' + key + '}}');
+            // recurse with partial
+            return local.templateRender(partial, dict);
+        case 'unless':
+            return getValue(key)
+                ? ''
+                // recurse with partial
+                : local.templateRender(partial, dict);
+        default:
+            // recurse with partial
+            return match0[0] + local.templateRender(match0.slice(1), dict);
+        }
+    };
+    // render partials
+    rgx = (/\{\{#(\w+) ([^}]+?)\}\}/g);
+    template = template || '';
+    for (match = rgx.exec(template); match; match = rgx.exec(template)) {
+        rgx.lastIndex += 1 - match[0].length;
+        template = template.replace(
+            new RegExp('\\{\\{#(' + match[1] + ') (' + match[2] +
+                ')\\}\\}([\\S\\s]*?)\\{\\{/' + match[1] + ' ' + match[2] +
+                '\\}\\}'),
+            renderPartial
+        );
+    }
+    // search for keys in the template
+    return template.replace((/\{\{[^}]+?\}\}/g), function (match0) {
+        getValue(match0.slice(2, -2));
+        if (value === undefined) {
+            return match0;
+        }
+        argList.slice(1).forEach(function (arg) {
+            switch (arg) {
+            case 'alphanumeric':
+                value = value.replace((/\W/g), '_');
+                break;
+            case 'decodeURIComponent':
+                value = decodeURIComponent(value);
+                break;
+            case 'encodeURIComponent':
+                value = encodeURIComponent(value);
+                break;
+            case 'htmlSafe':
+                value = value.replace((/["&amp;'&lt;&gt;]/g), function (match0) {
+                    return '&amp;#x' + match0.charCodeAt(0).toString(16) + ';';
+                });
+                break;
+            case 'jsonStringify':
+                value = JSON.stringify(value);
+                break;
+            case 'jsonStringify4':
+                value = JSON.stringify(value, null, 4);
+                break;
+            case 'markdownCodeSafe':
+                value = value.replace((/`/g), '\'');
+                break;
+            default:
+                value = value[arg]();
+                break;
+            }
+        });
+        return String(value);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            renderPartial = function (match0, helper, key, partial) {
+switch (helper) {
+case 'each':
+    value = getValue(key);
+    return Array.isArray(value)
+        ? value.map(function (dict) {
+            // recurse with partial
+            return local.<span class="apidocCodeKeywordSpan">templateRender</span>(partial, dict);
+        }).join('')
+        : '';
+case 'if':
+    partial = partial.split('{{#unless ' + key + '}}');
+    partial = getValue(key)
+        ? partial[0]
+        // handle 'unless' case
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.tryCatchOnError" id="apidoc.element.itunes-search-lite.tryCatchOnError">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>tryCatchOnError
+        <span class="apidocSignatureSpan">(fnc, onError)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">tryCatchOnError = function (fnc, onError) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will try to run the fnc in a try-catch block,
+ * else call onError with the errorCaught
+ */
+</span>    // validate onError
+    local.assert(typeof onError === 'function', typeof onError);
+    try {
+        // reset errorCaught
+        local._debugTryCatchErrorCaught = null;
+        return fnc();
+    } catch (errorCaught) {
+        // debug errorCaught
+        local._debugTryCatchErrorCaught = errorCaught;
+        return onError(errorCaught);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// debug xhr
+if (xhr.modeDebug) {
+    console.error(new Date().toISOString(
+    ) + ' ajax-response ' + JSON.stringify({
+        statusCode: xhr.statusCode,
+        method: xhr.method,
+        url: xhr.url,
+        responseText: local.<span class="apidocCodeKeywordSpan">tryCatchOnError</span>(function () {
+            return xhr.responseText.slice(0, 256);
+        }, local.nop)
+    }));
+}
+// handle string data
+if (xhr.error) {
+    // debug statusCode
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.uiAnimateScrollTo" id="apidoc.element.itunes-search-lite.uiAnimateScrollTo">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiAnimateScrollTo
+        <span class="apidocSignatureSpan">(element)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">uiAnimateScrollTo = function (element) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will scrollTo the element
+ */
+</span>    var ii, timerInterval;
+    ii = 0;
+    timerInterval = setInterval(function () {
+        ii += 0.025;
+        local.global.scrollTo(0, document.body.scrollTop +
+            Math.min(ii, 1) * (element.offsetTop - document.body.scrollTop) +
+            -5);
+    }, 25);
+    setTimeout(function () {
+        clearInterval(timerInterval);
+    }, 1000);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        element.parentElement.appendChild(local.cardExpanded);
+    }
+});
+if (local.cardExpanded.offsetTopPrevious !==
+        local.cardExpanded.offsetTop) {
+    local.cardExpanded.style.display = 'none';
+    local.uiAnimateSlideDown(local.cardExpanded);
+    local.<span class="apidocCodeKeywordSpan">uiAnimateScrollTo</span>(local.cardSelected);
+}
+local.cardExpanded.offsetTopPrevious = local.cardExpanded.offsetTop;
+local.cardExpandedArrow = document.querySelector('.cardExpandedArrow');
+local.cardExpandedArrow.style.top = (local.cardExpanded.offsetTop - 10) + 'px';
+local.cardExpandedArrow.style.left = (local.cardSelected.offsetLeft +
+    0.5 * local.cardSelected.offsetWidth - 10) + 'px';
+return options;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.uiAnimateSlideDown" id="apidoc.element.itunes-search-lite.uiAnimateSlideDown">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiAnimateSlideDown
+        <span class="apidocSignatureSpan">(element)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">uiAnimateSlideDown = function (element) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will slideDown the dom-element
+ */
+</span>    if (element.style.display !== 'none') {
+        return;
+    }
+    element.style.maxHeight = 0;
+    element.classList.add('uiAnimateSlide');
+    element.style.display = '';
+    setTimeout(function () {
+        element.style.maxHeight = 2 * local.global.innerHeight + 'px';
+    }, 20);
+    setTimeout(function () {
+        element.style.maxHeight = '';
+        element.classList.remove('uiAnimateSlide');
+    }, 500);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (ii + 1 === list.length) {
+        element.parentElement.appendChild(local.cardExpanded);
+    }
+});
+if (local.cardExpanded.offsetTopPrevious !==
+        local.cardExpanded.offsetTop) {
+    local.cardExpanded.style.display = 'none';
+    local.<span class="apidocCodeKeywordSpan">uiAnimateSlideDown</span>(local.cardExpanded);
+    local.uiAnimateScrollTo(local.cardSelected);
+}
+local.cardExpanded.offsetTopPrevious = local.cardExpanded.offsetTop;
+local.cardExpandedArrow = document.querySelector('.cardExpandedArrow');
+local.cardExpandedArrow.style.top = (local.cardExpanded.offsetTop - 10) + 'px';
+local.cardExpandedArrow.style.left = (local.cardSelected.offsetLeft +
+    0.5 * local.cardSelected.offsetWidth - 10) + 'px';
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.uiEventDelegate" id="apidoc.element.itunes-search-lite.uiEventDelegate">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiEventDelegate
+        <span class="apidocSignatureSpan">(event)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">uiEventDelegate = function (event) {
+    Object.keys(local.uiEventListenerDict).sort().some(function (key) {
+        if (!(event.currentTarget.matches(key) || event.target.matches(key))) {
+            return;
+        }
+        switch (event.target.tagName) {
+        case 'A':
+        case 'BUTTON':
+        case 'FORM':
+            event.preventDefault();
+            break;
+        }
+        event.stopPropagation();
+        local.uiEventListenerDict[key](event);
+        return true;
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.uiEventInit" id="apidoc.element.itunes-search-lite.uiEventInit">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiEventInit
+        <span class="apidocSignatureSpan">(element)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">uiEventInit = function (element) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will init event-handling for the dom-element
+ */
+</span>    ['Change', 'Click', 'Submit'].forEach(function (eventType) {
+        Array.from(
+            element.querySelectorAll('.eventDelegate' + eventType)
+        ).forEach(function (element) {
+            element.addEventListener(eventType.toLowerCase(), local.uiEventDelegate);
+        });
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    '#movie': '#movie',
+    '#music': '#music',
+    '#musicVideo': '#musicVideo',
+    '#podcast': '#podcast'
+};
+local.timeoutDefault = 30000;
+// init event-handling
+local.<span class="apidocCodeKeywordSpan">uiEventInit</span>(document.body);
+// init state
+local.tryCatchOnError(function () {
+    localStorage.test = Object.keys(local);
+    delete localStorage.test;
+}, function () {
+    localStorage.clear();
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.itunes-search-lite.uiRender" id="apidoc.element.itunes-search-lite.uiRender">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>uiRender
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">uiRender = function (options) {
+<span class="apidocCodeCommentSpan">/*
+ * this function will render the ui with the given options
+ */
+</span>    var key;
+    if (!(options &amp;&amp; options.results &amp;&amp; options.results.length)) {
+        return '&lt;div style="margin: 1rem;"&gt;No results&lt;/div&gt;';
+    }
+    localStorage.searchSort = document.querySelector('.searchSortSelect').selectedIndex;
+    // normalize
+    options.results.forEach(function (element) {
+        local.objectSetDefault(element, {
+            artistName: 'N/A',
+            longDescription: 'No description',
+            trackName: 'N/A',
+            trackViewUrl: ''
+        });
+        element.releaseDateFormatted = element.releaseDate
+            ? new Date(element.releaseDate).toString()
+            : 'N/A';
+        element.releaseYear = element.releaseDate
+            ? element.releaseDate.slice(0, 4)
+            : 'N/A';
+        element.trackPriceFormatted = element.trackPrice &amp;&amp; element.currency
+            ? element.trackPrice + ' ' + element.currency
+            : 'N/A';
+    });
+    // sort
+    key = document.querySelector('.searchSortSelect').selectedOptions[0].dataset.value;
+    options.results.sort(function (aa, bb) {
+        aa = aa[key];
+        bb = bb[key];
+        if (key === 'trackPrice') {
+            aa = Number(aa);
+            bb = Number(bb);
+        }
+        if (key === 'releaseDate') {
+            return aa &gt;= bb
+                ? -1
+                : 1;
+        }
+        return aa &lt;= bb
+            ? -1
+            : 1;
+    });
+    options.results.forEach(function (element, ii) {
+        element.ii = ii;
+    });
+    return local.templateRender(
+/* jslint-ignore-begin */
+'\
+\n\
+',
+/* jslint-ignore-end */
+        options
+    );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+                (localStorage.searchTerm.replace((/\s+/g), '+') || 'the') +
+                '&amp;media=' + localStorage.searchMedia.slice(1) +
+                '&amp;limit=24'
+        }, url: 'https://h1-proxy1.herokuapp.com/' }, options.onNext);
+        break;
+    case 2:
+        local.data = JSON.parse(data.responseText);
+        document.querySelector('.grid').innerHTML = local.<span class="apidocCodeKeywordSpan">uiRender</span>(local.data
+);
+        break;
+    default:
+        throw error;
+    }
+});
+options.modeNext = 0;
+options.onNext();
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.itunes-search-lite.uiEventListenerDict" id="apidoc.module.itunes-search-lite.uiEventListenerDict">module itunes-search-lite.uiEventListenerDict</a></h1>
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>

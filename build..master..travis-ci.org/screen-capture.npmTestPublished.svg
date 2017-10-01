@@ -1,0 +1,94 @@
+<svg height="1454" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="1454" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26"></tspan>
+<tspan x="10" y="42">[MODE_BUILD=npmTestPublished] - 2017-05-20T10:25:39.099Z - npm-testing /tmp/npmTestPublished/nod\</tspan>
+<tspan x="10" y="58">e_modules/itunes-search-lite</tspan>
+<tspan x="10" y="74"></tspan>
+<tspan x="10" y="90"></tspan>
+<tspan x="10" y="106">covering $ /home/travis/.nvm/versions/node/v6.10.3/bin/node /tmp/npmTestPublished/node_modules/i\</tspan>
+<tspan x="10" y="122">tunes-search-lite/test.js</tspan>
+<tspan x="10" y="138">&gt; server listening on http-port 52175</tspan>
+<tspan x="10" y="154">apidocCreate - readExample /tmp/npmTestPublished/node_modules/itunes-search-lite/package.json</tspan>
+<tspan x="10" y="170">apidocCreate - readExample /tmp/npmTestPublished/node_modules/itunes-search-lite/assets.index.te\</tspan>
+<tspan x="10" y="186">mplate.html</tspan>
+<tspan x="10" y="202">apidocCreate - readExample /tmp/npmTestPublished/node_modules/itunes-search-lite/assets.swgg.swa\</tspan>
+<tspan x="10" y="218">gger.json</tspan>
+<tspan x="10" y="234">apidocCreate - readExample /tmp/npmTestPublished/node_modules/itunes-search-lite/lib.itunes_sear\</tspan>
+<tspan x="10" y="250">ch.js</tspan>
+<tspan x="10" y="266">apidocCreate - readExample /tmp/npmTestPublished/node_modules/itunes-search-lite/LICENSE</tspan>
+<tspan x="10" y="282">apidocCreate - readExample /tmp/npmTestPublished/node_modules/itunes-search-lite/package.json</tspan>
+<tspan x="10" y="298">apidocCreate - readExample /tmp/npmTestPublished/node_modules/itunes-search-lite/README.md</tspan>
+<tspan x="10" y="314">apidocCreate - readExample /tmp/npmTestPublished/node_modules/itunes-search-lite/test.js</tspan>
+<tspan x="10" y="330">apidocCreate - requiring /tmp/npmTestPublished/node_modules/itunes-search-lite ...</tspan>
+<tspan x="10" y="346">apidocCreate - ... required /tmp/npmTestPublished/node_modules/itunes-search-lite</tspan>
+<tspan x="10" y="362">created apidoc file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/build/apidoc.html</tspan>
+<tspan x="10" y="378"></tspan>
+<tspan x="10" y="394">[node test-case 1 of 7 passed] - testCase_buildApidoc_default</tspan>
+<tspan x="10" y="410">[node test-case 2 of 7 passed] - testCase_buildCustomOrg_default</tspan>
+<tspan x="10" y="426">[node test-case 3 of 7 passed] - testCase_buildLib_default</tspan>
+<tspan x="10" y="442">[node test-case 4 of 7 passed] - testCase_buildReadme_default</tspan>
+<tspan x="10" y="458">[node test-case 5 of 7 passed] - testCase_buildTest_default</tspan>
+<tspan x="10" y="474"></tspan>
+<tspan x="10" y="490">browserTest - created electron entry-page /tmp/npmTestPublished/node_modules/itunes-search-lite/\</tspan>
+<tspan x="10" y="506">tmp/electron.15c256429a10.7cbd62efc3d54.html</tspan>
+<tspan x="10" y="522"></tspan>
+<tspan x="10" y="538">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="554">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="570">[6712:0520/102540:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="586">[6712:0520/102540:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="602">[6737:0520/102541:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="618">in process gpu-process. </tspan>
+<tspan x="10" y="634">[6712:0520/102541:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="650">&gt; server listening on http-port 34513</tspan>
+<tspan x="10" y="666"></tspan>
+<tspan x="10" y="682">browserTest - opened url http://127.0.0.1:52175?modeTest=1</tspan>
+<tspan x="10" y="698"></tspan>
+<tspan x="10" y="714">[node test-case 6 of 7 passed] - testCase_buildApp_default</tspan>
+<tspan x="10" y="730"></tspan>
+<tspan x="10" y="746">browserTest - created screen-capture file:///home/travis/build/kaizhu256/node-itunes-search-lite\</tspan>
+<tspan x="10" y="762">/tmp/build/screen-capture.npmTestPublished.browser.%2F.png</tspan>
+<tspan x="10" y="778"></tspan>
+<tspan x="10" y="794">browserTest - created screen-capture file:///home/travis/build/kaizhu256/node-itunes-search-lite\</tspan>
+<tspan x="10" y="810">/tmp/build/screen-capture.npmTestPublished.browser.%2F.html</tspan>
+<tspan x="10" y="826"></tspan>
+<tspan x="10" y="842">browserTest - exit-code 0 - http://127.0.0.1:52175?modeTest=1</tspan>
+<tspan x="10" y="858"></tspan>
+<tspan x="10" y="874"></tspan>
+<tspan x="10" y="890">browserTest - merged coverage from /tmp/npmTestPublished/node_modules/itunes-search-lite/tmp/cov\</tspan>
+<tspan x="10" y="906">erage.npmTestPublished.browser.%2F.json</tspan>
+<tspan x="10" y="922"></tspan>
+<tspan x="10" y="938"></tspan>
+<tspan x="10" y="954">browserTest - merged test-report from file:///tmp/npmTestPublished/node_modules/itunes-search-li\</tspan>
+<tspan x="10" y="970">te/tmp/test-report.npmTestPublished.browser.%2F.json</tspan>
+<tspan x="10" y="986"></tspan>
+<tspan x="10" y="1002">[node test-case 7 of 7 passed] - testCase_webpage_default</tspan>
+<tspan x="10" y="1018">---------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1034">File                       |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
+<tspan x="10" y="1050">---------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1066">   itunes-search-lite/     |     74.91 |     59.84 |     82.57 |     74.91 |</tspan>
+<tspan x="10" y="1082">      example.js           |       100 |     93.42 |       100 |       100 |</tspan>
+<tspan x="10" y="1098">      lib.itunes_search.js |     66.75 |        49 |     76.32 |     66.75 |</tspan>
+<tspan x="10" y="1114">      test.js              |     90.14 |      64.1 |        95 |     90.14 |</tspan>
+<tspan x="10" y="1130">---------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1146">All files                  |     74.91 |     59.84 |     82.57 |     74.91 |</tspan>
+<tspan x="10" y="1162">---------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1178"></tspan>
+<tspan x="10" y="1194">created coverage file:///tmp/npmTestPublished/node_modules/itunes-search-lite/tmp/build/coverage\</tspan>
+<tspan x="10" y="1210">.html/index.html</tspan>
+<tspan x="10" y="1226"></tspan>
+<tspan x="10" y="1242">-------------------------------------------------------</tspan>
+<tspan x="10" y="1258">| test-report - npmTestPublished - node - linux v6.10.3 - 2017-05-20T10:25:39.420Z</tspan>
+<tspan x="10" y="1274">|   11543 ms            0 failed        7 passed      |</tspan>
+<tspan x="10" y="1290">-------------------------------------------------------</tspan>
+<tspan x="10" y="1306"></tspan>
+<tspan x="10" y="1322">created test-report file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/build/test-r\</tspan>
+<tspan x="10" y="1338">eport.html</tspan>
+<tspan x="10" y="1354"></tspan>
+<tspan x="10" y="1370"></tspan>
+<tspan x="10" y="1386">npmTestPublished - 0 failed tests</tspan>
+<tspan x="10" y="1402"></tspan>
+<tspan x="10" y="1418"></tspan>
+<tspan x="10" y="1434">[MODE_BUILD=npmTestPublished] - 2017-05-20T10:25:52.940Z - EXIT_CODE - 0</tspan>
+</text>
+</svg>

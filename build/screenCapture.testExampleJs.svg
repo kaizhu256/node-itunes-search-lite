@@ -1,0 +1,29 @@
+<svg height="414" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="414" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26">/tmp/app</tspan>
+<tspan x="10" y="42">└─┬ itunes-search@1.0.1 </tspan>
+<tspan x="10" y="58">  └── request@2.9.200 </tspan>
+<tspan x="10" y="74"></tspan>
+<tspan x="10" y="90">npm WARN enoent ENOENT: no such file or directory, open '/tmp/app/package.json'</tspan>
+<tspan x="10" y="106">npm WARN app No description</tspan>
+<tspan x="10" y="122">npm WARN app No repository field.</tspan>
+<tspan x="10" y="138">npm WARN app No README data</tspan>
+<tspan x="10" y="154">npm WARN app No license field.</tspan>
+<tspan x="10" y="170">/tmp/app/example.js:59</tspan>
+<tspan x="10" y="186">        local.global.local = local;</tspan>
+<tspan x="10" y="202">                           ^</tspan>
+<tspan x="10" y="218"></tspan>
+<tspan x="10" y="234">TypeError: Cannot set property 'local' of undefined</tspan>
+<tspan x="10" y="250">    at /tmp/app/example.js:59:28</tspan>
+<tspan x="10" y="266">    at /tmp/app/example.js:60:6</tspan>
+<tspan x="10" y="282">    at Object.&lt;anonymous&gt; (/tmp/app/example.js:326:2)</tspan>
+<tspan x="10" y="298">    at Module._compile (module.js:570:32)</tspan>
+<tspan x="10" y="314">    at Object.Module._extensions..js (module.js:579:10)</tspan>
+<tspan x="10" y="330">    at Module.load (module.js:487:32)</tspan>
+<tspan x="10" y="346">    at tryModuleLoad (module.js:446:12)</tspan>
+<tspan x="10" y="362">    at Function.Module._load (module.js:438:3)</tspan>
+<tspan x="10" y="378">    at Module.runMain (module.js:604:10)</tspan>
+<tspan x="10" y="394">    at run (bootstrap_node.js:390:7)</tspan>
+</text>
+</svg>

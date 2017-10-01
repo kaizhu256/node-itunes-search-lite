@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>itunes-search-lite (v2017.5.9)</title>
+<style>
+/*csslint
+    box-model: false,
+    box-sizing: false,
+    known-properties: false,
+    universal-selector: false
+*/
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #222;
+    color: #bbb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.card {
+    cursor: pointer;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-width: 10rem;
+    min-width: 10rem;
+    padding: 1rem;
+}
+.card:hover, .cardSelected {
+    background: #337;
+}
+.card img {
+    border: 4px solid #777;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+.card .artist {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.card .date {
+    color: #777;
+}
+.card .title {
+    color: #ddf;
+    display: block;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cardExpanded {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.cardExpanded a {
+    color: #999;
+}
+.cardExpanded a:hover {
+    color: #fff;
+}
+.cardExpanded td {
+    padding-top: 0.25rem;
+    vertical-align: top;
+}
+.cardExpanded tr > td:first-child {
+    text-align: right;
+    padding-right: 1rem;
+    width: 8rem;
+}
+.cardExpandedArrow {
+    border-bottom: 10px solid #337;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    width: 10px;
+}
+.cardExpandedContent {
+    background: #337;
+    margin: 0 1rem 1rem 0;
+    padding: 1rem;
+    width: 100%;
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+.navBar {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+.navBar > * {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+.navBar > *:last-child {
+    margin-right: 0;
+}
+.navBar .searchBarForm {
+    display: flex;
+    flex: 1;
+}
+.navBar .searchMediaA {
+    color: #999;
+    display: block;
+    text-decoration: none;
+}
+.navBar .searchMediaA:hover {
+    color: #fff;
+}
+.navBar .searchMediaASelected {
+    color: #fff;
+}
+.navBar .searchSortSelect {
+    background: #777;
+    border: none;
+    color: #ddd;
+}
+.navBar .searchSubmitButton {
+    background: #fff url(
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABAhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjY1RTYzOTA2ODZDRjExREJBNkUyRDg4N0NFQUNCNDA3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJGOEQ4M0EyODUzMzExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJGOEQ4M0ExODUzMzExRTU4RTQwRkQwODFEOUZEMEE3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTk5NzA1OGEtZDI3OC00NDZkLWE4ODgtNGM4MGQ4YWI1NzNmIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YzRkZmQxMGMtY2NlNS0xMTc4LWE5OGQtY2NkZmM5ODk5YWYwIi8+IDxkYzp0aXRsZT4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+Z2x5cGhpY29uczwvcmRmOmxpPiA8L3JkZjpBbHQ+IDwvZGM6dGl0bGU+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/dT0nAAAATVJREFUeNq0VlERwjAMbVEwCZUwCTgAB0wKEiahOJgEJEzCcDAUlAQ6bjyaNuVG7t7xsSQveU1TbAjBpMxa29HPnuDg05XgKW4yGmOCNciOBA4OBXhCg/Ff+SC5VyReYya0OQK7SESScPITNHgjDDERW0s4gM+dpaQ8oyhRlAUr65Itv85kAP8xKxFoXmxbkFMqyHQaRyF4XdgkEfiSU4YAi3Pos4M5H0ydoT/emSfB2uaa7FRh0X9n/mxI0NYE091R+Z9LB6UdVWmKHBAMyuQt7qbcRfMaZ0g+azpfAppEwBTnvIHE0kL02W0qVFULX1rXTDJuSZJbAVPmDfBxOIpylSbFxWfzDcVW/SAxNcutYnUv6DdZFUTCkl4Sn9wmHQid8LA0Vvrb8qvRfurj2fHDNT8EGAChYQiRsVefNQAAAABJRU5ErkJggg==
+    ) no-repeat center;
+    background-size: 75%;
+    border: none;
+    border-left: 1px solid #777;
+    width: 1rem;
+}
+.navBar .searchTermInput {
+    border: none;
+    flex: 1;
+    padding: 0 0.5rem 0 0.5rem;
+}
+.uiAnimateSlide {
+    overflow-y: hidden;
+    transition: border-bottom 500ms, border-top 500ms, margin-bottom 500ms, margin-top 500ms, max-height 500ms, min-height 500ms, padding-bottom 500ms, padding-top 500ms;
+}
+@keyframes uiAnimateZoomIn {
+    from { opacity: 0; transform: scale3d(.5, .5, .5); }
+    50% { opacity: 1; }
+}
+.uiAnimateZoomIn {
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+    animation-name: uiAnimateZoomIn;
+
+}
+</style>
+</head>
+<body>
+<div id="ajaxProgressDiv1" style="background: #77f; height: 5px; left: 0; margin: 0; padding: 0; position: fixed; top: 0; width: 25%; z-index: 100;"></div>
+<div class="navBar">
+    <a class="eventDelegateClick onEventUiReload searchMediaA" href="#movie">Movies</a>
+    <a class="eventDelegateClick onEventUiReload searchMediaA" href="#podcast">Podcasts</a>
+    <a class="eventDelegateClick onEventUiReload searchMediaA" href="#music">Music</a>
+    <a class="eventDelegateClick onEventUiReload searchMediaA" href="#musicVideo">Music Videos</a>
+
+    <select class="eventDelegateChange onEventUiRender searchSortSelect">
+        <option data-value="trackPrice2">Sort by Lowest Price</option>
+        <option data-value="trackName">Sort by Title</option>
+        <option data-value="artistName">Sort by Artist</option>
+        <option data-value="releaseDate">Sort by Latest Release Date</option>
+    </select>
+
+    <form class="eventDelegateSubmit onEventUiReload searchBarForm">
+        <input class="searchTermInput" placeholder="Search" type="text">
+        <button class="searchSubmitButton"></button>
+    </form>
+</div>
+<div class="eventDelegateClick grid onEventUiCardExpand"></div>
+<div class="cardExpanded uiAnimateSlide" style="display: none;">
+    <div class="cardExpandedArrow"></div>
+    <div class="cardExpandedContent"></div>
+</div>
+<div class="cardExpanded uiAnimateSlide" style="display: none;">
+    <div class="cardExpandedArrow"></div>
+    <div class="cardExpandedContent"></div>
+</div>
+<script src="assets.itunes_search.js"></script>
+</body>
+</html>
