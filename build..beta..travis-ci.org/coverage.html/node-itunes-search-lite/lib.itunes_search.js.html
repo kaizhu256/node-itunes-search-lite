@@ -192,7 +192,7 @@
 <body>
 <div class="header medium">
     <h1 style="font-weight: bold;">
-        <a href="https://github.com/kaizhu256/node-itunes-search-lite">itunes-search-lite (v2017.9.30)</a>
+        <a href="https://github.com/kaizhu256/node-itunes-search-lite">itunes-search-lite (v2017.9.31)</a>
     </h1>
     <h1>Code coverage report for <span class="entity">node-itunes-search-lite/lib.itunes_search.js</span></h1>
     <h2>
@@ -1055,7 +1055,13 @@
 839
 840
 841
-842</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+842
+843
+844
+845
+846
+847
+848</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1748,17 +1754,19 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1791,6 +1799,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1885,13 +1894,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2584,27 +2596,29 @@
 <span class="cstat-no" title="statement not covered" >                switch (options.modeNext) {</span>
                 case 1:
 <span class="cstat-no" title="statement not covered" >                    if (options.currentTarget.classList.contains('searchMediaA')) {</span>
-<span class="cstat-no" title="statement not covered" >                        localStorage.searchMedia =</span>
+<span class="cstat-no" title="statement not covered" >                        localStorage.utility2_itunes_search_searchMedia =</span>
                             local.searchMediaDict[options.currentTarget.hash] || '#movie';
 <span class="cstat-no" title="statement not covered" >                        Array.from(document.querySelectorAll('.searchMediaA'))</span>
                             .forEach(<span class="fstat-no" title="function not covered" >function (element) {</span>
-<span class="cstat-no" title="statement not covered" >                                if (element.hash === localStorage.searchMedia) {</span>
+<span class="cstat-no" title="statement not covered" >                                if (element.hash ===</span>
+                                        localStorage.utility2_itunes_search_searchMedia) {
 <span class="cstat-no" title="statement not covered" >                                    element.classList.add('searchMediaASelected');</span>
                                 } else {
 <span class="cstat-no" title="statement not covered" >                                    element.classList.remove('searchMediaASelected');</span>
                                 }
                             });
                     }
-<span class="cstat-no" title="statement not covered" >                    localStorage.searchTerm =</span>
+<span class="cstat-no" title="statement not covered" >                    localStorage.utility2_itunes_search_searchTerm =</span>
                         document.querySelector('.searchTermInput').value || '';
                     // abort previous fetch request
 <span class="cstat-no" title="statement not covered" >                    local.ajax1.abort();</span>
 <span class="cstat-no" title="statement not covered" >                    local.ajax1 = local.ajax({ headers: {</span>
                         'forward-proxy-url': 'https://itunes.apple.com/search?' +
-                            'term=' +
-                            (localStorage.searchTerm.replace((/\s+/g), '+') || 'the') +
-                            '&amp;media=' + localStorage.searchMedia.slice(1) +
-                            '&amp;limit=24'
+                            'limit=24' +
+                            '&amp;media=' +
+                                localStorage.utility2_itunes_search_searchMedia.slice(1) +
+                            '&amp;term=' + (localStorage.utility2_itunes_search_searchTerm
+                                .replace((/\s+/g), '+') || 'the')
                     }, url: 'https://h1-proxy1.herokuapp.com/' }, options.onNext);
 <span class="cstat-no" title="statement not covered" >                    break;</span>
                 case 2:
@@ -2630,7 +2644,8 @@
                     '&lt;div style="margin: 1rem;"&gt;No results&lt;/div&gt;';
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
-<span class="cstat-no" title="statement not covered" >            localStorage.searchSort = document.querySelector('.searchSortSelect').selectedIndex;</span>
+<span class="cstat-no" title="statement not covered" >            localStorage.utility2_itunes_search_searchSort =</span>
+                document.querySelector('.searchSortSelect').selectedIndex;
             // normalize
 <span class="cstat-no" title="statement not covered" >            options.results.forEach(<span class="fstat-no" title="function not covered" >function (element) {</span></span>
 <span class="cstat-no" title="statement not covered" >                local.objectSetDefault(element, {</span>
@@ -2720,19 +2735,22 @@
         local.uiEventInit(document.body);
         // init state
         local.tryCatchOnError(function () {
-            localStorage.test = Object.keys(local);
-            delete localStorage.test;
+            localStorage.utility2_itunes_search_test = JSON.stringify(Object.keys(local));
+            delete localStorage.utility2_itunes_search_test;
         }, <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >            localStorage.clear();</span>
         });
-        localStorage.searchMedia = local.searchMediaDict[localStorage.searchMedia] || '#movie';
+        localStorage.utility2_itunes_search_searchMedia =
+            local.searchMediaDict[localStorage.utility2_itunes_search_searchMedia] || '#movie';
         document.querySelector('.searchSortSelect').selectedIndex = Math.min(
-            localStorage.searchSort || 0,
+            localStorage.utility2_itunes_search_searchSort || 0,
             document.querySelector('.searchSortSelect').length
         );
-<span class="cstat-no" title="statement not covered" >        document.querySelector('.searchTermInput').value = localStorage.searchTerm || '';</span>
+<span class="cstat-no" title="statement not covered" >        document.querySelector('.searchTermInput').value =</span>
+            localStorage.utility2_itunes_search_searchTerm || '';
         // reload-ui
-<span class="cstat-no" title="statement not covered" >        document.querySelector('[href="' + localStorage.searchMedia + '"]').click();</span>
+<span class="cstat-no" title="statement not covered" >        document.querySelector('[href="' + localStorage.utility2_itunes_search_searchMedia +</span>
+            '"]').click();
 <span class="cstat-no" title="statement not covered" >        break;</span>
     }
 }());
@@ -2741,7 +2759,7 @@
 </table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sun Oct 01 2017 03:04:25 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Oct 02 2017 10:28:17 GMT+0000 (UTC)</div>
 </div>
 </body>
 </html>
