@@ -9,7 +9,9 @@
         "node": ">=4.0"
     },
     "homepage": "https://github.com/kaizhu256/node-itunes-search-lite",
-    "keywords": [],
+    "keywords": [
+        "itunes-search"
+    ],
     "license": "MIT",
     "main": "lib.itunes_search.js",
     "name": "itunes-search-lite",
@@ -31,5 +33,5 @@
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.9.30"
+    "version": "2017.9.31"
 }

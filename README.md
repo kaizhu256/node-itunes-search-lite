@@ -2,7 +2,7 @@
 this zero-dependency package will provide an api for itunes-search, with a working demo
 
 # live demo
-- [https://h1-itunes-search-beta.herokuapp.com](https://h1-itunes-search-beta.herokuapp.com)
+- [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app)
 
 [![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app)
 
@@ -51,12 +51,12 @@ this zero-dependency package will provide an api for itunes-search, with a worki
 #### cli help
 ![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.npmPackageCliHelp.svg)
 
-#### apidoc
+#### api doc
 - [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/apidoc.html](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/apidoc.html)
 
 [![apidoc](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/apidoc.html)
 
-#### swaggerdoc
+#### swagger doc
 - [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html)
 
 [![swaggerdoc](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html)
@@ -65,10 +65,9 @@ this zero-dependency package will provide an api for itunes-search, with a worki
 - improve test-coverage
 - none
 
-#### changelog for v2017.9.30
-- npm publish 2017.9.30
-- update shared functions
-- revamp README.md
+#### changelog for v2017.9.31
+- npm publish 2017.9.31
+- fix ajaxProgressUpdate bar on first-load
 - none
 
 #### this package requires
@@ -408,7 +407,9 @@ instruction
         "node": ">=4.0"
     },
     "homepage": "https://github.com/kaizhu256/node-itunes-search-lite",
-    "keywords": [],
+    "keywords": [
+        "itunes-search"
+    ],
     "license": "MIT",
     "main": "lib.itunes_search.js",
     "name": "itunes-search-lite",
@@ -430,7 +431,7 @@ instruction
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
     },
-    "version": "2017.9.30"
+    "version": "2017.9.31"
 }
 ```
 
