@@ -1,0 +1,38 @@
+<svg height="558" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="558" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26"></tspan>
+<tspan x="10" y="42">[MODE_BUILD=buildApp] - 2017-05-20T10:26:58.217Z - npm-testing /home/travis/build/kaizhu256/node\</tspan>
+<tspan x="10" y="58">-itunes-search-lite</tspan>
+<tspan x="10" y="74"></tspan>
+<tspan x="10" y="90"></tspan>
+<tspan x="10" y="106">buildApp - merged test-report from file:///home/travis/build/kaizhu256/node-itunes-search-lite/t\</tspan>
+<tspan x="10" y="122">mp/build/test-report.json</tspan>
+<tspan x="10" y="138">&gt; server listening on http-port 56385</tspan>
+<tspan x="10" y="154">&gt; server listening on http-port 46849</tspan>
+<tspan x="10" y="170">[node test-case 1 of 1 passed] - testCase_buildApp_default</tspan>
+<tspan x="10" y="186"></tspan>
+<tspan x="10" y="202">buildApp - merged test-report from file:///home/travis/build/kaizhu256/node-itunes-search-lite/t\</tspan>
+<tspan x="10" y="218">mp/build/test-report.json</tspan>
+<tspan x="10" y="234"></tspan>
+<tspan x="10" y="250">-------------------------------------------------------</tspan>
+<tspan x="10" y="266">| test-report - buildApidoc - node - linux v6.10.3 - 2017-05-20T10:26:08.947Z</tspan>
+<tspan x="10" y="282">|   55197 ms            0 failed        1 passed      |</tspan>
+<tspan x="10" y="298">-------------------------------------------------------</tspan>
+<tspan x="10" y="314">| test-report - npmTest - node - linux v6.10.3 - 2017-05-20T10:25:54.421Z</tspan>
+<tspan x="10" y="330">|   11328 ms            0 failed        7 passed      |</tspan>
+<tspan x="10" y="346">-------------------------------------------------------</tspan>
+<tspan x="10" y="362">| test-report - npmTestPublished - node - linux v6.10.3 - 2017-05-20T10:25:39.420Z</tspan>
+<tspan x="10" y="378">|   11543 ms            0 failed        7 passed      |</tspan>
+<tspan x="10" y="394">-------------------------------------------------------</tspan>
+<tspan x="10" y="410"></tspan>
+<tspan x="10" y="426">created test-report file:///home/travis/build/kaizhu256/node-itunes-search-lite/tmp/build/test-r\</tspan>
+<tspan x="10" y="442">eport.html</tspan>
+<tspan x="10" y="458"></tspan>
+<tspan x="10" y="474"></tspan>
+<tspan x="10" y="490">buildApp - 0 failed tests</tspan>
+<tspan x="10" y="506"></tspan>
+<tspan x="10" y="522"></tspan>
+<tspan x="10" y="538">[MODE_BUILD=buildApp] - 2017-05-20T10:27:07.206Z - EXIT_CODE - 0</tspan>
+</text>
+</svg>
