@@ -51,9 +51,9 @@
 
         href="https://github.com/kaizhu256/node-itunes-search-lite"
 
-    >itunes-search-lite (v2017.5.9)</a>
+    >itunes-search-lite (v2017.9.31)</a>
 </h1>
-<h4>this zero-dependency package will provide and demo the frontend itunes-search-api</h4>
+<h4>this zero-dependency package will provide an api for itunes-search, with a working demo</h4>
 <div class="apidocSectionDiv"><a
     href="#apidoc.tableOfContents"
     id="apidoc.tableOfContents"
@@ -90,24 +90,6 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.bufferToNodeBuffer">
-            function <span class="apidocSignatureSpan">itunes-search-lite.</span>bufferToNodeBuffer
-            <span class="apidocSignatureSpan">(bff)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.errorMessagePrepend">
-            function <span class="apidocSignatureSpan">itunes-search-lite.</span>errorMessagePrepend
-            <span class="apidocSignatureSpan">(error, message)</span>
-            </a>
-
-        </li>
-
-        <li>
-
             <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.nop">
             function <span class="apidocSignatureSpan">itunes-search-lite.</span>nop
             <span class="apidocSignatureSpan">()</span>
@@ -120,15 +102,6 @@
             <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.objectSetDefault">
             function <span class="apidocSignatureSpan">itunes-search-lite.</span>objectSetDefault
             <span class="apidocSignatureSpan">(arg, defaults, depth)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.objectSetOverride">
-            function <span class="apidocSignatureSpan">itunes-search-lite.</span>objectSetOverride
-            <span class="apidocSignatureSpan">(arg, overrides, depth, env)</span>
             </a>
 
         </li>
@@ -153,18 +126,9 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.onTimeout">
-            function <span class="apidocSignatureSpan">itunes-search-lite.</span>onTimeout
-            <span class="apidocSignatureSpan">(onError, timeout, message)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.streamListCleanup">
-            function <span class="apidocSignatureSpan">itunes-search-lite.</span>streamListCleanup
-            <span class="apidocSignatureSpan">(streamList)</span>
+            <a class="apidocElementLiA" href="#apidoc.element.itunes-search-lite.serverLog">
+            function <span class="apidocSignatureSpan">itunes-search-lite.</span>serverLog
+            <span class="apidocSignatureSpan">(options)</span>
             </a>
 
         </li>
@@ -296,23 +260,47 @@
     <li>description and source-code<pre class="apidocCodePre">ajax = function (options, onError) {
 <span class="apidocCodeCommentSpan">/*
  * this function will send an ajax-request with error-handling and timeout
+ * example usage:
+    local.ajax({
+        method: &#x27;GET&#x27;,
+        url: &#x27;/index.html&#x27;
+    }, function (error, xhr) {
+        console.log(xhr.responseText);
+        console.log(xhr.statusCode);
+    });
  */
-</span>    var timerTimeout, tmp, xhr;
+</span>    var tmp, xhr;
+    // init standalone handling-behavior
+    local.nop = local.nop || function () {
+        return;
+    };
+    local.ajaxForwardProxyUrlTest = local.ajaxForwardProxyUrlTest || local.nop;
+    local.ajaxProgressCounter = local.ajaxProgressCounter || 0;
+    local.ajaxProgressUpdate = local.ajaxProgressUpdate || local.nop;
+    local.bufferToNodeBuffer = local.bufferToNodeBuffer || local.nop;
+    local.bufferToString = local.bufferToString || local.nop;
+    local.errorMessagePrepend = local.errorMessagePrepend || local.nop;
+    local.onErrorWithStack = local.onErrorWithStack || function (arg) {
+        return arg;
+    };
+    local.serverLocalUrlTest = local.serverLocalUrlTest || local.nop;
+    local.streamListCleanup = local.streamListCleanup || local.nop;
+    local.timeoutDefault = local.timeoutDefault || 30000;
+    local.tryCatchOnError = local.tryCatchOnError || local.nop;
+    // init onError
     onError = local.onErrorWithStack(onError);
-    // init modeServerLocal
-    if (local.env &#x26;&#x26;
-            !local.env.npm_config_mode_backend &#x26;&#x26;
-            (local._serverLocalUrlTest &#x26;&#x26; local._serverLocalUrlTest(options.url))) {
-        xhr = new local._http.XMLHttpRequest();
-    }
     // init xhr
-    xhr = xhr || (local.modeJs === &#x27;browser&#x27;
-        ? new local.global.XMLHttpRequest()
-        : new local._http.XMLHttpRequest());
+    xhr = local.modeJs === &#x27;node&#x27; || local.serverLocalUrlTest(options.url)
+        ? new local._http.XMLHttpRequest()
+        : new window.XMLHttpRequest();
     // debug xhr
     local._debugXhr = xhr;
     // init options
-    local.objectSetOverride(xhr, options);
+    Object.keys(options).forEach(function (key) {
+        if (options[key] !== undefined) {
+            xhr[key] = options[key];
+        }
+    });
     // init headers
     xhr.headers = {};
     Object.keys(options.headers || {}).forEach(function (key) {
@@ -320,17 +308,18 @@
     });
     // init method
     xhr.method = xhr.method || &#x27;GET&#x27;;
-    // init modeForwardProxyUrl
-    xhr.modeForwardProxyUrl = xhr.modeForwardProxyUrl || local.modeForwardProxyUrl;
+    // init timeStart
+    xhr.timeStart = Date.now();
     // init timeout
     xhr.timeout = xhr.timeout || local.timeoutDefault;
     // init timerTimeout
-    timerTimeout = local.onTimeout(function (error) {
-        xhr.error = xhr.error || error;
+    xhr.timerTimeout = setTimeout(function () {
+        xhr.error = xhr.error || new Error(&#x27;onTimeout - timeout-error - &#x27; +
+            xhr.timeout + &#x27; ms - &#x27; + &#x27;ajax &#x27; + xhr.method + &#x27; &#x27; + xhr.url);
         xhr.abort();
         // cleanup requestStream and responseStream
         local.streamListCleanup([xhr.requestStream, xhr.responseStream]);
-    }, xhr.timeout, &#x27;ajax &#x27; + xhr.method + &#x27; &#x27; + xhr.url);
+    }, xhr.timeout | 0);
     // init event handling
     xhr.onEvent = function (event) {
         // init statusCode
@@ -344,8 +333,26 @@
                 return;
             }
             xhr.isDone = true;
+            // debug ajaxResponse
+            if (xhr.modeDebug) {
+                console.error({
+                    type: &#x27;ajaxResponse&#x27;,
+                    time: new Date(xhr.timeStart).toISOString(),
+                    method: xhr.method,
+                    url: xhr.url,
+                    statusCode: xhr.statusCode,
+                    duration: Date.now() - xhr.timeStart,
+                    // extra
+                    headers: xhr.headers,
+                    data: xhr.data &#x26;&#x26; xhr.data.slice &#x26;&#x26;
+                        local.bufferToString(xhr.data.slice(0, 256)),
+                    responseText: local.tryCatchOnError(function () {
+                        return xhr.responseText.slice(0, 256);
+                    }, local.nop)
+                });
+            }
             // cleanup timerTimeout
-            clearTimeout(timerTimeout);
+            clearTimeout(xhr.timerTimeout);
             // cleanup requestStream and responseStream
             setTimeout(function () {
                 local.streamListCleanup([xhr.requestStream, xhr.responseStream]);
@@ -355,65 +362,23 @@
             // handle abort or error event
             if (!xhr.error &#x26;&#x26;
                     (event.type === &#x27;abort&#x27; ||
-                    event.type === &#x27;error&#x27; ||
-                    xhr.statusCode &#x3e;= 400)) {
-                xhr.error = new Error(event.type);
-            }
-            // handle completed xhr request
-            if (xhr.readyState === 4) {
-                // debug xhr
-                if (xhr.modeDebug) {
-                    console.error(new Date().toISOString(
-                    ) + &#x27; ajax-response &#x27; + JSON.stringify({
-                        statusCode: xhr.statusCode,
-                        method: xhr.method,
-                        url: xhr.url,
-                        responseText: local.tryCatchOnError(function () {
-                            return xhr.responseText.slice(0, 256);
-                        }, local.nop)
-                    }));
-                }
-                // handle string data
-                if (xhr.error) {
-                    // debug statusCode
-                    xhr.error.statusCode = xhr.statusCode;
-                    // debug statusCode / method / url
-                    tmp = local.modeJs + &#x27; - &#x27; + xhr.statusCode + &#x27; &#x27; + xhr.method +
-                        &#x27; &#x27; + xhr.url + &#x27;\n&#x27;;
-                    // try to debug responseText
-                    local.tryCatchOnError(function () {
-                        tmp += &#x27;    &#x27; + JSON.stringify(xhr.responseText.slice(0, 256) +
-                            &#x27;...&#x27;) + &#x27;\n&#x27;;
-                    }, local.nop);
-                    local.errorMessagePrepend(xhr.error, tmp);
-                }
-            }
-            onError(xhr.error, xhr);
-            break;
-        }
-        local.ajaxProgressUpdate();
-    };
-    // increment ajaxProgressCounter
-    local.ajaxProgressCounter += 1;
-    xhr.addEventListener(&#x27;abort&#x27;, xhr.onEvent);
-    xhr.addEventListener(&#x27;error&#x27;, xhr.onEvent);
-    xhr.addEventListener(&#x27;load&#x27;, xhr.on ...</pre></li>
+                    event.type === &#x27;error&#x27; | ...</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-            }
+// run shared js-env code - function-before
+/* istanbul ignore next */
+(function () {
+    local.ajax = function (options, onError) {
+    /*
+     * this function will send an ajax-request with error-handling and timeout
+     * example usage:
+        local.<span class="apidocCodeKeywordSpan">ajax</span>({
+            method: &#x27;GET&#x27;,
+            url: &#x27;/index.html&#x27;
+        }, function (error, xhr) {
+            console.log(xhr.responseText);
+            console.log(xhr.statusCode);
         });
-}
-localStorage.searchTerm =
-    document.querySelector(&#x27;.searchTermInput&#x27;).value || &#x27;&#x27;;
-// abort previous fetch request
-local.ajax1.abort();
-local.ajax1 = local.<span class="apidocCodeKeywordSpan">ajax</span>({ headers: {
-    &#x27;forward-proxy-url&#x27;: &#x27;https://itunes.apple.com/search?&#x27; +
-        &#x27;term=&#x27; +
-        (localStorage.searchTerm.replace((/\s+/g), &#x27;+&#x27;) || &#x27;the&#x27;) +
-        &#x27;&#x26;media=&#x27; + localStorage.searchMedia.slice(1) +
-        &#x27;&#x26;limit=24&#x27;
-}, url: &#x27;https://h1-proxy1.herokuapp.com/&#x27; }, options.onNext);
-break;
+     */
 ...</pre></li>
     </ul>
 
@@ -436,8 +401,6 @@ break;
     if (!ajaxProgressDiv1) {
         return;
     }
-    // init transition
-    ajaxProgressDiv1.style.transition = &#x27;width 1500ms&#x27;;
     // init ajaxProgressDiv1StyleBackground
     local.ajaxProgressDiv1StyleBackground = local.ajaxProgressDiv1StyleBackground ||
         ajaxProgressDiv1.style.background;
@@ -460,15 +423,13 @@ break;
     clearTimeout(local.timerTimeoutAjaxProgressHide);
     // hide ajaxProgress
     local.timerTimeoutAjaxProgressHide = setTimeout(function () {
-        ajaxProgressDiv1.style.transition = &#x27;background 500ms&#x27;;
         ajaxProgressDiv1.style.background = &#x27;transparent&#x27;;
         local.ajaxProgressCounter = 0;
         local.ajaxProgressState = 0;
         // reset ajaxProgress
         setTimeout(function () {
-            // coverage-hack
+            // coverage-hack - ignore else-statement
             local.nop(!local.ajaxProgressState &#x26;&#x26; (function () {
-                ajaxProgressDiv1.style.transition = &#x27;&#x27;;
                 ajaxProgressDiv1.style.width = &#x27;0%&#x27;;
             }()));
         }, 500);
@@ -544,80 +505,6 @@ local.tryCatchOnError = function (fnc, onError) {
 
 
     <h2>
-        <a href="#apidoc.element.itunes-search-lite.bufferToNodeBuffer" id="apidoc.element.itunes-search-lite.bufferToNodeBuffer">
-        function <span class="apidocSignatureSpan">itunes-search-lite.</span>bufferToNodeBuffer
-        <span class="apidocSignatureSpan">(bff)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">bufferToNodeBuffer = function (bff) {
-<span class="apidocCodeCommentSpan">/*
- * this function will convert the Uint8Array instance to a node Buffer instance
- */
-</span>    if (local.modeJs === &#x27;node&#x27; &#x26;&#x26;
-            bff instanceof local.global.Uint8Array &#x26;&#x26; (!Buffer.isBuffer(bff))) {
-        Object.setPrototypeOf(bff, Buffer.prototype);
-    }
-    return bff;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-        xhr.data.read(function (error, data) {
-            if (error) {
-                xhr.error = xhr.error || error;
-                xhr.onEvent({ type: &#x27;error&#x27; });
-                return;
-            }
-            // send data
-            xhr.send(local.<span class="apidocCodeKeywordSpan">bufferToNodeBuffer</span>(data));
-        });
-    } else {
-        // send data
-        xhr.send(local.bufferToNodeBuffer(xhr.data));
-    }
-    return xhr;
-};
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.itunes-search-lite.errorMessagePrepend" id="apidoc.element.itunes-search-lite.errorMessagePrepend">
-        function <span class="apidocSignatureSpan">itunes-search-lite.</span>errorMessagePrepend
-        <span class="apidocSignatureSpan">(error, message)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">errorMessagePrepend = function (error, message) {
-<span class="apidocCodeCommentSpan">/*
- * this function will prepend the message to error.message and error.stack
- */
-</span>    error.message = message + error.message;
-    error.stack = message + error.stack;
-    return error;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-                tmp = local.modeJs + &#x27; - &#x27; + xhr.statusCode + &#x27; &#x27; + xhr.method +
-                    &#x27; &#x27; + xhr.url + &#x27;\n&#x27;;
-                // try to debug responseText
-                local.tryCatchOnError(function () {
-                    tmp += &#x27;    &#x27; + JSON.stringify(xhr.responseText.slice(0, 256) +
-                        &#x27;...&#x27;) + &#x27;\n&#x27;;
-                }, local.nop);
-                local.<span class="apidocCodeKeywordSpan">errorMessagePrepend</span>(xhr.error, tmp);
-            }
-        }
-        onError(xhr.error, xhr);
-        break;
-    }
-    local.ajaxProgressUpdate();
-};
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
         <a href="#apidoc.element.itunes-search-lite.nop" id="apidoc.element.itunes-search-lite.nop">
         function <span class="apidocSignatureSpan">itunes-search-lite.</span>nop
         <span class="apidocSignatureSpan">()</span>
@@ -631,21 +518,21 @@ local.tryCatchOnError = function (fnc, onError) {
 </span>    return;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    ajaxProgressDiv1.style.transition = &#x27;background 500ms&#x27;;
-    ajaxProgressDiv1.style.background = &#x27;transparent&#x27;;
-    local.ajaxProgressCounter = 0;
-    local.ajaxProgressState = 0;
-    // reset ajaxProgress
-    setTimeout(function () {
-        // coverage-hack
-        local.<span class="apidocCodeKeywordSpan">nop</span>(!local.ajaxProgressState &#x26;&#x26; (function () {
-            ajaxProgressDiv1.style.transition = &#x27;&#x27;;
-            ajaxProgressDiv1.style.width = &#x27;0%&#x27;;
-        }()));
-    }, 500);
-}, local.ajaxProgressCounter &#x3e; 0
-    ? local.timeoutDefault
-    : 1500);
+    local.timerTimeoutAjaxProgressHide = setTimeout(function () {
+        ajaxProgressDiv1.style.background = &#x27;transparent&#x27;;
+        local.ajaxProgressCounter = 0;
+        local.ajaxProgressState = 0;
+        // reset ajaxProgress
+        setTimeout(function () {
+            // coverage-hack - ignore else-statement
+            local.<span class="apidocCodeKeywordSpan">nop</span>(!local.ajaxProgressState &#x26;&#x26; (function () {
+                ajaxProgressDiv1.style.width = &#x27;0%&#x27;;
+            }()));
+        }, 500);
+    }, local.ajaxProgressCounter &#x3e; 0
+        ? local.timeoutDefault
+        : 1500);
+};
 ...</pre></li>
     </ul>
 
@@ -711,72 +598,8 @@ local.tryCatchOnError = function (fnc, onError) {
     return arg;
 };
 
-local.objectSetOverride = function (arg, overrides, depth, env) {
+local.onErrorWithStack = function (onError) {
 /*
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.itunes-search-lite.objectSetOverride" id="apidoc.element.itunes-search-lite.objectSetOverride">
-        function <span class="apidocSignatureSpan">itunes-search-lite.</span>objectSetOverride
-        <span class="apidocSignatureSpan">(arg, overrides, depth, env)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">objectSetOverride = function (arg, overrides, depth, env) {
-<span class="apidocCodeCommentSpan">/*
- * this function will recursively set overrides for items in the arg
- */
-</span>    arg = arg || {};
-    env = env || (typeof process === &#x27;object&#x27; &#x26;&#x26; process.env) || {};
-    overrides = overrides || {};
-    Object.keys(overrides).forEach(function (key) {
-        var arg2, overrides2;
-        arg2 = arg[key];
-        overrides2 = overrides[key];
-        if (overrides2 === undefined) {
-            return;
-        }
-        // if both arg2 and overrides2 are non-null and non-array objects,
-        // then recurse with arg2 and overrides2
-        if (depth &#x3e; 1 &#x26;&#x26;
-                // arg2 is a non-null and non-array object
-                (arg2 &#x26;&#x26;
-                typeof arg2 === &#x27;object&#x27; &#x26;&#x26;
-                !Array.isArray(arg2)) &#x26;&#x26;
-                // overrides2 is a non-null and non-array object
-                (overrides2 &#x26;&#x26;
-                typeof overrides2 === &#x27;object&#x27; &#x26;&#x26;
-                !Array.isArray(overrides2))) {
-            local.objectSetOverride(arg2, overrides2, depth - 1, env);
-            return;
-        }
-        // else set arg[key] with overrides[key]
-        arg[key] = arg === env
-            // if arg is env, then overrides falsey value with empty string
-            ? overrides2 || &#x27;&#x27;
-            : overrides2;
-    });
-    return arg;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-// init xhr
-xhr = xhr || (local.modeJs === &#x27;browser&#x27;
-    ? new local.global.XMLHttpRequest()
-    : new local._http.XMLHttpRequest());
-// debug xhr
-local._debugXhr = xhr;
-// init options
-local.<span class="apidocCodeKeywordSpan">objectSetOverride</span>(xhr, options);
-// init headers
-xhr.headers = {};
-Object.keys(options.headers || {}).forEach(function (key) {
-    xhr.headers[key.toLowerCase()] = options.headers[key];
-});
-// init method
-xhr.method = xhr.method || &#x27;GET&#x27;;
 ...</pre></li>
     </ul>
 
@@ -807,21 +630,21 @@ xhr.method = xhr.method || &#x27;GET&#x27;;
     };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+    return arg;
 };
-
-local.ajax = function (options, onError) {
-/*
- * this function will send an ajax-request with error-handling and timeout
- */
-    var timerTimeout, tmp, xhr;
-    onError = local.<span class="apidocCodeKeywordSpan">onErrorWithStack</span>(onError);
-    // init modeServerLocal
-    if (local.env &#x26;&#x26;
-            !local.env.npm_config_mode_backend &#x26;&#x26;
-            (local._serverLocalUrlTest &#x26;&#x26; local._serverLocalUrlTest(options.url))) {
-        xhr = new local._http.XMLHttpRequest();
-    }
-    // init xhr
+local.serverLocalUrlTest = local.serverLocalUrlTest || local.nop;
+local.streamListCleanup = local.streamListCleanup || local.nop;
+local.timeoutDefault = local.timeoutDefault || 30000;
+local.tryCatchOnError = local.tryCatchOnError || local.nop;
+// init onError
+onError = local.<span class="apidocCodeKeywordSpan">onErrorWithStack</span>(onError);
+// init xhr
+xhr = local.modeJs === &#x27;node&#x27; || local.serverLocalUrlTest(options.url)
+    ? new local._http.XMLHttpRequest()
+    : new window.XMLHttpRequest();
+// debug xhr
+local._debugXhr = xhr;
+// init options
 ...</pre></li>
     </ul>
 
@@ -870,7 +693,7 @@ local.ajax = function (options, onError) {
     return options;
 };
 
-local.onTimeout = function (onError, timeout, message) {
+local.templateRender = function (template, dict) {
 /*
 ...</pre></li>
     </ul>
@@ -878,88 +701,16 @@ local.onTimeout = function (onError, timeout, message) {
 
 
     <h2>
-        <a href="#apidoc.element.itunes-search-lite.onTimeout" id="apidoc.element.itunes-search-lite.onTimeout">
-        function <span class="apidocSignatureSpan">itunes-search-lite.</span>onTimeout
-        <span class="apidocSignatureSpan">(onError, timeout, message)</span>
+        <a href="#apidoc.element.itunes-search-lite.serverLog" id="apidoc.element.itunes-search-lite.serverLog">
+        function <span class="apidocSignatureSpan">itunes-search-lite.</span>serverLog
+        <span class="apidocSignatureSpan">(options)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">onTimeout = function (onError, timeout, message) {
-<span class="apidocCodeCommentSpan">/*
- * this function will create a timeout-error-handler,
- * that will append the current stack to any error encountered
- */
-</span>    onError = local.onErrorWithStack(onError);
-    // create timeout timer
-    return setTimeout(function () {
-        onError(new Error(&#x27;onTimeout - timeout-error - &#x27; +
-            timeout + &#x27; ms - &#x27; + (typeof message === &#x27;function&#x27;
-            ? message()
-            : message)));
-    // coerce to finite integer
-    }, timeout | 0);
+    <li>description and source-code<pre class="apidocCodePre">serverLog = function (options) {
+    console.error(&#x27;serverLog - &#x27; + JSON.stringify(options));
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-// init method
-xhr.method = xhr.method || &#x27;GET&#x27;;
-// init modeForwardProxyUrl
-xhr.modeForwardProxyUrl = xhr.modeForwardProxyUrl || local.modeForwardProxyUrl;
-// init timeout
-xhr.timeout = xhr.timeout || local.timeoutDefault;
-// init timerTimeout
-timerTimeout = local.<span class="apidocCodeKeywordSpan">onTimeout</span>(function (error) {
-    xhr.error = xhr.error || error;
-    xhr.abort();
-    // cleanup requestStream and responseStream
-    local.streamListCleanup([xhr.requestStream, xhr.responseStream]);
-}, xhr.timeout, &#x27;ajax &#x27; + xhr.method + &#x27; &#x27; + xhr.url);
-// init event handling
-xhr.onEvent = function (event) {
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.itunes-search-lite.streamListCleanup" id="apidoc.element.itunes-search-lite.streamListCleanup">
-        function <span class="apidocSignatureSpan">itunes-search-lite.</span>streamListCleanup
-        <span class="apidocSignatureSpan">(streamList)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">streamListCleanup = function (streamList) {
-<span class="apidocCodeCommentSpan">/*
- * this function will end or destroy the streams in streamList
- */
-</span>    streamList.forEach(function (stream) {
-        // try to end the stream
-        local.tryCatchOnError(function () {
-            stream.end();
-        }, function () {
-            // if error, then try to destroy the stream
-            local.tryCatchOnError(function () {
-                stream.destroy();
-            }, local.nop);
-        });
-    });
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-// init timeout
-xhr.timeout = xhr.timeout || local.timeoutDefault;
-// init timerTimeout
-timerTimeout = local.onTimeout(function (error) {
-    xhr.error = xhr.error || error;
-    xhr.abort();
-    // cleanup requestStream and responseStream
-    local.<span class="apidocCodeKeywordSpan">streamListCleanup</span>([xhr.requestStream, xhr.responseStream]);
-}, xhr.timeout, &#x27;ajax &#x27; + xhr.method + &#x27; &#x27; + xhr.url);
-// init event handling
-xhr.onEvent = function (event) {
-    // init statusCode
-    xhr.statusCode = xhr.status;
-    switch (event.type) {
-    case &#x27;abort&#x27;:
-...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
@@ -1111,21 +862,21 @@ case &#x27;if&#x27;:
     }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-// debug xhr
-if (xhr.modeDebug) {
-    console.error(new Date().toISOString(
-    ) + &#x27; ajax-response &#x27; + JSON.stringify({
-        statusCode: xhr.statusCode,
-        method: xhr.method,
         url: xhr.url,
+        statusCode: xhr.statusCode,
+        duration: Date.now() - xhr.timeStart,
+        // extra
+        headers: xhr.headers,
+        data: xhr.data &#x26;&#x26; xhr.data.slice &#x26;&#x26;
+            local.bufferToString(xhr.data.slice(0, 256)),
         responseText: local.<span class="apidocCodeKeywordSpan">tryCatchOnError</span>(function () {
             return xhr.responseText.slice(0, 256);
         }, local.nop)
-    }));
+    });
 }
-// handle string data
-if (xhr.error) {
-    // debug statusCode
+// cleanup timerTimeout
+clearTimeout(xhr.timerTimeout);
+// cleanup requestStream and responseStream
 ...</pre></li>
     </ul>
 
@@ -1336,8 +1087,8 @@ local.timeoutDefault = 30000;
 local.<span class="apidocCodeKeywordSpan">uiEventInit</span>(document.body);
 // init state
 local.tryCatchOnError(function () {
-    localStorage.test = Object.keys(local);
-    delete localStorage.test;
+    localStorage.utility2_itunes_search_test = JSON.stringify(Object.keys(local));
+    delete localStorage.utility2_itunes_search_test;
 }, function () {
     localStorage.clear();
 });

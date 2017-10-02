@@ -45,6 +45,12 @@
         if (local.modeJs === 'browser') {
             local.global.utility2_itunes_search = local;
         } else {
+            // require builtins
+            Object.keys(process.binding('natives')).forEach(function (key) {
+                if (!local[key] && !(/\/|^_|^sys$/).test(key)) {
+                    local[key] = require(key);
+                }
+            });
             module.exports = local;
             module.exports.__dirname = __dirname;
             module.exports.module = module;
@@ -53,44 +59,53 @@
 
 
 
-    // run shared js-env code - function
+    // run shared js-env code - function-before
+    /* istanbul ignore next */
     (function () {
-        // init global.debug_inline
-        local.global['debug_inline'.replace('_i', 'I')] = local.global[
-            'debug_inline'.replace('_i', 'I')
-        ] || function (arg) {
-        /*
-         * this function will both print the arg to stderr and return it
-         */
-            // debug arguments
-            local['_debug_inlineArguments'.replace('_i', 'I')] = arguments;
-            console.error('\n\n\ndebug_inline'.replace('_i', 'I'));
-            console.error.apply(console, arguments);
-            console.error();
-            // return arg for inspection
-            return arg;
-        };
-
         local.ajax = function (options, onError) {
         /*
          * this function will send an ajax-request with error-handling and timeout
+         * example usage:
+            local.ajax({
+                method: 'GET',
+                url: '/index.html'
+            }, function (error, xhr) {
+                console.log(xhr.responseText);
+                console.log(xhr.statusCode);
+            });
          */
-            var timerTimeout, tmp, xhr;
+            var tmp, xhr;
+            // init standalone handling-behavior
+            local.nop = local.nop || function () {
+                return;
+            };
+            local.ajaxForwardProxyUrlTest = local.ajaxForwardProxyUrlTest || local.nop;
+            local.ajaxProgressCounter = local.ajaxProgressCounter || 0;
+            local.ajaxProgressUpdate = local.ajaxProgressUpdate || local.nop;
+            local.bufferToNodeBuffer = local.bufferToNodeBuffer || local.nop;
+            local.bufferToString = local.bufferToString || local.nop;
+            local.errorMessagePrepend = local.errorMessagePrepend || local.nop;
+            local.onErrorWithStack = local.onErrorWithStack || function (arg) {
+                return arg;
+            };
+            local.serverLocalUrlTest = local.serverLocalUrlTest || local.nop;
+            local.streamListCleanup = local.streamListCleanup || local.nop;
+            local.timeoutDefault = local.timeoutDefault || 30000;
+            local.tryCatchOnError = local.tryCatchOnError || local.nop;
+            // init onError
             onError = local.onErrorWithStack(onError);
-            // init modeServerLocal
-            if (local.env &&
-                    !local.env.npm_config_mode_backend &&
-                    (local._serverLocalUrlTest && local._serverLocalUrlTest(options.url))) {
-                xhr = new local._http.XMLHttpRequest();
-            }
             // init xhr
-            xhr = xhr || (local.modeJs === 'browser'
-                ? new local.global.XMLHttpRequest()
-                : new local._http.XMLHttpRequest());
+            xhr = local.modeJs === 'node' || local.serverLocalUrlTest(options.url)
+                ? new local._http.XMLHttpRequest()
+                : new window.XMLHttpRequest();
             // debug xhr
             local._debugXhr = xhr;
             // init options
-            local.objectSetOverride(xhr, options);
+            Object.keys(options).forEach(function (key) {
+                if (options[key] !== undefined) {
+                    xhr[key] = options[key];
+                }
+            });
             // init headers
             xhr.headers = {};
             Object.keys(options.headers || {}).forEach(function (key) {
@@ -98,17 +113,18 @@
             });
             // init method
             xhr.method = xhr.method || 'GET';
-            // init modeForwardProxyUrl
-            xhr.modeForwardProxyUrl = xhr.modeForwardProxyUrl || local.modeForwardProxyUrl;
+            // init timeStart
+            xhr.timeStart = Date.now();
             // init timeout
             xhr.timeout = xhr.timeout || local.timeoutDefault;
             // init timerTimeout
-            timerTimeout = local.onTimeout(function (error) {
-                xhr.error = xhr.error || error;
+            xhr.timerTimeout = setTimeout(function () {
+                xhr.error = xhr.error || new Error('onTimeout - timeout-error - ' +
+                    xhr.timeout + ' ms - ' + 'ajax ' + xhr.method + ' ' + xhr.url);
                 xhr.abort();
                 // cleanup requestStream and responseStream
                 local.streamListCleanup([xhr.requestStream, xhr.responseStream]);
-            }, xhr.timeout, 'ajax ' + xhr.method + ' ' + xhr.url);
+            }, xhr.timeout | 0);
             // init event handling
             xhr.onEvent = function (event) {
                 // init statusCode
@@ -122,8 +138,26 @@
                         return;
                     }
                     xhr.isDone = true;
+                    // debug ajaxResponse
+                    if (xhr.modeDebug) {
+                        console.error({
+                            type: 'ajaxResponse',
+                            time: new Date(xhr.timeStart).toISOString(),
+                            method: xhr.method,
+                            url: xhr.url,
+                            statusCode: xhr.statusCode,
+                            duration: Date.now() - xhr.timeStart,
+                            // extra
+                            headers: xhr.headers,
+                            data: xhr.data && xhr.data.slice &&
+                                local.bufferToString(xhr.data.slice(0, 256)),
+                            responseText: local.tryCatchOnError(function () {
+                                return xhr.responseText.slice(0, 256);
+                            }, local.nop)
+                        });
+                    }
                     // cleanup timerTimeout
-                    clearTimeout(timerTimeout);
+                    clearTimeout(xhr.timerTimeout);
                     // cleanup requestStream and responseStream
                     setTimeout(function () {
                         local.streamListCleanup([xhr.requestStream, xhr.responseStream]);
@@ -139,18 +173,6 @@
                     }
                     // handle completed xhr request
                     if (xhr.readyState === 4) {
-                        // debug xhr
-                        if (xhr.modeDebug) {
-                            console.error(new Date().toISOString(
-                            ) + ' ajax-response ' + JSON.stringify({
-                                statusCode: xhr.statusCode,
-                                method: xhr.method,
-                                url: xhr.url,
-                                responseText: local.tryCatchOnError(function () {
-                                    return xhr.responseText.slice(0, 256);
-                                }, local.nop)
-                            }));
-                        }
                         // handle string data
                         if (xhr.error) {
                             // debug statusCode
@@ -180,11 +202,12 @@
             xhr.addEventListener('progress', local.ajaxProgressUpdate);
             xhr.upload.addEventListener('progress', local.ajaxProgressUpdate);
             // open url
-            if (local.modeJs === 'browser' &&
-                    xhr.modeForwardProxyUrl &&
-                    (/^https{0,1}:/).test(xhr.url) &&
-                    xhr.url.indexOf(location.protocol + '//' + location.host) !== 0) {
-                xhr.open(xhr.method, xhr.modeForwardProxyUrl);
+            xhr.forwardProxyUrl = local.modeJs === 'browser' &&
+                (/^https{0,1}:/).test(xhr.url) &&
+                xhr.url.indexOf(location.protocol + '//' + location.host) !== 0 &&
+                local.ajaxForwardProxyUrlTest(xhr.url, location);
+            if (xhr.forwardProxyUrl) {
+                xhr.open(xhr.method, xhr.forwardProxyUrl);
                 xhr.setRequestHeader('forward-proxy-headers', JSON.stringify(xhr.headers));
                 xhr.setRequestHeader('forward-proxy-url', xhr.url);
             } else {
@@ -193,16 +216,6 @@
             Object.keys(xhr.headers).forEach(function (key) {
                 xhr.setRequestHeader(key, xhr.headers[key]);
             });
-            // debug xhr
-            if (xhr.modeDebug) {
-                console.error(new Date().toISOString() + ' ajax-request ' + JSON.stringify({
-                    method: xhr.method,
-                    url: xhr.url,
-                    headers: xhr.headers,
-                    data: xhr.data && xhr.data.slice &&
-                        local.bufferToString(xhr.data.slice(0, 256))
-                }));
-            }
             if (local.FormData && xhr.data instanceof local.FormData) {
                 // handle formData
                 xhr.data.read(function (error, data) {
@@ -231,8 +244,6 @@
             if (!ajaxProgressDiv1) {
                 return;
             }
-            // init transition
-            ajaxProgressDiv1.style.transition = 'width 1500ms';
             // init ajaxProgressDiv1StyleBackground
             local.ajaxProgressDiv1StyleBackground = local.ajaxProgressDiv1StyleBackground ||
                 ajaxProgressDiv1.style.background;
@@ -255,15 +266,13 @@
             clearTimeout(local.timerTimeoutAjaxProgressHide);
             // hide ajaxProgress
             local.timerTimeoutAjaxProgressHide = setTimeout(function () {
-                ajaxProgressDiv1.style.transition = 'background 500ms';
                 ajaxProgressDiv1.style.background = 'transparent';
                 local.ajaxProgressCounter = 0;
                 local.ajaxProgressState = 0;
                 // reset ajaxProgress
                 setTimeout(function () {
-                    // coverage-hack
+                    // coverage-hack - ignore else-statement
                     local.nop(!local.ajaxProgressState && (function () {
-                        ajaxProgressDiv1.style.transition = '';
                         ajaxProgressDiv1.style.width = '0%';
                     }()));
                 }, 500);
@@ -289,26 +298,6 @@
                     // else JSON.stringify message
                     : JSON.stringify(message));
             throw error;
-        };
-
-        local.bufferToNodeBuffer = function (bff) {
-        /*
-         * this function will convert the Uint8Array instance to a node Buffer instance
-         */
-            if (local.modeJs === 'node' &&
-                    bff instanceof local.global.Uint8Array && (!Buffer.isBuffer(bff))) {
-                Object.setPrototypeOf(bff, Buffer.prototype);
-            }
-            return bff;
-        };
-
-        local.errorMessagePrepend = function (error, message) {
-        /*
-         * this function will prepend the message to error.message and error.stack
-         */
-            error.message = message + error.message;
-            error.stack = message + error.stack;
-            return error;
         };
 
         local.nop = function () {
@@ -358,43 +347,6 @@
             return arg;
         };
 
-        local.objectSetOverride = function (arg, overrides, depth, env) {
-        /*
-         * this function will recursively set overrides for items in the arg
-         */
-            arg = arg || {};
-            env = env || (typeof process === 'object' && process.env) || {};
-            overrides = overrides || {};
-            Object.keys(overrides).forEach(function (key) {
-                var arg2, overrides2;
-                arg2 = arg[key];
-                overrides2 = overrides[key];
-                if (overrides2 === undefined) {
-                    return;
-                }
-                // if both arg2 and overrides2 are non-null and non-array objects,
-                // then recurse with arg2 and overrides2
-                if (depth > 1 &&
-                        // arg2 is a non-null and non-array object
-                        (arg2 &&
-                        typeof arg2 === 'object' &&
-                        !Array.isArray(arg2)) &&
-                        // overrides2 is a non-null and non-array object
-                        (overrides2 &&
-                        typeof overrides2 === 'object' &&
-                        !Array.isArray(overrides2))) {
-                    local.objectSetOverride(arg2, overrides2, depth - 1, env);
-                    return;
-                }
-                // else set arg[key] with overrides[key]
-                arg[key] = arg === env
-                    // if arg is env, then overrides falsey value with empty string
-                    ? overrides2 || ''
-                    : overrides2;
-            });
-            return arg;
-        };
-
         local.onErrorWithStack = function (onError) {
         /*
          * this function will create a new callback that will call onError,
@@ -434,39 +386,6 @@
                 }
             });
             return options;
-        };
-
-        local.onTimeout = function (onError, timeout, message) {
-        /*
-         * this function will create a timeout-error-handler,
-         * that will append the current stack to any error encountered
-         */
-            onError = local.onErrorWithStack(onError);
-            // create timeout timer
-            return setTimeout(function () {
-                onError(new Error('onTimeout - timeout-error - ' +
-                    timeout + ' ms - ' + (typeof message === 'function'
-                    ? message()
-                    : message)));
-            // coerce to finite integer
-            }, timeout | 0);
-        };
-
-        local.streamListCleanup = function (streamList) {
-        /*
-         * this function will end or destroy the streams in streamList
-         */
-            streamList.forEach(function (stream) {
-                // try to end the stream
-                local.tryCatchOnError(function () {
-                    stream.end();
-                }, function () {
-                    // if error, then try to destroy the stream
-                    local.tryCatchOnError(function () {
-                        stream.destroy();
-                    }, local.nop);
-                });
-            });
         };
 
         local.templateRender = function (template, dict) {
@@ -581,7 +500,12 @@
                 return onError(errorCaught);
             }
         };
+    }());
 
+
+
+    // run shared js-env code - function
+    (function () {
         local.uiAnimateScrollTo = function (element) {
         /*
          * this function will scrollTo the element
@@ -762,27 +686,29 @@
                 switch (options.modeNext) {
                 case 1:
                     if (options.currentTarget.classList.contains('searchMediaA')) {
-                        localStorage.searchMedia =
+                        localStorage.utility2_itunes_search_searchMedia =
                             local.searchMediaDict[options.currentTarget.hash] || '#movie';
                         Array.from(document.querySelectorAll('.searchMediaA'))
                             .forEach(function (element) {
-                                if (element.hash === localStorage.searchMedia) {
+                                if (element.hash ===
+                                        localStorage.utility2_itunes_search_searchMedia) {
                                     element.classList.add('searchMediaASelected');
                                 } else {
                                     element.classList.remove('searchMediaASelected');
                                 }
                             });
                     }
-                    localStorage.searchTerm =
+                    localStorage.utility2_itunes_search_searchTerm =
                         document.querySelector('.searchTermInput').value || '';
                     // abort previous fetch request
                     local.ajax1.abort();
                     local.ajax1 = local.ajax({ headers: {
                         'forward-proxy-url': 'https://itunes.apple.com/search?' +
-                            'term=' +
-                            (localStorage.searchTerm.replace((/\s+/g), '+') || 'the') +
-                            '&media=' + localStorage.searchMedia.slice(1) +
-                            '&limit=24'
+                            'limit=24' +
+                            '&media=' +
+                                localStorage.utility2_itunes_search_searchMedia.slice(1) +
+                            '&term=' + (localStorage.utility2_itunes_search_searchTerm
+                                .replace((/\s+/g), '+') || 'the')
                     }, url: 'https://h1-proxy1.herokuapp.com/' }, options.onNext);
                     break;
                 case 2:
@@ -808,7 +734,8 @@
                     '<div style="margin: 1rem;">No results</div>';
                 return;
             }
-            localStorage.searchSort = document.querySelector('.searchSortSelect').selectedIndex;
+            localStorage.utility2_itunes_search_searchSort =
+                document.querySelector('.searchSortSelect').selectedIndex;
             // normalize
             options.results.forEach(function (element) {
                 local.objectSetDefault(element, {
@@ -898,28 +825,22 @@
         local.uiEventInit(document.body);
         // init state
         local.tryCatchOnError(function () {
-            localStorage.test = Object.keys(local);
-            delete localStorage.test;
+            localStorage.utility2_itunes_search_test = JSON.stringify(Object.keys(local));
+            delete localStorage.utility2_itunes_search_test;
         }, function () {
             localStorage.clear();
         });
-        localStorage.searchMedia = local.searchMediaDict[localStorage.searchMedia] || '#movie';
+        localStorage.utility2_itunes_search_searchMedia =
+            local.searchMediaDict[localStorage.utility2_itunes_search_searchMedia] || '#movie';
         document.querySelector('.searchSortSelect').selectedIndex = Math.min(
-            localStorage.searchSort || 0,
+            localStorage.utility2_itunes_search_searchSort || 0,
             document.querySelector('.searchSortSelect').length
         );
-        document.querySelector('.searchTermInput').value = localStorage.searchTerm || '';
+        document.querySelector('.searchTermInput').value =
+            localStorage.utility2_itunes_search_searchTerm || '';
         // reload-ui
-        document.querySelector('[href="' + localStorage.searchMedia + '"]').click();
-        if (local.global.fileElectronHtml) {
-            setTimeout(function () {
-                console.error(local.global.fileElectronHtml + ' global_test_results ' +
-                    JSON.stringify({ global_test_results: {
-                        coverage: local.global.__coverage__,
-                        testReport: { testPlatformList: [{}] }
-                    } }));
-            }, 5000);
-        }
+        document.querySelector('[href="' + localStorage.utility2_itunes_search_searchMedia +
+            '"]').click();
         break;
     }
 }());

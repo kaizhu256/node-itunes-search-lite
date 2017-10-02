@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- "" -->
 <title>swgg</title>
 <style>
 /*csslint
@@ -20,21 +21,19 @@ body {
 body > * {
     margin-bottom: 1rem;
 }
+body > button {
+    width: 20rem;
+}
+button {
+    cursor: pointer;
+}
+.uiAnimateSlide {
+    overflow-y: hidden;
+    transition: border-bottom 250ms, border-top 250ms, margin-bottom 250ms, margin-top 250ms, max-height 250ms, min-height 250ms, padding-bottom 250ms, padding-top 250ms;
+}
 .utility2FooterDiv {
     margin-top: 20px;
     text-align: center;
-}
-</style>
-<style>
-/*csslint
-    adjoining-classes: false,
-    box-model: false,
-    box-sizing: false,
-    universal-selector: false
-*/
-/* example.js */
-body > button {
-    width: 15rem;
 }
 .zeroPixel {
     border: 0;
@@ -43,9 +42,15 @@ body > button {
     padding: 0;
     width: 0;
 }
-
-
-
+</style>
+<style>
+/*csslint
+    adjoining-classes: false,
+    box-model: false,
+    box-sizing: false,
+    outline-none: false,
+    universal-selector: false
+*/
 /* animate */
 .uiAnimateFade {
     transition: opacity 250ms;
@@ -64,10 +69,6 @@ body > button {
 .uiAnimateShake {
     animation-duration: 500ms;
     animation-name: uiAnimateShake;
-}
-.uiAnimateSlide {
-    overflow-y: hidden;
-    transition: max-height 500ms;
 }
 
 
@@ -178,7 +179,7 @@ body > button {
 }
 /* border-top-bold */
 .swggUiContainer .borderTopBold,
-.swggUiContainer .resource:first-child {
+.swggUiContainer .resourceList {
     border-top: 1px solid #777;
     margin-top: 0.5rem;
     padding-top: 0.5rem;
@@ -276,7 +277,7 @@ body > button {
 border: 0;
     color: #fff;
     padding: 6px 8px;
-    background-color: #580;
+    background: #580;
 }
 .swggUiContainer > .info > * {
     margin-top: 1rem;
@@ -311,6 +312,7 @@ border: 0;
 .swggUiContainer .operation {
     background: #dfd;
     font-size: smaller;
+    outline: none;
 }
 .swggUiContainer .operation > .content {
     padding: 1rem;
@@ -376,6 +378,9 @@ border: 0;
 .swggUiContainer .operation .responseList > .td2 {
     flex: 4;
 }
+.swggUiContainer .resource {
+    outline: none;
+}
 .swggUiContainer .resource > .header > .td1 {
     font-size: large;
 }
@@ -409,20 +414,77 @@ border: 0;
 </style>
 </head>
 <body>
-<div id="ajaxProgressDiv1" style="background: #d00; height: 4px; left: 0; margin: 0; padding: 0; position: fixed; top: 0; transition: background 0.5s, width 1.5s; width: 25%;"></div>
+<div id="ajaxProgressDiv1" style="background: #d00; height: 2px; left: 0; margin: 0; padding: 0; position: fixed; top: 0; transition: background 500ms, width 1500ms; width: 0%;"></div>
+<script>
+/*jslint
+    bitwise: true,
+    browser: true,
+    maxerr: 8,
+    maxlen: 96,
+    node: true,
+    nomen: true,
+    regexp: true,
+    stupid: true
+*/
+(function () {
+    "use strict";
+    var ajaxProgressDiv1,
+        ajaxProgressState,
+        ajaxProgressUpdate,
+        timerIntervalAjaxProgressUpdate;
+    ajaxProgressDiv1 = document.querySelector("#ajaxProgressDiv1");
+    setTimeout(function () {
+        ajaxProgressDiv1.style.width = "25%";
+    });
+    ajaxProgressState = 0;
+    ajaxProgressUpdate = (window.local &&
+        window.local.ajaxProgressUpdate) || function () {
+        ajaxProgressDiv1.style.width = "100%";
+        setTimeout(function () {
+            ajaxProgressDiv1.style.background = "transparent";
+            setTimeout(function () {
+                ajaxProgressDiv1.style.width = "0%";
+            }, 500);
+        }, 1500);
+    };
+    timerIntervalAjaxProgressUpdate = setInterval(function () {
+        ajaxProgressState += 1;
+        ajaxProgressDiv1.style.width = Math.max(
+            100 - 75 * Math.exp(-0.125 * ajaxProgressState),
+            Number(ajaxProgressDiv1.style.width.slice(0, -1)) || 0
+        ) + "%";
+    }, 1000);
+    window.addEventListener("load", function () {
+        clearInterval(timerIntervalAjaxProgressUpdate);
+        ajaxProgressUpdate();
+    });
+}());
+</script>
 <div class="swggUiContainer">
-<form2 class="header tr">
+<div class="form header tr">
     <a class="td1" href="https://github.com/kaizhu256/node-swgg" target="_blank">swgg</a>
     <input class="flex1 td2" type="text">
     <button class="td3">Explore</button>
-</form2>
 </div>
-<div class="swggAjaxProgressDiv" style="margin-top: 1rem; text-align: center;">fetching resource list; Please wait.</div>
-<script src="assets.utility2.rollup.js"></script>
+</div>
+<div class="swggAjaxProgressDiv" style="margin-top: 1rem; text-align: center;">fetching resource-list ...</div>
 <script>
+/*jslint
+    bitwise: true,
+    browser: true,
+    maxerr: 8,
+    maxlen: 96,
+    node: true,
+    nomen: true,
+    regexp: true,
+    stupid: true
+*/
+"use strict";
 document.querySelector(".swggUiContainer > .header > .td2").value =
-    window.swgg.modeSwaggerJsonUrl || "assets.swgg.swagger.json";
-window.swgg.uiEventListenerDict[".onEventUiReload"]();
+    ((/\bmodeSwaggerJsonUrl=([^&]+)/g).exec(location.search) || {})[1] ||
+        "assets.swgg.swagger.json";
 </script>
+<script src="assets.utility2.rollup.js"></script>
+<script>window.swgg.uiEventListenerDict[".onEventUiReload"]();</script>
 </body>
 </html>
