@@ -6,8 +6,8 @@
 <tspan x="10" y="58">&gt; [ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall</tspan>
 <tspan x="10" y="74"></tspan>
 <tspan x="10" y="90">/tmp/app</tspan>
-<tspan x="10" y="106">└── itunes-search-lite@2017.9.31  (git://github.com/kaizhu256/node-itunes-search-lite.git#e6c7d1\</tspan>
-<tspan x="10" y="122">ac58c6c4d18355d3d1204b4178d69cd361)</tspan>
+<tspan x="10" y="106">└── itunes-search-lite@2017.9.31  (git://github.com/kaizhu256/node-itunes-search-lite.git#6459b6\</tspan>
+<tspan x="10" y="122">331ec1e4907f2a4be448f647068e5e1909)</tspan>
 <tspan x="10" y="138"></tspan>
 <tspan x="10" y="154">npm WARN enoent ENOENT: no such file or directory, open '/tmp/app/package.json'</tspan>
 <tspan x="10" y="170">npm WARN app No description</tspan>

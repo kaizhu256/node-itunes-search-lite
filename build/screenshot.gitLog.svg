@@ -1,65 +1,69 @@
-<svg height="990" width="720" xmlns="http://www.w3.org/2000/svg">
-<rect height="990" fill="#555" width="720"></rect>
+<svg height="1054" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="1054" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">2017-10-02 09:30:45 +0900</tspan>
-<tspan x="10" y="42">readme</tspan>
-<tspan x="10" y="58"></tspan>
-<tspan x="10" y="74">2017-10-02 03:20:01 +0900</tspan>
-<tspan x="10" y="90">localStorage.utility2_itunes_search_</tspan>
-<tspan x="10" y="106"></tspan>
-<tspan x="10" y="122">2017-10-02 03:11:21 +0900</tspan>
-<tspan x="10" y="138">revert</tspan>
-<tspan x="10" y="154"></tspan>
-<tspan x="10" y="170">2017-10-02 03:09:36 +0900</tspan>
-<tspan x="10" y="186">revamp.state</tspan>
-<tspan x="10" y="202"></tspan>
-<tspan x="10" y="218">2017-10-02 02:15:55 +0900</tspan>
-<tspan x="10" y="234">ajaxProgress</tspan>
-<tspan x="10" y="250"></tspan>
-<tspan x="10" y="266">2017-10-01 14:28:07 +0900</tspan>
-<tspan x="10" y="282">readme.api.doc</tspan>
-<tspan x="10" y="298"></tspan>
-<tspan x="10" y="314">2017-10-01 14:15:50 +0900</tspan>
-<tspan x="10" y="330">add keywords</tspan>
-<tspan x="10" y="346"></tspan>
-<tspan x="10" y="362">2017-10-01 12:55:37 +0900</tspan>
-<tspan x="10" y="378">[build clean]</tspan>
-<tspan x="10" y="394"></tspan>
-<tspan x="10" y="410">2017-10-01 11:36:01 +0900</tspan>
-<tspan x="10" y="426">[npm publish] - npm publish 2017.9.30</tspan>
-<tspan x="10" y="442">- update shared functions</tspan>
-<tspan x="10" y="458">- revamp README.md</tspan>
-<tspan x="10" y="474"></tspan>
-<tspan x="10" y="490">2017-05-20 17:47:17 +0800</tspan>
-<tspan x="10" y="506">[npm publish] - npm publish 2017.5.9</tspan>
-<tspan x="10" y="522">- add feature - grid populates one by one with a bubble popup animation</tspan>
-<tspan x="10" y="538">- fixed bug - Refreshing the page takes an awful long time to load everything.</tspan>
-<tspan x="10" y="554">- fix bug - Mentioned above but opening an item description and scrolling will make the entire p\</tspan>
-<tspan x="10" y="570">age jump up and down a lot.</tspan>
-<tspan x="10" y="586"></tspan>
-<tspan x="10" y="602">2017-05-20 10:42:28 +0800</tspan>
-<tspan x="10" y="618">[npm publish] - npm publish 2017.5.8</tspan>
-<tspan x="10" y="634">- fix regression - handle 'no result' search-case</tspan>
+<tspan x="10" y="26">2017-10-02 18:49:57 +0900</tspan>
+<tspan x="10" y="42">- npm publish 2017.9.31</tspan>
+<tspan x="10" y="58">- fix ajaxProgressUpdate bar on first-load</tspan>
+<tspan x="10" y="74"></tspan>
+<tspan x="10" y="90">2017-10-02 09:30:45 +0900</tspan>
+<tspan x="10" y="106">readme</tspan>
+<tspan x="10" y="122"></tspan>
+<tspan x="10" y="138">2017-10-02 03:20:01 +0900</tspan>
+<tspan x="10" y="154">localStorage.utility2_itunes_search_</tspan>
+<tspan x="10" y="170"></tspan>
+<tspan x="10" y="186">2017-10-02 03:11:21 +0900</tspan>
+<tspan x="10" y="202">revert</tspan>
+<tspan x="10" y="218"></tspan>
+<tspan x="10" y="234">2017-10-02 03:09:36 +0900</tspan>
+<tspan x="10" y="250">revamp.state</tspan>
+<tspan x="10" y="266"></tspan>
+<tspan x="10" y="282">2017-10-02 02:15:55 +0900</tspan>
+<tspan x="10" y="298">ajaxProgress</tspan>
+<tspan x="10" y="314"></tspan>
+<tspan x="10" y="330">2017-10-01 14:28:07 +0900</tspan>
+<tspan x="10" y="346">readme.api.doc</tspan>
+<tspan x="10" y="362"></tspan>
+<tspan x="10" y="378">2017-10-01 14:15:50 +0900</tspan>
+<tspan x="10" y="394">add keywords</tspan>
+<tspan x="10" y="410"></tspan>
+<tspan x="10" y="426">2017-10-01 12:55:37 +0900</tspan>
+<tspan x="10" y="442">[build clean]</tspan>
+<tspan x="10" y="458"></tspan>
+<tspan x="10" y="474">2017-10-01 11:36:01 +0900</tspan>
+<tspan x="10" y="490">[npm publish] - npm publish 2017.9.30</tspan>
+<tspan x="10" y="506">- update shared functions</tspan>
+<tspan x="10" y="522">- revamp README.md</tspan>
+<tspan x="10" y="538"></tspan>
+<tspan x="10" y="554">2017-05-20 17:47:17 +0800</tspan>
+<tspan x="10" y="570">[npm publish] - npm publish 2017.5.9</tspan>
+<tspan x="10" y="586">- add feature - grid populates one by one with a bubble popup animation</tspan>
+<tspan x="10" y="602">- fixed bug - Refreshing the page takes an awful long time to load everything.</tspan>
+<tspan x="10" y="618">- fix bug - Mentioned above but opening an item description and scrolling will make the entire p\</tspan>
+<tspan x="10" y="634">age jump up and down a lot.</tspan>
 <tspan x="10" y="650"></tspan>
-<tspan x="10" y="666">2017-05-19 11:12:17 +0800</tspan>
-<tspan x="10" y="682">[npm publish] - npm publish 2017.5.7</tspan>
-<tspan x="10" y="698">- fix bug - If you sort by lowest price on music/music videos it shows the first ones with a val\</tspan>
-<tspan x="10" y="714">ue of -1, but going to iTunes on this shows it as Album</tspan>
-<tspan x="10" y="730"></tspan>
-<tspan x="10" y="746">2017-05-06 16:27:30 +0800</tspan>
-<tspan x="10" y="762">[npm publish] - npm publish 2017.5.6</tspan>
-<tspan x="10" y="778">- fix card expansion bug</tspan>
+<tspan x="10" y="666">2017-05-20 10:42:28 +0800</tspan>
+<tspan x="10" y="682">[npm publish] - npm publish 2017.5.8</tspan>
+<tspan x="10" y="698">- fix regression - handle 'no result' search-case</tspan>
+<tspan x="10" y="714"></tspan>
+<tspan x="10" y="730">2017-05-19 11:12:17 +0800</tspan>
+<tspan x="10" y="746">[npm publish] - npm publish 2017.5.7</tspan>
+<tspan x="10" y="762">- fix bug - If you sort by lowest price on music/music videos it shows the first ones with a val\</tspan>
+<tspan x="10" y="778">ue of -1, but going to iTunes on this shows it as Album</tspan>
 <tspan x="10" y="794"></tspan>
-<tspan x="10" y="810">2017-05-06 07:02:12 +0800</tspan>
-<tspan x="10" y="826">[npm publish] - npm publish 2017.5.5</tspan>
-<tspan x="10" y="842">- first publish</tspan>
-<tspan x="10" y="858">- When you click on the item, it should transform and show (a) the long description and (b) a Bu\</tspan>
-<tspan x="10" y="874">y Button at the bottom in any shape or form.</tspan>
-<tspan x="10" y="890">- When you select a new item card, the previously selected one will be unselected.</tspan>
-<tspan x="10" y="906">- Website requires at least one animation (“Example, the grid populates one by one with a bubble\</tspan>
-<tspan x="10" y="922"> popup animation)</tspan>
-<tspan x="10" y="938"></tspan>
-<tspan x="10" y="954">2014-03-26 02:31:50 +0700</tspan>
-<tspan x="10" y="970">add blank README.md</tspan>
+<tspan x="10" y="810">2017-05-06 16:27:30 +0800</tspan>
+<tspan x="10" y="826">[npm publish] - npm publish 2017.5.6</tspan>
+<tspan x="10" y="842">- fix card expansion bug</tspan>
+<tspan x="10" y="858"></tspan>
+<tspan x="10" y="874">2017-05-06 07:02:12 +0800</tspan>
+<tspan x="10" y="890">[npm publish] - npm publish 2017.5.5</tspan>
+<tspan x="10" y="906">- first publish</tspan>
+<tspan x="10" y="922">- When you click on the item, it should transform and show (a) the long description and (b) a Bu\</tspan>
+<tspan x="10" y="938">y Button at the bottom in any shape or form.</tspan>
+<tspan x="10" y="954">- When you select a new item card, the previously selected one will be unselected.</tspan>
+<tspan x="10" y="970">- Website requires at least one animation (“Example, the grid populates one by one with a bubble\</tspan>
+<tspan x="10" y="986"> popup animation)</tspan>
+<tspan x="10" y="1002"></tspan>
+<tspan x="10" y="1018">2014-03-26 02:31:50 +0700</tspan>
+<tspan x="10" y="1034">add blank README.md</tspan>
 </text>
 </svg>
