@@ -6,6 +6,10 @@ this zero-dependency package will provide an api for itunes-search, with a worki
 
 [![screenshot](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app)
 
+- [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html)
+
+[![swaggerdoc](https://kaizhu256.github.io/node-itunes-search-lite/build/screenshot.deployGithub.browser.%252Fnode-itunes-search-lite%252Fbuild%252Fapp%252Fassets.swgg.html.png)](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.html)
+
 
 
 [![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-itunes-search-lite.svg)](https://travis-ci.org/kaizhu256/node-itunes-search-lite) [![coverage](https://kaizhu256.github.io/node-itunes-search-lite/build/coverage.badge.svg)](https://kaizhu256.github.io/node-itunes-search-lite/build/coverage.html/index.html) [![snyk.io vulnerabilities](https://snyk.io/test/github/kaizhu256/node-itunes-search-lite/badge.svg)](https://snyk.io/test/github/kaizhu256/node-itunes-search-lite)
@@ -44,6 +48,7 @@ this zero-dependency package will provide an api for itunes-search, with a worki
 # cdn download
 - [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.itunes_search.html](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.itunes_search.html)
 - [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.itunes_search.js](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.itunes_search.js)
+- [https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.swagger.json](https://kaizhu256.github.io/node-itunes-search-lite/build..beta..travis-ci.org/app/assets.swgg.swagger.json)
 
 
 
