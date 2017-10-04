@@ -15946,12 +15946,12 @@ local.assetsDict['/favicon.ico'] = '';
             local.nop = local.nop || function () {
                 return;
             };
-            local.ajaxForwardProxyUrlTest = local.ajaxForwardProxyUrlTest || local.nop;
             local.ajaxProgressCounter = local.ajaxProgressCounter || 0;
             local.ajaxProgressUpdate = local.ajaxProgressUpdate || local.nop;
             local.bufferToNodeBuffer = local.bufferToNodeBuffer || local.nop;
             local.bufferToString = local.bufferToString || local.nop;
             local.errorMessagePrepend = local.errorMessagePrepend || local.nop;
+            local.githubForwardProxyUrlTest = local.githubForwardProxyUrlTest || local.nop;
             local.onErrorWithStack = local.onErrorWithStack || function (arg) {
                 return arg;
             };
@@ -16069,12 +16069,12 @@ local.assetsDict['/favicon.ico'] = '';
             xhr.addEventListener('progress', local.ajaxProgressUpdate);
             xhr.upload.addEventListener('progress', local.ajaxProgressUpdate);
             // open url
-            xhr.forwardProxyUrl = local.modeJs === 'browser' &&
+            xhr.githubForwardProxyUrl = local.modeJs === 'browser' &&
                 (/^https{0,1}:/).test(xhr.url) &&
                 xhr.url.indexOf(location.protocol + '//' + location.host) !== 0 &&
-                local.ajaxForwardProxyUrlTest(xhr.url, location);
-            if (xhr.forwardProxyUrl) {
-                xhr.open(xhr.method, xhr.forwardProxyUrl);
+                local.githubForwardProxyUrlTest(xhr.url, location);
+            if (xhr.githubForwardProxyUrl) {
+                xhr.open(xhr.method, xhr.githubForwardProxyUrl);
                 xhr.setRequestHeader('forward-proxy-headers', JSON.stringify(xhr.headers));
                 xhr.setRequestHeader('forward-proxy-url', xhr.url);
             } else {
@@ -16099,19 +16099,6 @@ local.assetsDict['/favicon.ico'] = '';
                 xhr.send(local.bufferToNodeBuffer(xhr.data));
             }
             return xhr;
-        };
-
-        local.ajaxForwardProxyUrlTest = function (url, location) {
-        /*
-         * this function will test if the url requires forward-proxy
-         */
-            // jslint-hack
-            local.nop(url);
-            return local.modeJs === 'browser' &&
-                local.env.npm_package_nameLib &&
-                (/\bgithub.io$/).test(location.host)
-                ? 'https://h1-' + local.env.npm_package_nameLib + '-alpha.herokuapp.com'
-                : location.protocol + '//' + location.host;
         };
 
         local.ajaxProgressUpdate = function () {
@@ -18067,6 +18054,20 @@ return Utf8ArrayToStr(bff);
                 }
             );
             return url.replace(rgxHostOverride || (/.*()/), hostOverride + '$1');
+        };
+
+        local.githubForwardProxyUrlTest = function (url, location) {
+        /*
+         * this function will test if the url requires forward-proxy
+         */
+            // jslint-hack
+            local.nop(url);
+            return local.modeJs === 'browser' &&
+                local.env.npm_package_nameLib &&
+                (/\bgithub.io$/).test(location.host)
+                ? local.githubForwardProxyUrl ||
+                    'https://h1-' + local.env.npm_package_nameLib + '-alpha.herokuapp.com'
+                : location.protocol + '//' + location.host;
         };
 
         local.httpRequest = function (options, onError) {
@@ -22034,7 +22035,7 @@ local.templateApiDict = {
             "200": {
                 "description": "200 ok - http://jsonapi.org/format/#document-structure-top-level",
                 "schema": {
-                    "$ref": "#/definitions/BuiltinJsonapiResponse{{_schemaName}}"
+                    "$ref": "#/definitions/BuiltinJsonapiResponse"
                 }
             }
         },
@@ -22057,7 +22058,7 @@ local.templateApiDict = {
             "200": {
                 "description": "200 ok - http://jsonapi.org/format/#document-structure-top-level",
                 "schema": {
-                    "$ref": "#/definitions/BuiltinJsonapiResponse{{_schemaName}}"
+                    "$ref": "#/definitions/BuiltinJsonapiResponse"
                 }
             }
         },
@@ -22081,7 +22082,7 @@ local.templateApiDict = {
             "200": {
                 "description": "200 ok - http://jsonapi.org/format/#document-structure-top-level",
                 "schema": {
-                    "$ref": "#/definitions/BuiltinJsonapiResponse{{_schemaName}}"
+                    "$ref": "#/definitions/BuiltinJsonapiResponse"
                 }
             }
         },
@@ -22238,7 +22239,7 @@ local.templateApiDict = {
             "200": {
                 "description": "200 ok - http://jsonapi.org/format/#document-structure-top-level",
                 "schema": {
-                    "$ref": "#/definitions/BuiltinJsonapiResponse{{_schemaName}}"
+                    "$ref": "#/definitions/BuiltinJsonapiResponse"
                 }
             }
         },
@@ -22269,7 +22270,7 @@ local.templateApiDict = {
             "200": {
                 "description": "200 ok - http://jsonapi.org/format/#document-structure-top-level",
                 "schema": {
-                    "$ref": "#/definitions/BuiltinJsonapiResponse{{_schemaName}}"
+                    "$ref": "#/definitions/BuiltinJsonapiResponse"
                 }
             }
         },
@@ -22301,7 +22302,7 @@ local.templateApiDict = {
             "200": {
                 "description": "200 ok - http://jsonapi.org/format/#document-structure-top-level",
                 "schema": {
-                    "$ref": "#/definitions/BuiltinJsonapiResponse{{_schemaName}}"
+                    "$ref": "#/definitions/BuiltinJsonapiResponse"
                 }
             }
         },
@@ -22358,7 +22359,7 @@ local.templateApiDict = {
             "200": {
                 "description": "200 ok - http://jsonapi.org/format/#document-structure-top-level",
                 "schema": {
-                    "$ref": "#/definitions/BuiltinJsonapiResponse{{_schemaName}}"
+                    "$ref": "#/definitions/BuiltinJsonapiResponse"
                 }
             }
         },
@@ -22807,7 +22808,7 @@ swgg\n\
                     ? new local.FormData()
                     : '',
                 inHeader: {},
-                inPath: self._path,
+                inPath: self._path.replace((/#.*?$/), ''),
                 inQuery: '',
                 headers: {},
                 method: self._method,
@@ -23187,9 +23188,9 @@ swgg\n\
             local.tryCatchOnError(function () {
                 local.validateBySwagger(local.swaggerJson);
             }, local.onErrorDefault);
-            // init modeForwardProxyUrl
-            local.modeForwardProxyUrl = local.modeForwardProxyUrl ||
-                local.swaggerJson['x-modeForwardProxyUrl'];
+            // init githubForwardProxyUrl
+            local.githubForwardProxyUrl = local.githubForwardProxyUrl ||
+                local.swaggerJson['x-githubForwardProxyUrl'];
             // init assets.swgg.swagger.server.json
             local.assetsDict['/assets.swgg.swagger.server.json'] =
                 JSON.stringify(local.swaggerJson);
@@ -24727,7 +24728,9 @@ swgg\n\
         /*
          * this function will render the param
          */
-            paramDef.placeholder = paramDef.required
+            paramDef.placeholder = !local.isNullOrUndefined(paramDef['x-example'])
+                ? String(paramDef['x-example'])
+                : paramDef.required
                 ? '(required)'
                 : '';
             // init input - file
@@ -24764,7 +24767,6 @@ swgg\n\
                 });
                 // init 'undefined' value
                 if (!(paramDef.hasDefault ||
-                        paramDef.isSelectMultiple ||
                         paramDef.required)) {
                     paramDef.selectOptionList.unshift({
                         id: local.idDomElementCreate('swgg_id_' + paramDef.name),
@@ -24788,8 +24790,9 @@ swgg\n\
             // init input - textarea
             } else if (paramDef.type === 'array') {
                 paramDef.isTextarea = true;
-                paramDef.placeholder = 'provide multiple values in new lines' +
-                    (paramDef.required
+                paramDef.placeholder = Array.isArray(paramDef['x-example'])
+                    ? paramDef['x-example'].join('\n')
+                    : 'provide multiple values in new lines' + (paramDef.required
                         ? ' (at least one required)'
                         : '');
             // init input - text
@@ -24826,7 +24829,8 @@ swgg\n\
             }
             // init valueEncoded
             paramDef.valueEncoded = paramDef.default;
-            if (paramDef.valueEncoded === undefined) {
+            if (paramDef.valueEncoded === undefined &&
+                    local.isNullOrUndefined(paramDef['x-example'])) {
                 paramDef.valueEncoded = local.dbFieldRandomCreate({
                     modeNotRandom: true,
                     propDef: paramDef

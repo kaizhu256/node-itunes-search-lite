@@ -3,14 +3,14 @@
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26">  package files</tspan>
 <tspan x="10" y="42"></tspan>
-<tspan x="10" y="58">  0.  2017-10-02 18:50:41 +0900    84218 bytes  .</tspan>
+<tspan x="10" y="58">  0.  2017-10-04 16:39:26 +0800    84244 bytes  .</tspan>
 <tspan x="10" y="74">  1.  2017-05-06 07:02:12 +0800       99 bytes  .gitignore</tspan>
 <tspan x="10" y="90">  2.  2017-10-01 11:36:01 +0900     1317 bytes  .travis.yml</tspan>
 <tspan x="10" y="106">  3.  2017-05-06 07:02:12 +0800     1120 bytes  LICENSE</tspan>
 <tspan x="10" y="122">  4.  2017-10-02 18:50:41 +0900    25842 bytes  README.md</tspan>
 <tspan x="10" y="138">  5.  2017-10-02 18:50:41 +0900     7899 bytes  assets.index.template.html</tspan>
-<tspan x="10" y="154">  6.  2017-10-02 18:50:41 +0900    10303 bytes  assets.swgg.swagger.json</tspan>
-<tspan x="10" y="170">  7.  2017-10-02 18:50:41 +0900    35047 bytes  lib.itunes_search.js</tspan>
+<tspan x="10" y="154">  6.  2017-10-04 16:39:26 +0800    10305 bytes  assets.swgg.swagger.json</tspan>
+<tspan x="10" y="170">  7.  2017-10-04 16:39:26 +0800    35071 bytes  lib.itunes_search.js</tspan>
 <tspan x="10" y="186">  8.  2017-10-02 18:50:41 +0900     1306 bytes  package.json</tspan>
 <tspan x="10" y="202">  9.  2017-10-01 11:36:01 +0900     1285 bytes  test.js</tspan>
 </text>

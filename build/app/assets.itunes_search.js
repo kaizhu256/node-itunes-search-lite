@@ -79,12 +79,12 @@
             local.nop = local.nop || function () {
                 return;
             };
-            local.ajaxForwardProxyUrlTest = local.ajaxForwardProxyUrlTest || local.nop;
             local.ajaxProgressCounter = local.ajaxProgressCounter || 0;
             local.ajaxProgressUpdate = local.ajaxProgressUpdate || local.nop;
             local.bufferToNodeBuffer = local.bufferToNodeBuffer || local.nop;
             local.bufferToString = local.bufferToString || local.nop;
             local.errorMessagePrepend = local.errorMessagePrepend || local.nop;
+            local.githubForwardProxyUrlTest = local.githubForwardProxyUrlTest || local.nop;
             local.onErrorWithStack = local.onErrorWithStack || function (arg) {
                 return arg;
             };
@@ -202,12 +202,12 @@
             xhr.addEventListener('progress', local.ajaxProgressUpdate);
             xhr.upload.addEventListener('progress', local.ajaxProgressUpdate);
             // open url
-            xhr.forwardProxyUrl = local.modeJs === 'browser' &&
+            xhr.githubForwardProxyUrl = local.modeJs === 'browser' &&
                 (/^https{0,1}:/).test(xhr.url) &&
                 xhr.url.indexOf(location.protocol + '//' + location.host) !== 0 &&
-                local.ajaxForwardProxyUrlTest(xhr.url, location);
-            if (xhr.forwardProxyUrl) {
-                xhr.open(xhr.method, xhr.forwardProxyUrl);
+                local.githubForwardProxyUrlTest(xhr.url, location);
+            if (xhr.githubForwardProxyUrl) {
+                xhr.open(xhr.method, xhr.githubForwardProxyUrl);
                 xhr.setRequestHeader('forward-proxy-headers', JSON.stringify(xhr.headers));
                 xhr.setRequestHeader('forward-proxy-url', xhr.url);
             } else {

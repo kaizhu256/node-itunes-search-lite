@@ -2,7 +2,7 @@
 <rect height="1006" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26"></tspan>
-<tspan x="10" y="42">[MODE_BUILD=buildApidoc] - 2017-10-02T17:03:28.162Z - npm-testing /home/travis/build/kaizhu256/n\</tspan>
+<tspan x="10" y="42">[MODE_BUILD=buildApidoc] - 2017-10-04T08:43:21.484Z - npm-testing /home/travis/build/kaizhu256/n\</tspan>
 <tspan x="10" y="58">ode-itunes-search-lite</tspan>
 <tspan x="10" y="74"></tspan>
 <tspan x="10" y="90"></tspan>
@@ -10,7 +10,7 @@
 <tspan x="10" y="122">tmp/build/test-report.json</tspan>
 <tspan x="10" y="138">override assets assets.index.template.html</tspan>
 <tspan x="10" y="154">override assets assets.swgg.swagger.json</tspan>
-<tspan x="10" y="170">&gt; server listening on http-port 44601</tspan>
+<tspan x="10" y="170">&gt; server listening on http-port 45706</tspan>
 <tspan x="10" y="186">apidocCreate - readExample /home/travis/build/kaizhu256/node-itunes-search-lite/package.json</tspan>
 <tspan x="10" y="202">apidocCreate - readExample /home/travis/build/kaizhu256/node-itunes-search-lite/assets.index.tem\</tspan>
 <tspan x="10" y="218">plate.html</tspan>
@@ -34,24 +34,24 @@
 <tspan x="10" y="506">tmp/build/test-report.json</tspan>
 <tspan x="10" y="522"></tspan>
 <tspan x="10" y="538">-------------------------------------------------------</tspan>
-<tspan x="10" y="554">| test-report - buildApidoc - node - linux v6.11.3 - 2017-10-02T17:03:28.363Z</tspan>
-<tspan x="10" y="570">|     135 ms            0 failed        1 passed      |</tspan>
+<tspan x="10" y="554">| test-report - buildApidoc - node - linux v6.11.4 - 2017-10-04T08:43:21.676Z</tspan>
+<tspan x="10" y="570">|     122 ms            0 failed        1 passed      |</tspan>
 <tspan x="10" y="586">-------------------------------------------------------</tspan>
 <tspan x="10" y="602">| test-report - npmTest - browser - /index.default.html - Mozilla/5.0 (X11; Linux x86_64) AppleW\</tspan>
-<tspan x="10" y="618">ebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.11 Safari/537.36 - 2017-10-02T\</tspan>
-<tspan x="10" y="634">17:03:10.677Z</tspan>
-<tspan x="10" y="650">|      23 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="618">ebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.14 Safari/537.36 - 2017-10-04T\</tspan>
+<tspan x="10" y="634">08:43:04.077Z</tspan>
+<tspan x="10" y="650">|      25 ms            0 failed        8 passed      |</tspan>
 <tspan x="10" y="666">-------------------------------------------------------</tspan>
-<tspan x="10" y="682">| test-report - npmTest - node - linux v6.11.3 - 2017-10-02T17:03:09.007Z</tspan>
-<tspan x="10" y="698">|   16146 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="682">| test-report - npmTest - node - linux v6.11.4 - 2017-10-04T08:43:02.350Z</tspan>
+<tspan x="10" y="698">|   16213 ms            0 failed        8 passed      |</tspan>
 <tspan x="10" y="714">-------------------------------------------------------</tspan>
 <tspan x="10" y="730">| test-report - npmTestPublished - browser - /index.default.html - Mozilla/5.0 (X11; Linux x86_6\</tspan>
-<tspan x="10" y="746">4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.11 Safari/537.36 - 20\</tspan>
-<tspan x="10" y="762">17-10-02T17:02:04.698Z</tspan>
-<tspan x="10" y="778">|      26 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="746">4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.14 Safari/537.36 - 20\</tspan>
+<tspan x="10" y="762">17-10-04T08:41:57.038Z</tspan>
+<tspan x="10" y="778">|      25 ms            0 failed        8 passed      |</tspan>
 <tspan x="10" y="794">-------------------------------------------------------</tspan>
-<tspan x="10" y="810">| test-report - npmTestPublished - node - linux v6.11.3 - 2017-10-02T17:02:02.334Z</tspan>
-<tspan x="10" y="826">|   16708 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="810">| test-report - npmTestPublished - node - linux v6.11.4 - 2017-10-04T08:41:54.749Z</tspan>
+<tspan x="10" y="826">|   16630 ms            0 failed        8 passed      |</tspan>
 <tspan x="10" y="842">-------------------------------------------------------</tspan>
 <tspan x="10" y="858"></tspan>
 <tspan x="10" y="874">created test-report file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/build/test-rep\</tspan>
@@ -61,6 +61,6 @@
 <tspan x="10" y="938">buildApidoc - 0 failed tests</tspan>
 <tspan x="10" y="954"></tspan>
 <tspan x="10" y="970"></tspan>
-<tspan x="10" y="986">[MODE_BUILD=buildApidoc] - 2017-10-02T17:03:30.554Z - EXIT_CODE - 0</tspan>
+<tspan x="10" y="986">[MODE_BUILD=buildApidoc] - 2017-10-04T08:43:23.839Z - EXIT_CODE - 0</tspan>
 </text>
 </svg>

@@ -274,12 +274,12 @@
     local.nop = local.nop || function () {
         return;
     };
-    local.ajaxForwardProxyUrlTest = local.ajaxForwardProxyUrlTest || local.nop;
     local.ajaxProgressCounter = local.ajaxProgressCounter || 0;
     local.ajaxProgressUpdate = local.ajaxProgressUpdate || local.nop;
     local.bufferToNodeBuffer = local.bufferToNodeBuffer || local.nop;
     local.bufferToString = local.bufferToString || local.nop;
     local.errorMessagePrepend = local.errorMessagePrepend || local.nop;
+    local.githubForwardProxyUrlTest = local.githubForwardProxyUrlTest || local.nop;
     local.onErrorWithStack = local.onErrorWithStack || function (arg) {
         return arg;
     };
@@ -362,7 +362,7 @@
             // handle abort or error event
             if (!xhr.error &#x26;&#x26;
                     (event.type === &#x27;abort&#x27; ||
-                    event.type === &#x27;error&#x27; | ...</pre></li>
+                    event.type === &#x27;erro ...</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 // run shared js-env code - function-before
 /* istanbul ignore next */
