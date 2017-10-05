@@ -132,6 +132,9 @@ button {
     margin-top: 1rem;
 }
 .swggUiContainer pre,
+.swggUiContainer select[multiple] {
+    height: 10rem;
+}
 .swggUiContainer textarea {
     font-family: Menlo, Monaco, Consolas, Courier New, monospace;
     font-size: small;
@@ -461,10 +464,25 @@ border: 0;
 }());
 </script>
 <div class="swggUiContainer">
-<div class="form header tr">
+<div class="eventDelegateKeyup eventDelegateSubmit form header onEventUiReload tr">
     <a class="td1" href="https://github.com/kaizhu256/node-swgg" target="_blank">swgg</a>
-    <input class="flex1 td2" type="text">
-    <button class="td3">Explore</button>
+    <input
+        class="flex1 td2"
+        placeholder="http://petstore.swagger.io/v2/swagger.json"
+        type="text"
+    >
+    <input
+        class="td2"
+        id="swggApiKeyInput1"
+        placeholder="api-key"
+        style="width: 8rem;"
+        type="text"
+    >
+    <button
+        class="eventDelegateClick onEventUiReload td3"
+        id="swggApiKeyClearButton1"
+    >Clear api-keys</button>
+    <button class="eventDelegateClick onEventUiReload td3">Explore</button>
 </div>
 </div>
 <div class="swggAjaxProgressDiv" style="margin-top: 1rem; text-align: center;">fetching resource-list ...</div>

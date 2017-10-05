@@ -210,7 +210,7 @@ instruction
         local.assetsDict['/assets.itunes_search.js'] =
             local.assetsDict['/assets.itunes_search.js'] ||
             local.fs.readFileSync(
-                local.itunes_search.__dirname + '/lib.itunes_search.js',
+                local.__dirname + '/lib.itunes_search.js',
                 'utf8'
             ).replace((/^#!/), '//');
         /* jslint-ignore-end */

@@ -791,6 +791,15 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
             });
             // init moduleDict child
             local.apidocModuleDictAdd(options, options.moduleDict);
+            // init swgg.apiDict
+            Object.keys(
+                (moduleMain.swgg && moduleMain.swgg.apiDict) || {}
+            ).forEach(function (key) {
+                tmp = options.env.npm_package_name + '.swgg.apiDict';
+                tmp = options.moduleDict[tmp] = options.moduleDict[tmp] || {};
+                tmp[encodeURIComponent(key) + '._ajax'] = moduleMain.swgg.apiDict[key] &&
+                    moduleMain.swgg.apiDict[key]._ajax;
+            });
             // init moduleExtraDict
             module = options.moduleExtraDict[options.env.npm_package_name] =
                 options.moduleExtraDict[options.env.npm_package_name] || {};
@@ -881,7 +890,7 @@ vendor\\)s\\{0,1\\}\\(\\b\\|_\\)\
                             .filter(function (key) {
                                 return local.tryCatchOnError(function () {
                                     return key &&
-                                        (/^\w[\w\-.]*?$/).test(key) &&
+                                        (/^\w[\w%\-.]*?$/).test(key) &&
                                         key.indexOf('testCase_') !== 0 &&
                                         module[key] !== options.blacklistDict[key];
                                 }, console.error);
@@ -12953,7 +12962,7 @@ local.CSSLint = CSSLint; local.JSLINT = JSLINT, local.jslintEs6 = jslint; }());
 // init lib sjcl
 // 2016-09-10T10:34:50Z
 // https://github.com/bitwiseshiftleft/sjcl/blob/1.0.6/sjcl.js
-// utility2-uglify https://raw.githubusercontent.com/bitwiseshiftleft/sjcl/1.0.6/sjcl.js
+// utility2-uglifyjs https://raw.githubusercontent.com/bitwiseshiftleft/sjcl/1.0.6/sjcl.js
 (function () { var module;
 "use strict";function t(e,t,n){if(4!==t.length)throw new sjcl.exception.invalid("invalid aes block size"
 );var r=e.b[n],i=t[0]^r[0],s=t[n?3:1]^r[1],o=t[2]^r[2];t=t[n?1:3]^r[3];var u,a,f
@@ -13262,10 +13271,43 @@ local.sjcl = sjcl; }());
 
 
 
+// init lib sjcl.hash.sha1
+// 2016-06-09T23:25:22Z
+// https://github.com/bitwiseshiftleft/sjcl/blob/1.0.6/core/sha1.js
+// utility2-uglifyjs https://raw.githubusercontent.com/bitwiseshiftleft/sjcl/1.0.6/core/sha1.js
+(function () { var sjcl; sjcl = local.sjcl;
+sjcl.hash.sha1=function(e){e?(this._h=e._h.slice(0),this._buffer=e._buffer.slice
+(0),this._length=e._length):this.reset()},sjcl.hash.sha1.hash=function(e){return(new
+sjcl.hash.sha1).update(e).finalize()},sjcl.hash.sha1.prototype={blockSize:512,reset
+:function(){return this._h=this._init.slice(0),this._buffer=[],this._length=0,this
+},update:function(e){typeof e=="string"&&(e=sjcl.codec.utf8String.toBits(e));var t
+,n=this._buffer=sjcl.bitArray.concat(this._buffer,e),r=this._length,i=this._length=
+r+sjcl.bitArray.bitLength(e);if(i>9007199254740991)throw new sjcl.exception.invalid
+("Cannot hash more than 2^53 - 1 bits");if(typeof Uint32Array!="undefined"){var s=new
+Uint32Array(n),o=0;for(t=this.blockSize+r-(this.blockSize+r&this.blockSize-1);t<=
+i;t+=this.blockSize)this._block(s.subarray(16*o,16*(o+1))),o+=1;n.splice(0,16*o)
+}else for(t=this.blockSize+r-(this.blockSize+r&this.blockSize-1);t<=i;t+=this.blockSize
+)this._block(n.splice(0,16));return this},finalize:function(){var e,t=this._buffer
+,n=this._h;t=sjcl.bitArray.concat(t,[sjcl.bitArray.partial(1,1)]);for(e=t.length+2
+;e&15;e++)t.push(0);t.push(Math.floor(this._length/4294967296)),t.push(this._length|0
+);while(t.length)this._block(t.splice(0,16));return this.reset(),n},_init:[1732584193
+,4023233417,2562383102,271733878,3285377520],_key:[1518500249,1859775393,2400959708
+,3395469782],_f:function(e,t,n,r){if(e<=19)return t&n|~t&r;if(e<=39)return t^n^r
+;if(e<=59)return t&n|t&r|n&r;if(e<=79)return t^n^r},_S:function(e,t){return t<<e|
+t>>>32-e},_block:function(e){var t,n,r,i,s,o,u,a=this._h,f;if(typeof Uint32Array!="undefined"
+){f=Array(80);for(var l=0;l<16;l++)f[l]=e[l]}else f=e;r=a[0],i=a[1],s=a[2],o=a[3
+],u=a[4];for(t=0;t<=79;t++)t>=16&&(f[t]=this._S(1,f[t-3]^f[t-8]^f[t-14]^f[t-16])
+),n=this._S(5,r)+this._f(t,i,s,o)+u+f[t]+this._key[Math.floor(t/20)]|0,u=o,o=s,s=
+this._S(30,i),i=r,r=n;a[0]=a[0]+r|0,a[1]=a[1]+i|0,a[2]=a[2]+s|0,a[3]=a[3]+o|0,a[4
+]=a[4]+u|0}}
+}());
+
+
+
 // init lib sjcl.misc.scrypt
 // 2016-05-31T18:10:00Z
 // https://github.com/bitwiseshiftleft/sjcl/blob/1.0.6/core/scrypt.js
-// utility2-uglify https://raw.githubusercontent.com/bitwiseshiftleft/sjcl/1.0.6/core/scrypt.js
+// utility2-uglifyjs https://raw.githubusercontent.com/bitwiseshiftleft/sjcl/1.0.6/core/scrypt.js
 (function () { var sjcl; sjcl = local.sjcl;
 sjcl.misc.scrypt=function(e,t,n,r,i,s,o){var u=Math.pow(2,32)-1,a=sjcl.misc.scrypt
 ;n=n||16384,r=r||8,i=i||1;if(r*i>=Math.pow(2,30))throw sjcl.exception.invalid("The parameters r, p must satisfy r * p < 2^30"
@@ -14624,7 +14666,7 @@ local.assetsDict['/assets.index.template.html'].replace((/\n/g), '\\n\\\n') + '\
         local.assetsDict[\'/assets.jslint.js\'] =\n\
             local.assetsDict[\'/assets.jslint.js\'] ||\n\
             local.fs.readFileSync(\n\
-                local.jslint.__dirname + \'/lib.jslint.js\',\n\
+                local.__dirname + \'/lib.jslint.js\',\n\
                 \'utf8\'\n\
             ).replace((/^#!/), \'//\');\n\
         /* jslint-ignore-end */\n\
@@ -16954,6 +16996,7 @@ function TranslateElementInit() {\n\
                         console.error(options.fileElectronHtml +
                             ' global_test_results ' +
                             JSON.stringify({ global_test_results: {
+                                coverage: window.__coverage__,
                                 testReport: { testPlatformList: [{}] }
                             } }));
                     }
@@ -18424,6 +18467,18 @@ return Utf8ArrayToStr(bff);
             return list;
         };
 
+        local.localStorageSetItemOrClear = function (key, value) {
+        /*
+         * this function will try to set the key/value pair to localStorage,
+         * or else call localStorage.clear()
+         */
+            try {
+                localStorage.setItem(key, value);
+            } catch (errorCaught) {
+                localStorage.clear();
+            }
+        };
+
         local.middlewareAssetsCached = function (request, response, nextMiddleware) {
         /*
          * this function will run the middleware that will serve cached-assets
@@ -19763,14 +19818,27 @@ instruction\n\
             return local.sjcl.codec.base64.fromBits(local.sjcl.hash.sha256.hash(data));
         };
 
-        local.sjclHmacSha256Create = function (key, data) {
+        local.sjclHmacSha1Create = function (key, data) {
         /*
-         * this function will create a base64-encoded sha-256 hmac
-         * from the base64-encoded key and string data
+         * this function will create a base64-encoded sha-1 hmac
+         * from the string key and string data
          */
             return local.sjcl.codec.base64.fromBits(
                 (new local.sjcl.misc.hmac(
-                    local.sjcl.codec.base64.toBits(key),
+                    local.sjcl.codec.utf8String.toBits(key),
+                    local.sjcl.hash.sha1
+                )).mac(local.sjcl.codec.utf8String.toBits(data))
+            );
+        };
+
+        local.sjclHmacSha256Create = function (key, data) {
+        /*
+         * this function will create a base64-encoded sha-256 hmac
+         * from the string key and string data
+         */
+            return local.sjcl.codec.base64.fromBits(
+                (new local.sjcl.misc.hmac(
+                    local.sjcl.codec.utf8String.toBits(key),
                     local.sjcl.hash.sha256
                 )).mac(local.sjcl.codec.utf8String.toBits(data))
             );
@@ -21507,6 +21575,9 @@ local.assetsDict['/assets.swgg.html'] = local.assetsDict['/assets.index.default.
     margin-top: 1rem;\n\
 }\n\
 .swggUiContainer pre,\n\
+.swggUiContainer select[multiple] {\n\
+    height: 10rem;\n\
+}\n\
 .swggUiContainer textarea {\n\
     font-family: Menlo, Monaco, Consolas, Courier New, monospace;\n\
     font-size: small;\n\
@@ -21792,10 +21863,25 @@ border: 0;\n\
 \n\
 </script>\n\
 <div class="swggUiContainer">\n\
-<div class="form header tr">\n\
+<div class="eventDelegateKeyup eventDelegateSubmit form header onEventUiReload tr">\n\
     <a class="td1" href="https://github.com/kaizhu256/node-swgg" target="_blank">swgg</a>\n\
-    <input class="flex1 td2" type="text">\n\
-    <button class="td3">Explore</button>\n\
+    <input\n\
+        class="flex1 td2"\n\
+        placeholder="http://petstore.swagger.io/v2/swagger.json"\n\
+        type="text"\n\
+    >\n\
+    <input\n\
+        class="td2"\n\
+        id="swggApiKeyInput1"\n\
+        placeholder="api-key"\n\
+        style="width: 8rem;"\n\
+        type="text"\n\
+    >\n\
+    <button\n\
+        class="eventDelegateClick onEventUiReload td3"\n\
+        id="swggApiKeyClearButton1"\n\
+    >Clear api-keys</button>\n\
+    <button class="eventDelegateClick onEventUiReload td3">Explore</button>\n\
 </div>\n\
 </div>\n\
 <div class="swggAjaxProgressDiv" style="margin-top: 1rem; text-align: center;">fetching resource-list ...</div>\n\
@@ -22529,14 +22615,26 @@ local.templateUiMain = '\
 <div class="eventDelegateClick modal onEventModalHide" style="display: none; opacity: 0;">\n\
     <form class="datatable eventDelegateClick"></form>\n\
 </div>\n\
-<div class="eventDelegateClick popup" style="display: none;"></div>\n\
-<div class="eventDelegateSubmit form header onEventUiReload tr">\n\
+<div class="eventDelegateKeyup eventDelegateSubmit form header onEventUiReload tr">\n\
     <a class="td1" href="https://github.com/kaizhu256/node-swgg" target="_blank">swgg</a>\n\
     <input\n\
         class="flex1 td2"\n\
+        placeholder="http://petstore.swagger.io/v2/swagger.json"\n\
         type="text"\n\
         value="{{url}}"\n\
     >\n\
+    <input\n\
+        class="td2"\n\
+        id="swggApiKeyInput1"\n\
+        placeholder="api-key"\n\
+        style="width: 8rem;"\n\
+        type="text"\n\
+        value="{{apiKeyValue}}"\n\
+    >\n\
+    <button\n\
+        class="eventDelegateClick onEventUiReload td3"\n\
+        id="swggApiKeyClearButton1"\n\
+    >Clear api-keys</button>\n\
     <button class="eventDelegateClick onEventUiReload td3">Explore</button>\n\
 </div>\n\
 <div class="info reset">\n\
@@ -22616,7 +22714,10 @@ local.templateUiOperation = '\
         <span class="td3">{{operationId}}</span>\n\
         <span class="td4">{{summary htmlSafe}}</span>\n\
     </div>\n\
-    <form accept-charset="UTF-8" class="content uiAnimateSlide" style="border-bottom: 0; border-top: 0; margin-bottom: 0; margin-top: 0; max-height: 0; padding-bottom: 0; padding-top: 0;">\n\
+    <form accept-charset="UTF-8"\n\
+        class="content uiAnimateSlide"\n\
+        style="border-bottom: 0; border-top: 0; margin-bottom: 0; margin-top: 0; max-height: 0; padding-bottom: 0; padding-top: 0;"\n\
+    >\n\
         {{#if deprecated}}\n\
         <h4 class="label marginTop10">Warning: Deprecated</h4>\n\
         {{/if deprecated}}\n\
@@ -22726,7 +22827,9 @@ local.templateUiResource = '\
             href="#"\n\
         >Datatable</a>\n\
     </div>\n\
-    <div class="operationList uiAnimateSlide" style="border-bottom: 0; border-top: 0; margin-bottom: 0; margin-top: 0; max-height: 0; padding-bottom: 0; padding-top: 0;"></div>\n\
+    <div class="operationList uiAnimateSlide"\n\
+        style="border-bottom: 0; border-top: 0; margin-bottom: 0; margin-top: 0; max-height: 0; padding-bottom: 0; padding-top: 0;"\n\
+    ></div>\n\
 </div>\n\
 ';
 
@@ -24335,7 +24438,7 @@ swgg\n\
         /*
          * this function will init event-handling for the dom-element
          */
-            ['Click', 'Submit'].forEach(function (eventType) {
+            ['Click', 'Keyup', 'Submit'].forEach(function (eventType) {
                 Array.from(
                     element.querySelectorAll('.eventDelegate' + eventType)
                 ).forEach(function (element) {
@@ -24666,11 +24769,31 @@ swgg\n\
             });
         };
 
-        local.uiEventListenerDict['.onEventUiReload'] = function () {
+        local.uiEventListenerDict['.onEventUiReload'] = function (event) {
         /*
          * this function will reload the ui
          */
             var notify, tmp;
+            switch (event && event.target && event.target.id) {
+            // clear all apiKeyValue's from localStorage
+            case 'swggApiKeyClearButton1':
+                local.apiKeyValue = '';
+                Object.keys(localStorage).forEach(function (key) {
+                    if (key.indexOf('utility2_swgg_apiKeyKey_') === 0) {
+                        localStorage.removeItem(key);
+                    }
+                });
+                break;
+            // persist apiKeyValue to localStorage
+            case 'swggApiKeyInput1':
+                local.apiKeyValue = event.target.value;
+                local.localStorageSetItemOrClear(local.apiKeyKey, event.target.value);
+                break;
+            }
+            // if keyup-event is not return-key, then return
+            if (event && event.type === 'keyup' && event.keyCode !== 13) {
+                return;
+            }
             notify = function (message) {
             /*
              * this function will notify with the given message
@@ -24828,7 +24951,9 @@ swgg\n\
                     : paramDef.schema2, null, 4);
             }
             // init valueEncoded
-            paramDef.valueEncoded = paramDef.default;
+            paramDef.valueEncoded = paramDef['x-apiKey']
+                ? local.apiKeyValue
+                : paramDef.default;
             if (paramDef.valueEncoded === undefined &&
                     local.isNullOrUndefined(paramDef['x-example'])) {
                 paramDef.valueEncoded = local.dbFieldRandomCreate({
@@ -24883,6 +25008,9 @@ swgg\n\
                 local.templateRender(local.templateUiTitle, options).trim();
             // init url
             options.url = document.querySelector('.swggUiContainer > .header > .td2').value;
+            // init apiKeyValue
+            local.apiKeyKey = 'utility2_swgg_apiKeyKey_' + encodeURIComponent(options.url);
+            local.apiKeyValue = options.apiKeyValue = localStorage[local.apiKeyKey] || '';
             // templateRender main
             document.querySelector('.swggUiContainer').innerHTML =
                 local.templateRender(local.templateUiMain, options);
@@ -24968,15 +25096,6 @@ swgg\n\
                 document.querySelector('.swggUiContainer')
                     .removeChild(document.querySelector('.resourceList'));
                 document.querySelector('.swggUiContainer').appendChild(options.uiFragment);
-                /* istanbul ignore next */
-                // bug-workaround - add keypress listener for <form>
-                document.querySelector(
-                    '.swggUiContainer .form'
-                ).addEventListener('keypress', function (event) {
-                    if (event.keyCode === 13) {
-                        local.uiEventListenerDict['.onEventUiReload']();
-                    }
-                });
                 // render valueEncoded
                 Array.from(
                     document.querySelectorAll('.swggUiContainer [data-value-encoded]')

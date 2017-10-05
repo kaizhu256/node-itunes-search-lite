@@ -2,7 +2,7 @@
 <rect height="750" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26"></tspan>
-<tspan x="10" y="42">[MODE_BUILD=buildApp] - 2017-10-04T12:36:36.253Z - npm-testing /home/travis/build/kaizhu256/node\</tspan>
+<tspan x="10" y="42">[MODE_BUILD=buildApp] - 2017-10-05T09:15:43.145Z - npm-testing /home/travis/build/kaizhu256/node\</tspan>
 <tspan x="10" y="58">-itunes-search-lite</tspan>
 <tspan x="10" y="74"></tspan>
 <tspan x="10" y="90"></tspan>
@@ -10,32 +10,32 @@
 <tspan x="10" y="122">/build/test-report.json</tspan>
 <tspan x="10" y="138">override assets assets.index.template.html</tspan>
 <tspan x="10" y="154">override assets assets.swgg.swagger.json</tspan>
-<tspan x="10" y="170">&gt; server listening on http-port 38965</tspan>
-<tspan x="10" y="186">&gt; server listening on http-port 55603</tspan>
+<tspan x="10" y="170">&gt; server listening on http-port 63481</tspan>
+<tspan x="10" y="186">&gt; server listening on http-port 52256</tspan>
 <tspan x="10" y="202">[node test-case 1 of 1 passed] - testCase_buildApp_default</tspan>
 <tspan x="10" y="218"></tspan>
 <tspan x="10" y="234">buildApp - merged test-report from file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp\</tspan>
 <tspan x="10" y="250">/build/test-report.json</tspan>
 <tspan x="10" y="266"></tspan>
 <tspan x="10" y="282">-------------------------------------------------------</tspan>
-<tspan x="10" y="298">| test-report - buildApidoc - node - linux v6.11.4 - 2017-10-04T12:35:42.184Z</tspan>
-<tspan x="10" y="314">|   60254 ms            0 failed        1 passed      |</tspan>
+<tspan x="10" y="298">| test-report - buildApidoc - node - linux v6.11.4 - 2017-10-05T09:14:48.850Z</tspan>
+<tspan x="10" y="314">|   60394 ms            0 failed        1 passed      |</tspan>
 <tspan x="10" y="330">-------------------------------------------------------</tspan>
 <tspan x="10" y="346">| test-report - npmTest - browser - /index.default.html - Mozilla/5.0 (X11; Linux x86_64) AppleW\</tspan>
-<tspan x="10" y="362">ebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.14 Safari/537.36 - 2017-10-04T\</tspan>
-<tspan x="10" y="378">12:35:24.534Z</tspan>
-<tspan x="10" y="394">|      26 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="362">ebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.14 Safari/537.36 - 2017-10-05T\</tspan>
+<tspan x="10" y="378">09:14:31.264Z</tspan>
+<tspan x="10" y="394">|      33 ms            0 failed        8 passed      |</tspan>
 <tspan x="10" y="410">-------------------------------------------------------</tspan>
-<tspan x="10" y="426">| test-report - npmTest - node - linux v6.11.4 - 2017-10-04T12:35:22.850Z</tspan>
-<tspan x="10" y="442">|   16136 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="426">| test-report - npmTest - node - linux v6.11.4 - 2017-10-05T09:14:29.642Z</tspan>
+<tspan x="10" y="442">|   16093 ms            0 failed        8 passed      |</tspan>
 <tspan x="10" y="458">-------------------------------------------------------</tspan>
 <tspan x="10" y="474">| test-report - npmTestPublished - browser - /index.default.html - Mozilla/5.0 (X11; Linux x86_6\</tspan>
 <tspan x="10" y="490">4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Electron/1.6.14 Safari/537.36 - 20\</tspan>
-<tspan x="10" y="506">17-10-04T12:34:17.091Z</tspan>
+<tspan x="10" y="506">17-10-05T09:13:23.998Z</tspan>
 <tspan x="10" y="522">|      27 ms            0 failed        8 passed      |</tspan>
 <tspan x="10" y="538">-------------------------------------------------------</tspan>
-<tspan x="10" y="554">| test-report - npmTestPublished - node - linux v6.11.4 - 2017-10-04T12:34:14.592Z</tspan>
-<tspan x="10" y="570">|   16778 ms            0 failed        8 passed      |</tspan>
+<tspan x="10" y="554">| test-report - npmTestPublished - node - linux v6.11.4 - 2017-10-05T09:13:20.994Z</tspan>
+<tspan x="10" y="570">|   17262 ms            0 failed        8 passed      |</tspan>
 <tspan x="10" y="586">-------------------------------------------------------</tspan>
 <tspan x="10" y="602"></tspan>
 <tspan x="10" y="618">created test-report file /home/travis/build/kaizhu256/node-itunes-search-lite/tmp/build/test-rep\</tspan>
@@ -45,6 +45,6 @@
 <tspan x="10" y="682">buildApp - 0 failed tests</tspan>
 <tspan x="10" y="698"></tspan>
 <tspan x="10" y="714"></tspan>
-<tspan x="10" y="730">[MODE_BUILD=buildApp] - 2017-10-04T12:36:44.513Z - EXIT_CODE - 0</tspan>
+<tspan x="10" y="730">[MODE_BUILD=buildApp] - 2017-10-05T09:15:51.500Z - EXIT_CODE - 0</tspan>
 </text>
 </svg>
